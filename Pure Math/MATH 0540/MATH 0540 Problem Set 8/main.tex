@@ -1,0 +1,365 @@
+\documentclass[12pt,reqno]{article}
+
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+\usepackage[T1]{fontenc}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsthm,bbm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{extarrows}
+\usepackage{color}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage{euler}
+
+%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+\onehalfspacing
+
+%%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+%%%%%%%%%%%%%%%%%%%% TITLE-PAGE %%%%%%%%%%%%%%%%%%%%
+
+\title{MATH 0540 Problem Set 8}
+\author{Collaborated with Esmé}
+\date{November 2022}
+
+%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 1 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Give an example of a vector space $V$ and a linear map $T:V\rightarrow V$ such that $T$ is not the identity, and $T$ is its own inverse (and prove this).
+\end{problem}
+
+\begin{proof}
+    Define $T \in L(\mathbb{R}^2)$ such that $T\neq I$:
+    \begin{align*}
+        T(x, y) = (y, x)
+    \end{align*}
+    Now, we will prove that $T$ is its own inverse by showing that $T\cdot T = I$.
+    \begin{align*}
+        T\cdot T &= T(T(x, y)) &\text{(composition of linear maps)}\\
+        &= T(y, x) &\text{(definition of $T$)}\\
+        &= (x, y) &\text{(definition of $T$)}\\
+        &= I &\text{(definition of $I$)}
+    \end{align*}
+    Therefore, we have proven that the linear map $T: \mathbb{R}^2 \rightarrow \mathbb{R}^2$, which is not the identity, is its own inverse. 
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 2 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Let $T:\mathbb{R}^2 \rightarrow \mathbb{R}^2$ be the linear map defined by
+    $$
+    T(x,y) = (ax + by, bx + ay)\ \ \ \ \text{    for }a,b \in \mathbb{R}.
+    $$
+    Give a condition on $a,b$ for $T$ to be invertible, and when $T$ is invertible, find the inverse.
+\end{problem}
+
+\begin{proof}
+    Assuming $T$ has an inverse, define $T^{-1}:\mathbb{R}^2 \rightarrow \mathbb{R}^2$:
+    \begin{align*}
+            T^{-1}(x, y) &= (cx + dy, ex + fy) &\text{(general form of $L(\mathbb{R}^2)$)}
+    \end{align*}
+    In order for $T^{-1}$ to invert $T$, it must consume the output of $T$, which is of the form $(ax + by, bx + ay)$, and produce the input of $T$, which is $(x, y)$. In other words, $T^{-1}\cdot T = I$:
+    \begin{align*}
+        T^{-1}\cdot T &= I & \text{(definition of inverse)}\\
+        T^{-1}(T(x, y)) &= (x, y) & \text{(definition of $I$)}\\
+        T^{-1}(ax + by, bx + ay) &= (x, y) & \text{(definition of $T$)}\\
+        (c(ax+by)+d(bx+ay),\ e(ax+by)+f(bx+ay)) &= (x, y) & \text{(definition of $T^{-1}$)}\\
+        (cax+cby+dbx+day,\ eax+eby+fbx+fay) &= (x, y) & \text{(distributive property)}
+    \end{align*}
+    \begin{align*}
+        x &= cax+cby+dbx+day\quad & y &= eax+eby+fbx+fay & \text{(equate components)}\\
+        x &= (ca+db)x+(cb+da)y\quad & y &= (ea+fb)x+(eb+fa)y & \text{(distributive prop.)}
+    \end{align*}
+    For these relationships to hold, the following must be true:
+    \begin{align*}
+        &\text{1.}\ ca+db=1
+        &\text{3.}\ ea+fb=0\\
+        &\text{2.}\ cb+da=0
+        &\text{4.}\ eb+fa=1
+    \end{align*}
+    Using these four equations, we will solve for $c,d,e,f$ to determine $T^{-1}$ in terms of $a,b$. \\\\
+    Solve for $d$:
+    \begin{align*}
+        ca+db&=1 & \text{(equation 1)}\\
+        cab+db^2&=b &\text{(mult. by b)}\\
+        cba+db^2&=b &\text{(commutativity)}\\
+        (-da)a+db^2&=b &\text{($cb=-da$ by eq. 2)}\\
+        -da^2+db^2&=b &\text{(multiplication)}\\
+        db^2-da^2&=b &\text{(commutativity)}\\
+        d(b^2-a^2)&=b &\text{(distributive prop.)}\\
+        d&=\frac{b}{b^2-a^2} &\text{(division)}
+    \end{align*}
+    Solve for $c$:
+    \begin{align*}
+        ca+db&=1 & \text{(equation 1)}\\
+        ca^2+dba&=a & \text{(mult. by a)}\\
+        ca^2+dab&=a & \text{(commutativity)}\\
+        ca^2+(-cb)b&=a & \text{($da=-cb$ from eq. 2)}\\
+        ca^2-cb^2&=a & \text{(multiplication)}\\
+        c(a^2-b^2)&=a & \text{(distributive prop.)}\\
+        c&=\frac{a}{a^2-b^2} & \text{(division)}
+    \end{align*}
+    Solve for $e$:
+    \begin{align*}
+        eb+fa&=1 & \text{(equation 4)}\\
+        eb^2+fab&=b & \text{(mult. by b)}\\
+        eb^2+fba&=b & \text{(commutativity)}\\
+        eb^2+(-ea)a&=b & \text{($fb=-ea$ from eq. 3)}\\
+        eb^2-ea^2&=b & \text{(multiplication)}\\
+        e(b^2-a^2)&=b & \text{(distributive prop.)}\\
+        e&=\frac{b}{b^2-a^2} & \text{(distributive prop.)}
+    \end{align*}
+    Solve for $f$:
+    \begin{align*}
+        eb+fa&=1 &\text{(equation 4)}\\
+        eba+fa^2&=a &\text{(mult. by a)}\\
+        eab+fa^2&=a &\text{(commutativity)}\\
+        (-fb)b+fa^2&=a &\text{($ea=-fb$ from eq. 3)}\\
+        -fb^2+fa^2&=a &\text{(multiplication)}\\
+        fa^2-fb^2&=a &\text{(commutativity)}\\
+        f(a^2-b^2)&=a &\text{(distributive prop.)}\\
+        f&=\frac{a}{a^2-b^2} &\text{(distributive prop.)}
+    \end{align*}
+    From the denominators of the solutions for $c,d,e,f$, it follows that:
+    \begin{align*}
+        b^2-a^2&\neq0 & a^2-b^2&\neq0 & \text{(div. by $0$ undefined)}\\
+        (b+a)(b-a)&\neq0 & (a+b)(a-b)&\neq0 & \text{(dif. of two squares)}\\
+        a&\neq b & a&\neq-b & \text{(zero product prop.)}
+    \end{align*}
+    Therefore, we have defined a solution for $T^{-1}: \mathbb{R}^2 \rightarrow \mathbb{R}^2$:
+    \begin{align*}
+        &T^{-1}(x, y) = (\frac{a}{a^2-b^2}x + \frac{b}{b^2-a^2}y,\ \frac{b}{b^2-a^2}x + \frac{a}{a^2-b^2}y)\\
+        &\text{where}\ a\neq b\ \text{and}\ a\neq-b
+    \end{align*}
+    We already have that $T^{-1}\cdot T=I$ since $T^{-1}$ was constructed by assuming the relation. Now we will prove that $T\cdot T^{-1}=I$ as well in order to show that $T^{-1}$ is the inverse of $T$.
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align*}
+        T\cdot T^{-1} &= T(T^{-1}(x, y)) & \text{(composition of linear maps)}\\
+         &= T(\frac{a}{a^2-b^2}x + \frac{b}{b^2-a^2}y,\ \frac{b}{b^2-a^2}x + \frac{a}{a^2-b^2}y) & \text{(definition of $T^{-1}$)}\\
+         &= (a(\frac{a}{a^2-b^2}x + \frac{b}{b^2-a^2}y) + b(\frac{b}{b^2-a^2}x + \frac{a}{a^2-b^2}y),& \text{(definition of $T$)}\\ &\quad\ b(\frac{a}{a^2-b^2}x + \frac{b}{b^2-a^2}y) + a(\frac{b}{b^2-a^2}x + \frac{a}{a^2-b^2}y))\\
+         &= (\frac{a^2x}{a^2-b^2} + \frac{aby}{b^2-a^2} + \frac{b^2x}{b^2-a^2} + \frac{aby}{a^2-b^2},& \text{(distributive prop.)}\\ &\quad\ \frac{abx}{a^2-b^2} + \frac{b^2y}{b^2-a^2} + \frac{abx}{b^2-a^2} + \frac{a^2y}{a^2-b^2})\\
+         &= (\frac{a^2x}{a^2-b^2} + \frac{b^2x}{b^2-a^2} + \frac{aby}{b^2-a^2} + \frac{aby}{a^2-b^2},& \text{(commutativity)}\\ &\quad\ \frac{abx}{a^2-b^2} + \frac{abx}{b^2-a^2} + \frac{b^2y}{b^2-a^2} + \frac{a^2y}{a^2-b^2})\\
+         &= (\frac{a^2x}{a^2-b^2} - \frac{b^2x}{a^2-b^2} + \frac{aby}{b^2-a^2} - \frac{aby}{b^2-a^2},& \text{(distributive prop.)}\\ &\quad\ \frac{abx}{a^2-b^2} - \frac{abx}{a^2-b^2} + \frac{b^2y}{b^2-a^2} - \frac{a^2y}{b^2-a^2})\\
+         &= (\frac{a^2x-b^2x}{a^2-b^2} + 0,\ 0 + \frac{b^2y-a^2y}{b^2-a^2})& \text{(subtraction)}\\
+         &= (\frac{a^2x-b^2x}{a^2-b^2},\ \frac{b^2y-a^2y}{b^2-a^2})& \text{(additive identity)}\\
+         &= (\frac{x(a^2-b^2)}{a^2-b^2},\ \frac{y(b^2-a^2)}{b^2-a^2})& \text{(distributive prop.)}\\
+         &= (x,\ y)& \text{(division)}\\
+         &= I &\text{(definition of $I$)}
+    \end{align*}
+    Therefore, we have that $T^{-1}$ is the inverse of $T$ for all $a,b\in\mathbb{R}$ such that $a\neq b$ and $a\neq -b$.
+    \endgroup
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 3 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Let $T$ be an invertible linear map from $U$ to $V$ and let $S$ be an invertible linear map from $V$ to $W$. Prove that $ST: U\rightarrow W$ is invertible and that 
+    $$
+    (ST)^{-1} = T^{-1} S^{-1}.
+    $$
+\end{problem}
+\begin{proof}
+    Since $S$ and $T$ are invertible, we have that:
+    \begin{align*} 
+        &\dim U = \dim V = \dim W & \text{(Axler, 3.59)}
+    \end{align*}
+    Additionally, we have that $S$ and $T$ are both injective and surjective by the definition of invertibility. To prove that $ST$ is invertible, we will first show that $ST$ is both injective and surjective.
+    \\\\
+    If $ST$ is injective, $(ST)(u) = (ST)(v)$ implies $u=v$:
+    \begin{align*}
+        (ST)(u)&=(ST)(v) &\text{(assumption)}\\
+        S(T(u))&=S(T(v)) &\text{(composition of linear maps)}\\
+        S^{-1}(S(T(u))&= S^{-1}(S(T(v))) &\text{(apply $S^{-1}$ to both sides)}\\
+        T(u)&=T(v) &\text{(definition of inverse)}\\
+        u&=v &\text{($T$ is injective)}
+    \end{align*}
+    Therefore, we have proven that $ST$ is injective. Next, to prove $ST$ is surjective, we will prove that $\mathrm{range}\,ST = W$:
+    \begin{align*}
+        \mathrm{range}\,ST &= \{(ST)(u)\ |\ u\in U\} &\text{(definition of range)}\\
+        &= \{S(T(u))\ |\ u\in U\} &\text{(composition of linear maps)}\\
+        &= \{S(v)\ |\ v\in V\} &\text{($T$ is surjective)}\\
+        &= \{w\ |\ w\in W\} &\text{($S$ is surjective)}\\
+        &= W &\text{(definition of vector space)}\\
+    \end{align*}
+    Because we have proven that $ST$ is both injective and surjective, we have that $ST$ is invertible.
+    \\\\
+    Next, we will prove that $(ST)^{-1} = T^{-1} S^{-1}$.
+    \begin{align*}
+        (ST)^{-1} &= T^{-1} S^{-1} &\text{(assumption)}\\
+        (ST)(ST)^{-1} &= (ST)T^{-1} S^{-1} &\text{(multiply by $ST$)}\\
+        ST((ST)^{-1}(w)) &= ST(T^{-1}(S^{-1}(w))) &\text{(composition of linear maps)}\\
+        ST((ST)^{-1}(w)) &= S(T(T^{-1}(S^{-1}(w)))) &\text{(composition of linear maps)}\\
+        w&=w & \text{(definition of inverse)}
+    \end{align*}
+    Therefore, we have that $(ST)^{-1} = T^{-1} S^{-1}$.
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Let $T: V \rightarrow W$, and let $v_1, \ldots, v_n$ be a basis for $V$ and $w_1,\ldots, w_m$ be a basis for $W$. Prove that $T$ is invertible if and only if the columns of $M(T)$ (with respect to the bases $v_1,\ldots, v_n$ and $w_1,\ldots, w_m$) are a basis for $W$. 
+\end{problem}
+
+\begin{proof}
+    $\Rightarrow$ Assume $T$ is invertible. It follows that $T$ is both injective and surjective by the definition of invertibility. Because $T$ is surjective, we also have that $\dim V = \dim W$. Thus, the basis of $V$ can be rewritten as $v_1,\ldots,v_m$, and $M(T)$ will be a square matrix:
+    \begin{align*}
+        \begin{bmatrix}
+            M(T)_{1,1} & \cdots & M(T)_{1, m}\\
+            \vdots & & \vdots\\
+            M(T)_{m, 1} & \cdots & M(T)_{m, m}
+        \end{bmatrix}
+    \end{align*}
+    Consider each $v_k \in v_1,\ldots,v_m$.
+    \begin{align*}
+        T(v_k) &= M(T)_{1, k}w_1 + \cdots + M(T)_{m, k}w_m &\text{(Axler, 3.32)}
+    \end{align*}
+    Together, $M(T)_{1, k},\ldots,M(T)_{m, k}$ represent a column $M(T)_{\cdot,k}$ of $M(T)$:
+    \begin{align*}
+        \begin{bmatrix}
+            M(T)_{1,k}\\
+            \vdots\\
+            M(T)_{m,k}
+        \end{bmatrix}
+    \end{align*}
+    Let $v_j, v_k \in v_1,\ldots,v_m$. Since a basis is linearly independent, we know that $v_j \notin \mathrm{span}(v_k)$. Assume one column of $M(T)$ is a scalar multiple of another:
+    \begin{align*}
+        \begin{bmatrix}
+            M(T)_{1,j}\\
+            \vdots\\
+            M(T)_{m,j}
+        \end{bmatrix}
+        &= \lambda
+        \begin{bmatrix}
+            M(T)_{1,k}\\
+            \vdots\\
+            M(T)_{m,k}
+        \end{bmatrix}
+        & \text{(assumption)}\\
+        M(T)_{1,j}w_1 +\cdots+M(T)_{m,j}w_m &= \lambda(M(T)_{1,k}w_1+\cdots+M(T)_{m,k}w_m) & \text{(definition of matrix)}\\
+        T(v_j) &= \lambda T(v_k) & \text{(Axler, 3.32)}\\
+        T(v_j) &= T(\lambda v_k) & \text{(homogeneity)}\\
+        v_j &= \lambda v_k & \text{(equate inputs)}
+    \end{align*}
+    Thus, we have reached a contradiction. If one column of $M(T)$ is a scalar multiple of another, it implies that the basis of $V$ is linearly dependent, which cannot be true. Therefore, we know that the columns of $M(T)$ must be linearly independent.
+    \\\\
+    Let $C$ be the set of all columns of $M(T)$. We have:
+    \begin{align*}
+        &1.\ \mathrm{cardinality}(C) = m = \dim W\\
+        &2.\ C\ \text{is linearly independent}
+    \end{align*}
+    Therefore, we have proven that $C$ is a basis of $W$.
+    \\\\
+    $\Leftarrow$ Assume the columns of $M(T)$ are a basis for $w$. By the definition of a matrix, we know that the number of columns in $M(T)$ equals $\dim V$. Since there are $m$ columns, $\dim V = m = \dim W$. Therefore, the relation $T(v) = M(T) \cdot v$ can be rewritten as:
+    \begin{align*}
+        T(v) =
+        \begin{bmatrix}
+            | & & |\\
+            w_1 & \cdots & w_m\\
+            | & & |
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix}
+             a_1 \\
+            \vdots \\
+            a_m
+        \end{bmatrix}
+        &= a_1w_1 + \cdots + a_mw_m
+        & \text{(Brandt, Hours)}
+    \end{align*}
+    It follows that:
+    \begin{align*}
+        \mathrm{range}\,T &= \{T(v)\ |\ v\in V\} & \text{(definition of range)}\\
+        &= \{a_1w_1+\cdots+a_mw_m\ |\ a_i\in \mathbb{F}\} & \text{(from above)}\\
+        &= span(W) & \text{(definition of span)}\\
+        &= W & \text{($W$ closed)}
+    \end{align*}
+    Therefore, we have proven that $T$ is surjective. Using this, we can invoke the rank-nullity theorem to prove $T$ is also injective:
+    \begin{align*}
+        \dim \mathrm{null}\,T &= \dim V - \dim \mathrm{range}\,T &\text{(rank-nullity theorem)}\\
+        &= \dim V - \dim W &\text{($T$ is surjective)}\\
+        &= 0 &\text{($\dim V = \dim W$)}
+    \end{align*}
+    Finally, we have shown that $T$ is also injective. Therefore, since we have that $T$ is both injective and surjective, we have proven that $T$ is invertible.
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 5 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Let $X = \{1,2,\ldots,n\}$. Let $V$ be the set of all subsets of $X$. For $A,B \subset X$, define 
+    $$
+    A + B = (A \cup B) \backslash (A \cap B).
+    $$
+    We define a scalar multiplication on $V$, with scalars $\mathbb{F}_2 = \{0,1\}$, by defining
+    $$
+    0 \cdot A = \emptyset,\ \ \ \ 1 \cdot A = A.
+    $$
+    On Problem Set 2 you showed that this was a vector space over $\mathbb{F}_2$, and on Problem Set 4 you found a basis for this vector space. 
+    
+    By a result from lecture, $V$ is isomorphic to $\mathbb{F}_2^k$ for some $k$. What is $k$, and what is an isomorphism $V \rightarrow \mathbb{F}_2^k$?
+\end{problem}
+\begin{proof}
+    We have that the basis of V is $\{1\},\ldots,\{n\}$, and that $\dim V = n$. For $V$ to be isomorphic to $\mathbb{F}^k_2$ for some $k$, $\dim V$ must equal $\dim \mathbb{F}^k_n$. Therefore, $k$ must equal $n$.
+    \\\\
+    For all $u\in V$, define $T: V \rightarrow F^n_2$:
+    \begin{align*}
+        T(u)_i&=
+        \begin{cases}
+            1\ \text{if}\ i\in u\\
+            0\ \text{if}\ i\notin u
+        \end{cases}
+    \end{align*}
+    Now, we will prove that $T$ is an isomorphism $V \rightarrow \mathbb{F}^n_2$ by showing that it is both injective and surjective. First we will prove injectivity by showing that $T(u)=T(v)$ implies $u=v$.
+    \begin{align*}
+        T(u)&=T(v) &\text{(assumption)}\\
+        T(u)_i&=T(v)_i\quad\forall i\in 1,\ldots,n &\text{(equate components)}
+    \end{align*}
+    We will now split this into two cases for all $i\in 1,\ldots,n$ based on whether $T(u)_i$ is $1$ or $0$:
+    \begin{align*}
+        &1 = T(u)_i = T(v)_i & &0 = T(u)_i = T(v)_i &\text{(cases)}\\
+        &i\in u\text{ and }i\in v & &i\notin u\text{ and }i\notin v &\text{(definition of $T$)}
+    \end{align*}
+    Since each component of $T(u)$ equals the fcorresponding component in $T(v)$, we have that $u$ and $v$ are composed of the same elements. Therefore, $u=v$, proving that $T$ is injective.
+    \\\\
+    Next, we will show that $T$ is surjective by proving that $\mathrm{range}\,T = \dim\mathbb{F}^n_2$.
+    \begin{align*}
+        \dim\mathrm{range}\,T &= \dim V - \dim\mathrm{null}\, T &\text{(rank-nullity theorem)}\\
+        &= n - \dim\mathrm{null}\,T &\text{($\dim V=n$)}\\
+        &= n - 0 &\text{($T$ is injective)}\\
+        &= n &\text{(additive identity)}\\
+        &= \dim\mathbb{F}^n_2 &\text{($\dim\mathbb{F}^n_2=n$)}\\
+        \mathrm{range}\,T&=\mathbb{F}^n_2 &\text{(lemma from Problem Set 6, P5)}
+    \end{align*}
+    Therefore, we have that $T$ is surjective. Since $T$ is both injective and surjective, we have proven that $T$ is an isomorphism $V \rightarrow \mathbb{F}^n_2$.
+\end{proof}
+\end{document}

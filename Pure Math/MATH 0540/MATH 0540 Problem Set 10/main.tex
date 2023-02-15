@@ -1,0 +1,319 @@
+\documentclass[12pt,reqno]{article}
+
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+\usepackage[T1]{fontenc}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsthm,bbm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{extarrows}
+\usepackage{color}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage[colorlinks, linktocpage, citecolor = red, linkcolor = blue]{hyperref}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{euler}
+
+%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%%%%%%%%% COMMANDS %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\range}{\mathrm{range\,}}
+\newcommand{\nul}{\mathrm{null\,}}
+\newcommand{\spn}{\mathrm{span\,}}
+\newcommand{\card}{\mathrm{cardinality}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\bd}{\mathrm{bd\,}}
+\newcommand{\divline}{\hrule\vspace{12pt}\noindent}
+\newcommand{\sgn}{\mathrm{sgn}}
+
+%%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+%%%%%%%%%%%%%%%%%%%% TITLE-PAGE %%%%%%%%%%%%%%%%%%%%
+
+\title{MATH 0540 Problem Set 10}
+\author{Collaborated with Esmé and Kazuya}
+\date{December 2022}
+
+%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 1 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+Give an example of $T \in \mathbb{R}^4$ such that $T$ has no real eigenvalues.
+\end{problem}
+
+\begin{proof}
+    Consider the operator $T\in \mathcal{L}(V)$ defined by $T(w, x, y, z) = (-x, w, z, -y)$
+
+    First, we will prove that $T$ is linear by showing that it satisfies additivity and homogeneity. Let $u,v\in\R^4$ such that $u = (a_1, a_2, a_3, a_4)$ and $v = (b_1, b_2, b_3, b_4)$.
+    \begin{align*}
+        T(u) + T(v) &= T(a_1, a_2, a_3, a_4) + T(b_1, b_2, b_3, b_4) & \text{(def of $u,v$)}\\
+        &= (-a_2, a_1, a_4, -a_3) + (-b_2, b_1, b_4, -b_3) & \text{(def of $T$)}\\
+        &= (-a_2 - b_2, a_1 + b_1, a_4 + b_4, -a_3 - b_3) & \text{(vector addition)}\\
+        &= T(a_1 + b_1, a_2 + b_2, a_3 + b_3, a_4 + b_4) & \text{(def of $T$)}\\
+        &= T((a_1, a_2, a_3, a_4) + (b_1, b_2, b_3, b_4)) & \text{(vector addition)}\\
+        &= T(u + v) & \text{(def of $u,v$)}
+    \end{align*}
+    \begin{align*}
+        T(\lambda v) &= T(\lambda(b_1,b_2,b_3,b_4)) & \text{(def of $v$)}\\
+        &= T(\lambda b_1, \lambda b_2, \lambda b_3, \lambda b_4) & \text{(scalar multiplication)}\\
+        &= (-\lambda b_2, \lambda b_1, \lambda b_4, -\lambda b_3) & \text{(def of $T$)}\\
+        &= \lambda(-b_2, b_1, b_4, -b_3) & \text{(scalar multiplication)}\\
+        &= \lambda T(v) & \text{(def of $T$)}
+    \end{align*}
+    Therefore, we have that $T$ is a linear operator over $\R^4$. It follows that
+    \begin{align*}
+        M(T) =
+        \begin{bmatrix}
+            0 & -1 & 0 & 0\\
+            1 & 0 & 0 & 0\\
+            0 & 0 & 0 & 1\\
+            0 & 0 & -1 & 0
+        \end{bmatrix}
+    \end{align*}
+    Thus, the characteristic polynomial of $T$ can be obtained by taking the determinant of $M(T) - \lambda I$:
+    \begin{align*}
+        \det(M(T)-\lambda I) &=
+        \det\left(
+        \begin{bmatrix}
+            0 & -1 & 0 & 0\\
+            1 & 0 & 0 & 0\\
+            0 & 0 & 0 & 1\\
+            0 & 0 & -1 & 0
+        \end{bmatrix}
+        -
+        \begin{bmatrix}
+            \lambda & 0 & 0 & 0\\
+            0 & \lambda & 0 & 0\\
+            0 & 0 & \lambda & 0\\
+            0 & 0 & 0 & \lambda
+        \end{bmatrix}\right)
+        & \text{(matrix forms of $T$ and $\lambda I$)}\\
+        &= \det\left(
+        \begin{bmatrix}
+            -\lambda & -1 & 0 & 0\\
+            1 & -\lambda & 0 & 0\\
+            0 & 0 & -\lambda & 1\\
+            0 & 0 & -1 & -\lambda
+        \end{bmatrix}\right)
+        & \text{(matrix subtraction)}\\
+        &= -\lambda\det\left(
+        \begin{bmatrix}
+            -\lambda & 0 & 0\\
+            0 & -\lambda & 1\\
+            0 & -1 & -\lambda
+        \end{bmatrix}\right)
+        + 1\det\left(
+        \begin{bmatrix}
+            1 & 0 & 0\\
+            0 & -\lambda & 1\\
+            0 & -1 & -\lambda
+        \end{bmatrix}\right)
+        & \text{(co-factor expansion)}\\
+        &= -\lambda\left(-\lambda\det\left(
+        \begin{bmatrix}
+            -\lambda & 1\\
+            -1 & -\lambda
+        \end{bmatrix}\right)\right)
+        + 1\left(1\det\left(
+        \begin{bmatrix}
+            -\lambda & 1\\
+            -1 & -\lambda
+        \end{bmatrix}\right)\right)
+        & \text{(co-factor expansion)}\\
+        &= -\lambda(-\lambda(\lambda^2 + 1)) + 1(1(\lambda^2 + 1))
+        & \text{(determinant of 2x2)}\\
+        &= -\lambda(-\lambda^3-\lambda) + (\lambda^2 + 1)
+        & \text{(multiplication)}\\
+        &= \lambda^4 + \lambda^2 + \lambda^2 + 1 & \text{(multiplication)}\\
+        &= \lambda^4 + 2\lambda^2 + 1 & \text{(addition)}
+    \end{align*}
+    Factoring the characteristic polynomial yields:
+    \begin{align*}
+        0 &= (\lambda^2 + 1)^2\\
+        &= (\lambda^2 - i^2)^2\\
+        &= [(\lambda - i)(\lambda + i)]^2\\
+        &= (\lambda - i)^2(\lambda + i)^2
+    \end{align*}
+    Thus, the roots of the characteristic polynomial of $T$ are $+i$ and $-i$, neither of which exist in $\R$. Therefore, since the roots of an operator's characteristic polynomial are its eigenvalues, $T$ has no eigenvalues over $\R$.
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 2 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Let $n$ be a positive integer and let $T \in L(\mathbb{R}^n)$ be defined by:
+    $$
+    T(x_1,\ldots, x_n) = (x_1 + \cdots + x_n, \ldots, x_1 + \cdots + x_n).
+    $$
+    Find all eigenvalues and eigenvectors of $T$.
+\end{problem}
+
+\begin{proof}
+    For all eigenvalues $\lambda\in\R$, the corresponding eigenvectors of $T(x_1,\ldots,x_n)$ will be of the form $\lambda(x_1,\ldots,x_n)$.
+    \begin{align*}
+        T(x_1,\ldots,x_n) &= \lambda(x_1,\ldots,x_n) & \text{(def of eigenvector)}\\
+        (x_1 + \cdots + x_n, \ldots, x_1 + \cdots + x_n) &= \lambda(x_1,\ldots,x_n) & \text{(def of $T$)}\\
+        (x_1 + \cdots + x_n, \ldots, x_1 + \cdots + x_n) &= (\lambda x_1,\ldots,\lambda x_n) & \text{(scalar multiplication)}
+    \end{align*}
+    Thus, for components of eigenvectors, we have that
+    \begin{align*}
+        x_1 + \cdots + x_n &= \lambda x_1\\
+        x_1 + \cdots + x_n &= \lambda x_2\\
+        x_1 + \cdots + x_n &= \lambda x_3\\
+        &\ \,\vdots\\
+        x_1 + \cdots + x_n &= \lambda x_i
+    \end{align*}
+    At this point, we have two possible cases: $\lambda \neq 0$ and $\lambda = 0$.
+    
+    If $\lambda\neq 0$, by multiplying both sides of each equation by the multiplicative inverse of the eigenvalue, $\lambda$, we have that $x_i = \frac{1}{\lambda}(x_1 + \cdots + x_n)$. Based on this relationship, it becomes clear that for each $x_i$ from $x_1,\ldots,x_n$ to equal $\frac{1}{\lambda}(x_1 + \cdots + x_n)$, each $x_i$ must be the same value. In other words, we have that vectors of the form $(x_1, \ldots, x_n)$ where $x_1 = \cdots = x_n$ are eigenvectors of $T$. Now we will solve for the corresponding eigenvalue:
+    \begin{align*}
+        x_i &= \frac{1}{\lambda}(x_1 + \cdots + x_n) & \text{(from above)}\\
+        x_i &= \frac{1}{\lambda}(x_i + \cdots + x_i) & \text{($x_1 = \cdots = x_n$)}\\
+        x_i &= \frac{1}{\lambda} \cdot nx_i & \text{(there are $n$ terms in the sum)}\\
+        \lambda &= n & \text{(multiplication)}
+    \end{align*}
+    If $\lambda = 0$, we have that
+    \begin{align*}
+        x_1+\cdots+x_n &= \lambda x_i & \text{(from above)}\\
+        &= 0 & \text{($\lambda = 0$)}
+    \end{align*}
+    Based on this relationship, we have that vectors whose components sum to zero are also eigenvectors of $T$. Therefore, the eigenvectors of $T$ are vectors of the form $(x_1, \ldots, x_n)$ where $x_1=\cdots =x_n$ with corresponding eigenvalue $n$, or $x_1+\cdots+x_n=0$ with corresponding eigenvalue $0$.
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 3 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+Find all eigenvalues and eigenvectors of the \emph{backwards shift} operator $T \in L(\mathbb{R}^\infty)$:
+$$
+T(x_1,x_2,x_3,\ldots) = (x_2,x_3,x_4, \ldots).
+$$
+\end{problem}
+
+\begin{proof}
+    For all eigenvalues $\lambda \in\R$, the corresponding eigenvectors of $T(x_1, x_2, x_3, \ldots)$ will be of the form $\lambda(x_1, x_2, x_3, \ldots)$.
+    \begin{align*}
+        T(x_1, x_2, x_3, \ldots) &= \lambda(x_1, x_2, x_3, \ldots) & \text{(def of eigenvector)}\\
+        (x_2, x_3, x_4, \ldots) &= \lambda(x_1, x_2, x_3, \ldots) & \text{(def of $T$)}\\
+        (x_2, x_3, x_4, \ldots) &= (\lambda x_1, \lambda x_2, \lambda x_3, \ldots) & \text{(scalar multiplication)}
+    \end{align*}
+    Thus, for components of eigenvectors, we have that
+    \begin{align*}
+        x_2 &= \lambda x_1\\
+        x_3 &= \lambda x_2\\
+        x_4 &= \lambda x_3\\
+        &\ \, \vdots\\
+        x_i &= \lambda x_{i-1}
+    \end{align*}
+    By substituting each equation into the subsequent equation, this relationship can also be expressed as
+    \begin{align*}
+        x_2 &= \lambda x_1\\
+        x_3 &= \lambda^2 x_1\\
+        x_4 &= \lambda^3 x_1\\
+        &\ \, \vdots\\
+        x_i &= \lambda^{i-1} x_1
+    \end{align*}
+    Therefore, we have that the eigenvectors of $T$ are of the form $(x_1, x_2, x_3, \ldots)$ such that $x_1\in\R$ and $x_i = \lambda^{i-1}x_1$ where $\lambda\in\R$ is the corresponding eigenvalue. In other words, $T$'s eigenvectors are vectors whose components form a geometric series with a common ratio equal to the corresponding eigenvalue $\lambda$.
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+Suppose $T \in L(V)$ is invertible.
+\begin{itemize}
+    \item Suppose $\lambda \in \mathbb{F}$ with $\lambda \not = 0$. Prove that $\lambda$ is an eigenvalue of $T$ if and only if $1/\lambda$ is an eigenvalue of $T^{-1}$.
+    \item Prove that $T$ and $T^{-1}$ have the same eigenvectors.
+\end{itemize}
+\end{problem}
+
+\begin{proof}
+    $\Rightarrow$ Assume $\lambda\in\F$ is an eigenvalue of $T$ with corresponding eigenvector $v\in V$.
+    \begin{align*}
+        T(v) &= \lambda v &\text{(def of eigenvalue)}\\
+        T^{-1}(T(v)) &= T^{-1}(\lambda v) & \text{(apply $T^{-1}$ to both sides)}\\
+        v &= T^{-1}(\lambda v) & \text{(def of inverse)}\\
+        v &= \lambda T^{-1}(v) & \text{(homogeneity)}\\
+        \frac{1}{\lambda}\cdot v &= T^{-1}(v) & \text{(multiplicative inverse)}
+    \end{align*}
+    Thus, we have that $\lambda$ being an eigenvalue of $T$ implies that $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$. We also have that both of these eigenvalues correspond to the same eigenvector, $v$, meaning that all of $T$'s eigenvectors are eigenvectors of $T^{-1}$.
+    
+    $\Leftarrow$ Assume $\frac{1}{\lambda}$, $\lambda\in\F$ is an eigenvalue of $T^{-1}$ with corresponding eigenvector $v\in V$.
+    \begin{align*}
+        T^{-1}(v) &= \frac{1}{\lambda}\cdot v & \text{(def of eigenvalue)}\\
+        T(T^{-1}(v)) &= T(\frac{1}{\lambda}\cdot v) & \text{(apply $T$ to both sides)}\\
+        v &= T(\frac{1}{\lambda}\cdot v) & \text{(def of inverse)}\\
+        v &= \frac{1}{\lambda}T(v) & \text{(homogeneity)}\\
+        \lambda v &= T(v) & \text{(multiplicative inverse)}
+    \end{align*}
+    Additionally, we have that $\frac{1}{\lambda}$ being an eigenvalue of $T^{-1}$ implies that $\lambda$ is an eigenvalue of $T$. Once again, both of these eigenvalues correspond to the same eigenvector, $v$, meaning that all of $T^{-1}$'s eigenvectors are eigenvectors of $T$. 
+    
+    Therefore, we have proven that $\lambda$ is an eigenvalue of $T$ if and only if $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$. We have also proven that $T$ and $T^{-1}$ share the same eigenvectors.
+
+    \newpage
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 5 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Let $V$ be a vector space over $\mathbb{C}$ and let $T \in L(V)$. Let $p$ be a polynomial over $\mathbb{C}$. Prove that $\alpha$ is an eigenvalue of $p(T)$ if and only if $\alpha = p(\lambda)$ for some eigenvalue $\lambda$ of $T$.
+\end{problem}
+
+\begin{proof}
+    $\Rightarrow$ Assume $\lambda$ is an eigenvalue of $T$ with corresponding eigenvector $v\in V$.
+    \begin{align*}
+        P(T) &= a_0I + a_1T + \cdots + a_mT^m & \text{(def of polynomial)}\\
+        P(T)(v) &= (a_0I + a_1T + \cdots + a_mT^m)(v) & \text{(apply both maps to $v$)}\\
+        &= a_0v + a_1T(v) + \cdots + a_mT^m(v) & \text{(homogeneity)}\\
+        &= a_0v + a_1\lambda v + \cdots + a_m\lambda^m v & \text{(def of eigenvector)}\\
+        &= (a_0 + a_1\lambda + \cdots + a_m\lambda^m)(v) & \text{(distributive prop)}\\
+        &= P(\lambda) v & \text{(def of polynomial)}
+    \end{align*}
+    Therefore, we have that $P(\lambda) = \alpha$ is an eigenvalue of $P(T)$.
+
+    $\Leftarrow$ Assume $\alpha$ is an eigenvalue of $P(T)$ with corresponding eigenvector $v$.
+    \begin{align*}
+        P(T)(v) &= \alpha v & \text{(definition of eigenvalue)}\\
+        P(T)(v) - \alpha v &= 0 &\text{(subtraction)}\\
+        (P(T)-\alpha)(v) &= 0 & \text{(Axler, 3.6)}\\
+        (T-\lambda_1 I)\cdots(T-\lambda_n I)(v) &= 0 & \text{(Axler, 4.14)}
+    \end{align*}
+    Assume each $(T - \lambda_1),\ldots,(T - \lambda_n)$ is injective. Thus, $(T - \lambda_i)(v)\neq 0$ because the null space of $(T - \lambda_i) = \{0\}$. Consequently, applying each $(T - \lambda_1),\ldots,(T - \lambda_n)$ sequentially cannot result in $0$. Therefore, we have a contradiction, implying that at least one $(T - \lambda_i)$ is not injective. This means that $T$ has at least one eigenvalue, $\lambda_i$. Consider the polynomial, $P(\lambda_i)$:
+    \begin{align*}
+        P(\lambda_i) - \alpha &= (\lambda_i - \lambda_1)\cdots(\lambda_i - \lambda_n) & \text{(Axler, 4.14)}\\
+        &= 0 & \text{($\lambda_i - \lambda_i = 0$)}\\
+        P(\lambda_i) &= \alpha & \text{(addition)}
+    \end{align*}
+\end{proof}
+
+\end{document}

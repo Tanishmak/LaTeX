@@ -1,0 +1,509 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+\onehalfspacing
+
+\title{MATH 0540 Problem Set 4}
+\author{Collaborated with Esmé and Mariana}
+\date{October 2022}
+
+\begin{document}
+\maketitle
+
+\section{Consider the vector space $\mathbb{F}_2^3$. What are all of the linearly dependent sets of size 3}
+
+\paragraph{\large
+\\Within the vector space $\mathbb{F}_2^3$, the sets of linearly dependent vectors of size 3 can either be "silly" or "non-silly".}
+
+\paragraph{\large
+For all $\{v_1, v_2, v_3\}$ such that $v_1, v_2, v_3 \in \mathbb{F}_2^3$:\\\indent 1. Sets containing $(0, 0, 0)$ are defined as "silly".
+\\\indent 2. Sets in which $v_j = v_k$ for all non-identical $j,k \in \{1, 2, 3\}$
+\\\indent\quad\thinspace are defined as "silly".
+\\\indent 3. "non-silly" sets are defined as a linearly dependent 
+\\\indent\quad\thinspace set $\{v_1, v_2, v_3\}$ which is not "silly".}
+
+\paragraph{\large
+Beginning with "silly" sets under condition 1:
+\\These sets are linearly dependent because there will always be a linear combination, $\{(a_{1}v_{1} + a_{2}v_{2} + a_{3}v_{3})\;|\;a_i \in \mathbb{F}_2, v_1,v_2,v_3 \in \mathbb{F}_2^3\} = 0$, in which $(0, 0, 0)$ is multiplied by a non-zero scalar $a_i$.}\
+
+\paragraph{\large
+For "silly" sets under condition 2:
+\\Since two vectors within these sets are identical, there is a vector within the set that is in the span of the two remaining ones. In other words, when $v_j = v_k$ for all non-identical $j,k \in \{1, 2, 3\}$, $v_j \in span(v_k)$. As proved in class, this indicates the set is linearly dependent.}
+
+\paragraph{\large
+Finally, for the "non-silly" sets:
+there are 8 possible vectors within $\mathbb{F}_2^3$:}
+
+\begin{align}
+
+\begin{pmatrix}
+    0 \\ 0 \\ 0
+\end{pmatrix}
+&
+\begin{pmatrix}
+    1 \\ 0 \\ 0
+\end{pmatrix}
+&
+\begin{pmatrix}
+    0 \\ 1 \\ 0
+\end{pmatrix}
+&
+\begin{pmatrix}
+    0 \\ 0 \\ 1
+\end{pmatrix}
+&
+\begin{pmatrix}
+    1 \\ 1 \\ 0
+\end{pmatrix}
+&
+\begin{pmatrix}
+    0 \\ 1 \\ 1
+\end{pmatrix}
+&
+\begin{pmatrix}
+    1 \\ 0 \\ 1
+\end{pmatrix}
+&
+\begin{pmatrix}
+    1 \\ 1 \\ 1
+\end{pmatrix}
+
+\end{align}
+
+\paragraph{\large
+Of these, we are not interested in $(0, 0, 0)$, because any set containing it is defined as "silly".
+}
+
+\paragraph{\large
+This leaves behind seven vectors which we will define as $v_1, ...\,, v_7$ in the following order:}
+
+\begin{align}
+
+\begin{pmatrix}
+    1 \\ 0 \\ 0
+\end{pmatrix}
+&
+\begin{pmatrix}
+    0 \\ 1 \\ 0
+\end{pmatrix}
+&
+\begin{pmatrix}
+    0 \\ 0 \\ 1
+\end{pmatrix}
+&
+\begin{pmatrix}
+    1 \\ 1 \\ 0
+\end{pmatrix}
+&
+\begin{pmatrix}
+    0 \\ 1 \\ 1
+\end{pmatrix}
+&
+\begin{pmatrix}
+    1 \\ 0 \\ 1
+\end{pmatrix}
+&
+\begin{pmatrix}
+    1 \\ 1 \\ 1
+\end{pmatrix}
+
+\end{align}
+
+\paragraph{\large
+For all unique $v_i,v_j,v_k \in \{v_1, ...\,, v_7\}$ and $i,j,k \in \{1, ...\,, 7\}$:
+\\\\$span(\{v_j, v_k\}) = \{0, v_j, v_k, v_j+v_k\}$ since there are only four possible linear combinations of two vectors in $\mathbb{F}_2^3$. 
+\\\\Of these four vectors, $\{v_j, v_k, v_j + v_k\}$ form a "non-silly" set of linearly dependent vectors. The set is linearly dependent because $v_j + v_k$ must be within $span(\{v_j, v_k\})$. 
+\\\\Thus, as proved in class, $v_j + v_k$ can be expressed non-uniquely as a linear combination within $\{v_j, v_k, v_j + v_k\}$, thereby proving that the set is linearly dependent.
+\\\\Additionally, it is given that if $span(\{v_j, v_k\})$ contains $v_i$, $span(\{v_j, v_i\})$ will produce $v_k$. This means that after enough pairs are checked, the resulting sets are exhaustive.}
+
+\paragraph{\large
+Now, we will apply this to pairs of vectors in $\{v_1, ...\,, v_7\}$:
+\\\indent $span(\{(1, 0, 0), (0, 1, 0)\}) = \{(0, 0, 0), (1, 0, 0), (0, 1, 0), (1, 1, 0)\}$
+\\\indent $span(\{(1, 0, 0), (0, 0, 1)\}) = \{(0, 0, 0), (1, 0, 0), (0, 0, 1), (1, 0, 1)\}$
+\\\indent $span(\{(1, 1, 0), (0, 1, 1)\}) = \{(0, 0, 0), (1, 1, 0), (0, 1, 1), (1, 0, 1)\}$
+\\\indent $span(\{(1, 0, 0), (0, 1, 1)\}) = \{(0, 0, 0), (1, 0, 0), (0, 1, 1), (1, 1, 1)\}$
+\\\indent $span(\{(0, 1, 0), (0, 0, 1)\}) = \{(0, 0, 0), (0, 1, 0), (0, 0, 1), (0, 1, 1)\}$
+\\\indent $span(\{(0, 1, 0), (1, 0, 1)\}) = \{(0, 0, 0), (0, 1, 0), (1, 0, 1), (1, 1, 1)\}$
+\\\indent $span(\{(0, 0, 1), (1, 1, 0)\}) = \{(0, 0, 0), (0, 0, 1), (1, 1, 0), (1, 1, 1)\}$}
+
+\paragraph{\large
+Removing the zero vector from each of the resulting sets produces the following exhaustive list of "non-silly" sets:
+\\\indent $\{(1, 0, 0), (0, 1, 0), (1, 1, 0)\}$
+\\\indent $\{(1, 0, 0), (0, 0, 1), (1, 0, 1)\}$
+\\\indent $\{(1, 1, 0), (0, 1, 1), (1, 0, 1)\}$
+\\\indent $\{(1, 0, 0), (0, 1, 1), (1, 1, 1)\}$
+\\\indent $\{(0, 1, 0), (0, 0, 1), (0, 1, 1)\}$
+\\\indent $\{(0, 1, 0), (1, 0, 1), (1, 1, 1)\}$
+\\\indent $\{(0, 0, 1), (1, 1, 0), (1, 1, 1)\}$}
+
+\paragraph{\large
+Therefore, the sets of linearly dependent vectors of size 3 in $\mathbb{F}_2^3$ are as follows:
+\\\\The "silly" sets:
+\\\indent 1. $\{v_i, v_j, v_k\}$ such that $v_i = (0, 0, 0)$
+\\\indent 2. $\{v_i, v_j, v_k\}$ such that $v_i = v_j$
+\\\\And the "non-silly" sets:
+\\\indent 1. $\{(1, 0, 0), (0, 1, 0), (1, 1, 0)\}$
+\\\indent 2. $\{(1, 0, 0), (0, 0, 1), (1, 0, 1)\}$
+\\\indent 3. $\{(1, 1, 0), (0, 1, 1), (1, 0, 1)\}$
+\\\indent 4. $\{(1, 0, 0), (0, 1, 1), (1, 1, 1)\}$
+\\\indent 5. $\{(0, 1, 0), (0, 0, 1), (0, 1, 1)\}$
+\\\indent 6. $\{(0, 1, 0), (1, 0, 1), (1, 1, 1)\}$
+\\\indent 7. $\{(0, 0, 1), (1, 1, 0), (1, 1, 1)\}$
+}
+
+\newpage
+
+\section{Suppose $v_1,\ldots, v_m$ is linearly independent in $V$ and $w \in V$. Prove that if $v_1 + w, \ldots, v_m + w$ is linearly dependent, then $w \in span(v_1,\ldots, v_m)$.}
+
+\paragraph{\large
+\\Because $v_1 + w, \ldots, v_m + w$ is linearly dependent, there must be some linear combination $a_{1}(v_{1} + w) + ... + a_{m}(v_{m} + w) = 0$ such that not all $a_i = 0$:
+\\\indent $a_{1}(v_{1} + w) + ... + a_{m}(v_{m} + w) = 0$ (linear dependence)
+\\\indent $a_{1}v_{1} + a_{1}w + ... + a_{m}v_{m} + a_{m}w = 0$ (distributive property)
+\\\indent $a_{1}w + ... + a_{m}w \, + \, a_{1}v_{1} + ... + a_{m}v_{m} = 0$ (commutativity)
+\\\indent $(a_{1}w + ... + a_{m}w) \,+\, (a_{1}v_{1} + ... + a_{m}v_{m}) = 0$ (associativity)
+\\\indent $-(a_{1}w + ... + a_{m}w) = a_{1}v_{1} + ... + a_{m}v_{m}$ (additive inverse)
+\\\indent $-(a_{1} + ... + a_{m}) \cdot w = a_{1}v_{1} + ... + a_{m}v_{m}$ (distributive property)
+\\\indent $w = \frac{a_{1}}{-(a_{1} + ... + a_{m})}v_{1} + ... + \frac{a_{m}}{-(a_{1} + ... + a_{m})}v_{m}$ (distributive property)}
+
+\paragraph{\large
+Because $v_1, ...\,, v_m$ is linearly independent, $0 = a_{1}v_{1} + ... + a_{m}v_{m}$ only when $a_1, ...\,, a_m = 0$. When $w = 0$, $v_1 + w, \ldots, v_m + w = v_1, \ldots, v_m$. This is a contradiction because it is given that $v_1 + w, \ldots, v_m + w$ is linearly dependent while $v_1,\ldots, v_m$ is linearly independent. Therefore, $w \neq 0$. Thus, $-(a_{1} + ... + a_{m}) \cdot w = 0$ only when all $a_1, ...\,, a_m = 0$.}
+
+\paragraph{\large
+Finally, we have that $w$ is equal to some linear combination of $v_1, ...\,, v_m$. Since $span(\{v_1, ...\,, v_m\}) = \{(a_{1}v_{1} + ... + a_{m}v_{m})\;|\;a_i \in \mathbb{F}, v_i \in V\}$, we have shown that $w \in span(\{v_1, ...\,, v_m\})$.}
+
+\newpage
+
+\section{Prove or give a counterexample: If $v_1,v_2,v_3,v_4$ is a basis of $V$ and $U$ is a subspace of $V$ such that $v_1, v_2 \in U$ and $v_3,v_4 \not \in U$, then $v_1,v_2$ is a basis of $U$.}
+
+\paragraph{\large
+\\Consider $\mathbb{R}^4$:
+\\\\Let the following vectors, $\{(1,0,0,0), (0,1,0,0),(0,0,1,0),(0,0,0,1)\}$, be defined as $v_1,v_2,v_3,v_4 \in \mathbb{R}^4$ respectively.}
+
+\paragraph{\large
+For $\{v_1,v_2,v_3,v_4\}$ to be a basis of $\mathbb{R}^4$, the following conditions must be met:
+\\\indent 1. $card(\{v_1,v_2,v_3,v_4\}) = dim(\mathbb{R}^4)$.
+\\\indent 2. $\{v_1,v_2,v_3,v_4\}$ must be linearly independent.}
+
+\paragraph{\large
+We start with the first condition:
+\\\indent $\{v_1,v_2,v_3,v_4\}$ contains 4 elements, and the dimension of \\\indent $\mathbb{R}^4$ is 4. Thus, since $4=4$, we have that the number of \\\indent vectors in $\{v_1,v_2,v_3,v_4\}$ equals $dim(\mathbb{R}^4)$.}
+
+\paragraph{\large
+For the second condition, if $\{v_1,v_2,v_3,v_4\}$ is linearly independent, we must show that if $a_{1}v_{1} + ... + a_{4}v_{4} = 0$, then $a_1, ...\,, a_4 = 0$:}
+
+\begin{align}
+
+$a_1$
+\begin{pmatrix}
+    1 \\ 0 \\ 0 \\ 0
+\end{pmatrix}
+$+ \; a_2$
+\begin{pmatrix}
+    0 \\ 1 \\ 0 \\ 0
+\end{pmatrix}
+$+ \; a_3$
+\begin{pmatrix}
+    0 \\ 0 \\ 1 \\ 0
+\end{pmatrix}
+$+ \; a_4$
+\begin{pmatrix}
+    0 \\ 0 \\ 0 \\ 1
+\end{pmatrix}
+$= 0$
+\end{align}
+
+\paragraph{\large
+If we distribute $a_i$ through each row, we obtain:
+\\\indent $a_1(1) + a_2(0) + a_3(0) + a_4(0) = 0$
+\\\indent $a_1(0) + a_2(1) + a_3(0) + a_4(0) = 0$
+\\\indent $a_1(0) + a_2(0) + a_3(1) + a_4(0) = 0$
+\\\indent $a_1(0) + a_2(0) + a_3(0) + a_4(1) = 0$
+\\\\which simplifies to:
+\\\indent $a_1 = 0$
+\\\indent $a_2 = 0$
+\\\indent $a_3 = 0$
+\\\indent $a_4 = 0$}
+
+\paragraph{\large
+Therefore, we have that $\{v_1,v_2,v_3,v_4\}$ is linearly independent.}
+
+\paragraph{\large
+Since both conditions are met, $\{(1,0,0,0), (0,1,0,0),(0,0,1,0),(0,0,0,1)\}$ is proven to be a basis of $\mathbb{R}^4$.}
+
+\paragraph{\large
+Now let $U = \{(k, l, m, m)\;|\;k,l,m \in \mathbb{R}\}$. To show that $U$ is a subspace of $\mathbb{R}^4$, the following conditions must be true:
+\\\indent 1. $0 \in U$
+\\\indent 2. $u,w \in U$ implies $u + w \in U$
+\\\indent 3. $c \in \mathbb{R}$, $u \in U$ implies $cu \in U$}
+
+\paragraph{\large
+Fixing $k,l,m$ to $0$ yields $(0,0,0,0)$. Thus, $0 \in U$.}
+
+\paragraph{\large
+$\forall k,k',l,l',m,m' \in \mathbb{R}$:
+\\\indent Let $u,w \in U$ such that $u = (k, l, m, m)$ and $w = (k', l', m', m')$.
+\\\indent Thus, $u + w = (k+k',l+l',m+m',m+m')$.
+\\\indent Let $r = k + k'$, $s = l + l'$, $t = m + m'$. 
+\\\indent Given that $\mathbb{R}$ is a field, it must be closed over addition, \\\indent which would imply that $r,s,t \in \mathbb{R}$.
+\\\indent $u + w$ can now be expressed as $\{(r, s, t, t)\;|\;r,s,t \in \mathbb{R}\}$.
+\\Therefore, $u,w \in U$ implies $u + w \in U$.}
+
+\paragraph{\large
+$\forall k,l,m,c \in \mathbb{R}$:
+\\\indent Let $u \in U$ such that $u = (k,l,m,m)$.
+\\\indent Thus, $cu = (ck,cl,cm,cm)$.
+\\\indent Let $r = ck$, $s = cl$, $t = cm$.
+\\\indent Given that $\mathbb{R}$ is a field, it must be closed over scalar \\\indent multiplication, which would imply that $r,s,t \in \mathbb{R}$.
+\\\indent $cu$ can now be expressed as $\{(r, s, t, t)\;|\;r,s,t \in \mathbb{R}\}$.
+\\ Therefore, $c \in \mathbb{R}$, $u \in U$ implies $cu \in U$}
+
+\paragraph{\large
+Since all three conditions are proven, we have that $U$ is a subspace of $\mathbb{R}^4$.}
+
+\paragraph{\large
+Now consider $v_1,v_2,v_3,v_4$ once more:
+\\\indent Based on the definition of $U$, it follows that $v_1,v_2 \in U$. \\\indent However, since $0 \neq 1$, $v_3,v_4 \notin U$.}
+
+\paragraph{\large
+If $\{v_1,v_2\}$ is a basis of $U$, it must follow that $span(\{v_1, v_2\}) = U$. However, $\forall a_i \in \mathbb{R}$, there is no linear combination $a_{1}v_{1} + a_{2}v_{2}$ which can produce a vector whose third or fourth components are not zero. In other words, $a_{1}v_{1} + a_{2}v_{2} \neq (k,l,m,m)$ such that $m \in \mathbb{R}$ and $m \neq 0$.}
+
+\paragraph{\large
+Since $U$ is defined as $\{(k, l, m, m)\;|\;k,l,m \in \mathbb{R}\}$, we have that $span(\{v_1, v_2\}) \neq U$. This means $\{v_1,v_2\}$ cannot be a basis of $U$.}
+
+\paragraph{\large
+Therefore, it is disproven that if $v_1,v_2,v_3,v_4$ is a basis of $V$ and $U$ is a subspace of $V$ such that $v_1, v_2 \in U$ and $v_3,v_4 \not \in U$, then $v_1,v_2$ is a basis of $U$.}
+
+\newpage
+
+\section{Let $U$ be the subspace of $\mathbb{R}^5$ defined by
+$$
+U = \{(x_1,x_2,x_3,x_4,x_5)\in \mathbb{R}^5\ |\ x_1=3x_2\text{ and } x_3=7x_4\}.
+$$
+Find a basis of $U$. Then, extend this basis of $U$ to a basis of $\mathbb{R}^5$.}
+
+\paragraph{\large
+\\Based on its definition, $U$ can be rewritten as:
+\\\indent $\{(3x_2,x_2,7x_4,x_4,x_5)\in \mathbb{R}^5\}$}
+
+\paragraph{\large
+Evidently, there are three free variables, $x_2,x_4,x_5 \in \mathbb{R}$ which can be manipulated independently of each other. This suggests a basis of $U$ composed of three vectors.}
+
+\paragraph{\large
+Fixing $x_2$ to $1$ and $x_4,x_5$ to $0$ creates the vector $(3, 1, 0, 0, 0)$.
+Fixing $x_4$ to $1$ and $x_2,x_5$ to $0$ creates the vector $(0, 0, 7, 1, 0)$.
+Fixing $x_5$ to $1$ and $x_2,x_4$ to $0$ creates the vector $(0,0,0,0,1)$.
+Let $B$ be the set of these three vectors.}
+
+\paragraph{\large
+To prove that $B$ is a basis of $U$, the following conditions must be met:
+\\\indent 1. $span(B) = U$.
+\\\indent 2. $B$ is linearly independent.}
+
+\paragraph{\large
+For the first condition, $span(B) = U$ if $\forall x_2,x_4,x_5 \in \mathbb{R}, \exists a_1,a_2,a_3 \in \mathbb{R}$ such that,}
+
+\begin{align}
+
+\begin{pmatrix}
+    3x_2 \\ x_2 \\ 7x_4 \\ x_4 \\ x_5
+\end{pmatrix}
+$ = a_1$
+\begin{pmatrix}
+    3 \\ 1 \\ 0 \\ 0 \\ 0
+\end{pmatrix}
+$+ \; a_2$
+\begin{pmatrix}
+    0 \\ 0 \\ 7 \\ 1 \\ 0
+\end{pmatrix}
+$+ \; a_3$
+\begin{pmatrix}
+    0 \\ 0 \\ 0 \\ 0 \\ 1
+\end{pmatrix}
+\end{align}
+
+\paragraph{\large
+Distributing $a_i$ across each row yields the following relationships:
+\\\indent 1. $3x_2 = 3a_1$
+\\\indent 2. $x_2 = a_1$
+\\\indent 3. $7x_4 = 7a_2$
+\\\indent 4. $x_4 = a_2$
+\\\indent 5. $x_5 = a_3$}
+
+\paragraph{\large
+Of these equations, 1 and 2 express the same relationship, and so do equations 3 and 4. The five relationships can therefore be compressed into three:
+\\\indent 1. $x_2 = a_1$
+\\\indent 2. $x_4 = a_2$
+\\\indent 3. $x_5 = a_3$}
+
+\paragraph{\large
+Therefore, we have that $span(B) = U$.}
+
+\paragraph{\large
+For the second condition, $B$ is linearly independent if}
+
+\begin{align}
+
+$a_1$
+\begin{pmatrix}
+    3 \\ 1 \\ 0 \\ 0 \\ 0
+\end{pmatrix}
+$+ \; a_2$
+\begin{pmatrix}
+    0 \\ 0 \\ 7 \\ 1 \\ 0
+\end{pmatrix}
+$+ \; a_3$
+\begin{pmatrix}
+    0 \\ 0 \\ 0 \\ 0 \\ 1
+\end{pmatrix}
+$= 0$ \quad implies $a_1,a_2,a_3 = 0$.
+\end{align}
+
+\paragraph{\large
+If we distribute $a_i$ through each row, we obtain:
+\\\indent 1. $3a_1 = 0$
+\\\indent 2. $a_1 = 0$
+\\\indent 3. $7a_2 = 0$
+\\\indent 4. $a_2 = 0$
+\\\indent 5. $a_3 = 0$}
+
+\paragraph{\large
+Once again, equations 1 and 2 express the same relationship, as do equations 3 and 4. We can compress the relationships to the following three:
+\\\indent 1. $a_1 = 0$
+\\\indent 2. $a_2 = 0$
+\\\indent 3. $a_3 = 0$}
+
+\paragraph{\large
+Therefore, we have that $B$ is linearly independent.}
+
+\paragraph{\large
+Since both conditions are satisfied, $B$ is proven to be a basis of $U$.}
+
+\paragraph{\large
+Let $W$ be an extension of $B$ such that $W = \{B, (1, 0, 0, 1, 0), (0, 1, 1, 0, 0)\}$.
+\\\indent Thus, $W = \{(3, 1, 0, 0, 0), (0, 0, 7, 1, 0), (0, 0, 0, 0, 1), (1, 0, 0, 1, 0), (0, 1, 1, 0, 0)\}$.}
+
+\paragraph{\large
+To prove $W$ is a basis of $\mathbb{R}^5$, we must show that:
+\\\indent 1. $card(W) = dim(\mathbb{R}^5)$.
+\\\indent 2. $W$ is linearly independent.}
+
+\paragraph{\large
+For the first condition:
+\\\indent $W$ contains 5 elements. The dimension of $\mathbb{R}^5$ is 5. 
+\\\indent Since $5=5$, $card(W) = dim(\mathbb{R}^5)$.}
+
+\paragraph{\large
+For the second, if $W$ is linearly independent,}
+
+\begin{align}
+
+$a_1$
+\begin{pmatrix}
+    3 \\ 1 \\ 0 \\ 0 \\ 0
+\end{pmatrix}
+$+ \; a_2$
+\begin{pmatrix}
+    0 \\ 0 \\ 7 \\ 1 \\ 0
+\end{pmatrix}
+$+ \; a_3$
+\begin{pmatrix}
+    0 \\ 0 \\ 0 \\ 0 \\ 1
+\end{pmatrix}
+$+ \; a_4$
+\begin{pmatrix}
+    1 \\ 0 \\ 0 \\ 1 \\ 0
+\end{pmatrix}
+$+ \; a_5$
+\begin{pmatrix}
+    0 \\ 1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}
+$= 0$
+\end{align}
+
+\paragraph{\large
+implies $a_1,a_2,a_3,a_4,a_5 = 0$}
+
+\paragraph{\large
+By distributing $a_i$ through each row, we obtain:
+\\\indent 1. $3a_1 + a_4 = 0$
+\\\indent 2. $a_1 + a_5 = 0$
+\\\indent 3. $7a_2 + a_5 = 0$
+\\\indent 4. $a_2 + a_4 = 0$
+\\\indent 5. $a_3 = 0$}
+
+\paragraph{\large
+It follows that:
+\\\indent $a_5 = -a_1$ (additive inverse in equation 2)
+\\\indent $a_1 = 7a_2$ (substitute $-a_1$ into equation 3)
+\\\indent $3a_1 = 21a_2$ (scalar multiplication)
+\\\indent $3a_1 = a_2$ (subtract equations 1 and 4)
+\\\indent $0 = 20a_2$ (subtract the two above equations)
+\\\indent $a_2 = 0$ (scalar multiplication)
+\\\indent $0 + a_5 = 0$ (substitute value of $a_2$ into equation 3)
+\\\indent $a_5 = 0$ (additive identity)
+\\\indent $0 + a_4 = 0$ (substitute value of $a_2$ into equation 4)
+\\\indent $a_4 = 0$ (additive identity)
+\\\indent $a_1 + 0 = 0$ (substitute value of $a_5$ into equation 2)
+\\\indent $a_1 = 0$ (additive identity)}
+
+\paragraph{\large
+We have that $a_1,a_2,a_3,a_4,a_5 = 0$, meaning $W$ is linearly independent.}
+
+\paragraph{\large
+Therefore, since both conditions are met, it is proven that $W$ is a basis of $\mathbb{R}^5$.}
+
+\newpage
+
+\section{Let $X = \{1,2,\ldots,n\}$. Let $V$ be the set of all subsets of $X$. For $A,B \subset X$, define 
+$$
+A + B = (A \cup B) \backslash (A \cap B).
+$$
+We define a scalar multiplication on $V$, with scalars $\mathbb{F}_2 = \{0,1\}$, by defining
+$$
+0 \cdot A = \emptyset,\ \ \ \ 1 \cdot A = A.
+$$
+On Problem Set 2 you showed that this was a vector space over $\mathbb{F}_2$. Find a basis for this vector space.}
+
+\paragraph{\large
+\\Let $B = \{\{1\},...\,, \{n\}\}$}
+
+\paragraph{\large
+To prove that $B$ is a basis of $V$, we must show:
+\\\indent 1. $card(B) = dim(V)$.
+\\\indent 2. $B$ is linearly independent.}
+
+\paragraph{\large
+Since the natural numbers are countably infinite, we have that $V$ is finite dimensional. Evidently, there are $n$ free variables which can be manipulated individually in $V$. Thus, $dim(V) = n$. Since $card(\{\{1\},...\,, \{n\}\}) = n$, we have that $card(B) = dim(V)$.}
+
+\paragraph{\large
+Because each vector is its own additive inverse (as proven in problem set 2) and 0 and 1 are the only scalars defined for this vector space, for all $b \in B$, $span(b) = \{\emptyset, b$\}. Since $\emptyset \notin B$, $span(b)$ does not contain any other vector in $B$ besides $b$.}
+
+\paragraph{\large
+Based on the definition of addition over this vector space, $\forall$ unique $b_j,b_k \in B$:
+\\\indent $b_j + b_k = (b_j \cup b_k) \setminus (b_j \cap b_k)$.
+\\\indent Since $b_j,b_k$ are unique, $b_j \cup b_k = \{b_j, b_k\}$, and $b_j \cap b_k = \emptyset$.
+\\\indent Thus, $b_j + b_k = \{b_j, b_k\} \setminus \emptyset = \{b_j, b_k\}$.
+\\\indent Therefore, we have that $b_j + b_k \notin B$, since each element 
+\\\indent of $B$ is a set containing exactly one element.}
+
+\paragraph{\large
+Now consider addition $\forall$ unique $b_1, ...\,, b_m \in B$:
+\\\indent Since $b_j + b_k \notin B$, it follows that $b_1 + ... + b_m \notin B$.}
+
+\paragraph{\large
+The span of any one vector in $B$ cannot contain another vector in $B$ besides itself, and the sum of any number of vectors in $B$ cannot produce another vector in $B$. Therefore, $\forall$ unique $b, b' \in B$, no operation exists to obtain $b'$ from $b$. Thus, $\forall b_1, ...\,,b_m \in B$, $a_1b_1 + ... + a_mb_m = b_j$ only when $a_j = 1$ and all other $a_i = 0$. Therefore, since there is only one unique way to produce each element of $B$, we have that $B$ is linearly independent.}
+
+\paragraph{\large
+Since both conditions are met, we have proven that $B$ is a basis of $V$.}
+
+\end{document}

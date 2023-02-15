@@ -1,0 +1,376 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+\onehalfspacing
+
+\title{MATH 0540 Problem Set 6}
+\author{Collaborated with Esmé, Praccho, and Edward}
+\date{October 2022}
+
+\begin{document}
+\maketitle
+
+\section{Give an example of a linear map $T: \mathbb{R}^4 \rightarrow \mathbb{R}^4$ such that $\mathrm{range}(T) = \mathrm{null}(T)$. Why can't there be a map $T: \mathbb{R}^5 \rightarrow \mathbb{R}^5$ with $\mathrm{range}(T) = \mathrm{null}(T)$?}
+
+\paragraph{\large
+\\Define $T: \mathbb{R}^4 \rightarrow \mathbb{R}^4 \in L(V, W)$ such that
+\\ $T(w, x, y, z) = (y, z, 0, 0)$.}
+
+\paragraph{\large
+Let's examine $\mathrm{range}(T)$:}
+
+\begin{align*}
+    \mathrm{range}(T) &= \{T(v)\;|\;v \in \mathbb{R}^4\} & \text{(definition of range)}\\
+    &= \{T(w, x, y, z)\;|\;w,x,y,z \in \mathbb{R}\} & \text{(definition of $\mathbb{R}^4$)}\\
+    &= \{(y, z, 0, 0) \in \mathbb{R}^4\} & \text{(definition of T)}\\
+\end{align*}
+
+\paragraph{\large
+Let's examine $\mathrm{null}(T)$:}
+
+\begin{align*}
+    \mathrm{null}(T) &= \{v\;|\;T(v) = 0,\;v \in \mathbb{R}^4\} & \text{(definition of null space)}\\
+    &= \{(w, x, y, z) \in \mathbb{R}^4\;|\;T(w, x, y, z) = (0,0,0,0)\} & \text{(definition of $\mathbb{R}^4$)}\\
+    &= \{(w, x, y, z) \in \mathbb{R}^4\;|\;(y, z, 0, 0) = (0,0,0,0)\} & \text{(definition of T)}\\
+    &= \{(w, x, 0, 0) \in \mathbb{R}^4\} & \text{(y,z implied to be 0)}
+\end{align*}
+
+\paragraph{\large
+Since $w,x,y,z$ are all under the same constraints, we have shown that $\mathrm{range}(T)=\mathrm{null}(T)$.}
+
+\paragraph{\large
+Assume $T(\mathbb{R}^5, \mathbb{R}^5) \in L(V, W)$ such that $\mathrm{range}(T) = \mathrm{null}(T)$:}
+
+\begin{align*}
+    \mathrm{null}(T) &= \mathrm{range}(T) & \text{(definition of T)}\\
+    \dim \mathrm{null}(T) &= \dim \mathrm{range}(T) & \text{(definition of dimension)}\\\\
+    \dim \mathbb{R}^5 &= \dim \mathrm{null}(T) + \dim \mathrm{range}(T) & \text{(rank-nullity theorem)}\\
+    5 &= \dim \mathrm{null}(T) + \dim \mathrm{range}(T) & \text{(definition of $\mathbb{R}^5$)}\\
+    &= \dim \mathrm{null}(T) + \dim \mathrm{null}(T) & \text{(from above)}\\
+    &= (1 + 1) \cdot \dim \mathrm{null}(T) & \text{(distributive property)}\\
+    &= 2 \cdot \dim \mathrm{null}(T) & \text{(addition)}
+\end{align*}
+
+\paragraph{\large
+The dimension of a vector space is equal to the length of its basis, which implies that $\dim \mathrm{null}(T)$ must be a whole number (Axler, 2.36). However, under this constraint, there is no possible value of $\dim \mathrm{null}(T)$ such that $5 = 2 \cdot \dim \mathrm{null}(T)$. Therefore, we have a contradiction, meaning there cannot be a map $T: \mathbb{R}^5 \rightarrow \mathbb{R}^5$ with $\mathrm{range}(T) = \mathrm{null}(T)$.}
+
+\newpage
+
+\section{Let $V$ and $W$ be vector spaces over a field $\mathbb{F}$, and suppose $V$ is finite-dimensional with $\dim V > 0$. Let $w \in W$ be any vector. Prove that there exists a linear map $T: V \rightarrow W$ with $\mathrm{range}(T) = \mathrm{span}(w)$.}
+
+\paragraph{\large
+\\Consider two vector spaces, $V$ and $W$, such that $V$ is finite-dimensional with $\dim V > 0$.}
+
+\paragraph{\large
+For all $T: V \rightarrow W \in L(V, W)$:
+\\Let $\{v_1,...\,,v_n\}$ be the set of basis vectors of $V$.}
+
+\paragraph{\large
+It follows that $T(v) = T(a_1v_1+...+a_nv_n)$, since every $v \in V$ can be expressed as a linear combination of the basis vectors of $V$.}
+
+\paragraph{\large
+For any vector $w \in W$, define $T: V \rightarrow W$:
+\\$T(v) = T(a_1v_1+...+a_nv_n) = a_1 \cdot w$.}
+
+\paragraph{\large
+Assuming additivity holds:}
+
+\begin{align*}
+    T(u) + T(v) &= T(u + v) & \text{(additivity)}\\
+    &= T(a_1v_1+...+a_nv_n+b_1v_1+...+b_nv_n) & \text{(definition of basis)}\\
+    &= T(a_1v_1+b_1v_1+...+a_nv_n+b_nv_n) & \text{(commutative property)}\\
+    &= T((a_1+b_1)v_1+...+(a_n+b_n)v_n) & \text{(distributive property)}\\
+    &= (a_1+b_1) \cdot w & \text{(definition of T)}\\
+    &= a_1w + b_1w & \text{(distributive property)}\\
+    &= T(u) + T(v) & \text{(definition of T)}
+\end{align*}
+
+\paragraph{\large
+Assuming homogeneity holds:}
+
+\begin{align*}
+    \lambda T(v) &= T(\lambda v) & \text{(homogeneity)}\\
+    &= T(\lambda (a_1v_1+...+a_nv_n)) & \text{(definition of basis)}\\
+    &= T(\lambda a_1v_1+...+\lambda a_nv_n) & \text{(distributive property)}\\
+    &= \lambda a_1w & \text{(definition of T)}\\
+    &= \lambda T(v) & \text{(definition of T)}
+\end{align*}
+
+\paragraph{\large
+Therefore, we have that $T$ is a linear map.}
+
+\paragraph{\large
+Next we will show:
+\\$\mathrm{range}(T) = \mathrm{span}(w)$}
+
+\begin{align*}
+    \mathrm{range}(T) &= \{T(v)\;|\;v \in V\} & \text{(definition of range)}\\
+    &= \{T(a_1v_1+...+a_nv_n)\;|\;a_i \in \mathbb{F}\} & \text{(definition of basis)}\\
+    &= \{a_1 \cdot w\;|\;a_1 \in \mathbb{F}\} & \text{(definition of T)}\\
+    &= \{\lambda \cdot w\;|\;\lambda \in \mathbb{F}\} & \text{(change $a_1$ to $\lambda$)}\\
+    &= \mathrm{span}(w) & \text{(definition of span)}
+\end{align*}
+
+\paragraph{\large
+Therefore, we have proven that for all vector spaces $V, W$ such that $V$ is finite-dimensional with $\dim V > 0$, for any vector $w \in W$ there exists a linear map $T: V \rightarrow W$ with $\mathrm{range}(T) = \mathrm{span}(w)$.}
+
+\newpage
+
+\section{Suppose $V$ and $W$ are both finite dimensional. Prove that there exists an injective linear map from $V$ to $W$ if and only if $\dim V \leq \dim W$.}
+
+\paragraph{\large
+\\Assume $\dim V \leq \dim W$:
+\\
+\\Let $v_1,...\,,v_n$ be the basis of $V$.
+\\Let $w_1,...\,,w_m$ be the basis of $W$.
+\\It follows that $n \leq m$, since the length of a basis equals the dimension of the vector space that it is a basis of.}
+
+\paragraph{\large
+Consider a linear transformation $T: V \rightarrow W \in L(V, W)$:
+\\
+\\ Next we will prove that $T$ can be injective:}
+
+\begin{align*}
+    T(r) &= T(s) & \text{(assumption)}\\
+    T(r_1v_1+...+r_nv_n) &= T(s_1v_1+...+s_nv_n) & \text{(definition of basis)}\\
+    T(r_1v_1)+...+T(r_nv_n) &= T(s_1v_1)+...+T(s_nv_n) & \text{(additivity)}\\
+    r_1T(v_1)+...+r_nT(v_n) &= s_1T(v_1)+...+s_nT(v_n) & \text{(homogeneity)}\\
+    r_1w_1+...+r_nw_n &= s_1w_1+...+s_nw_n & \text{(Axler, 3.5)}\\
+    0 &= (s_1w_1+...+s_nw_n) - (r_1w_1+...+r_nw_n) & \text{(additive inverse)}\\
+    0 &= s_1w_1+...+s_nw_n - r_1w_1-...-r_nw_n & \text{(distributive property)}\\
+    0 &= s_1w_1-r_1w_1+...+s_nw_n-r_nw_n & \text{(commutativity)}\\
+    0 &= (s_1-r_1)w_1+...+(s_n-r_n)w_n & \text{(distributive property)}\\
+    0 &= s_i-r_i & \text{(w's are linearly independent)}\\
+    r_i &= s_i & \text{(additive inverse)}\\
+    r &= s & \text{(linear combinations are equivalent)}
+\end{align*}
+
+\paragraph{\large
+Therefore, we have that $\dim V \leq \dim W$ implies the existence of an injective $T(V, W) \in L(V, W)$.}
+
+\paragraph{\large
+From the other way around, assuming there exists an injective linear map $T: V \rightarrow W \in L(V, W)$:}
+
+\begin{align*}
+    \dim V &= \dim \mathrm{null}(T) + \dim \mathrm{range}(T) & \text{(rank-nullity theorem)}\\
+    &= \dim \{0\} + \dim \mathrm{range}(T) & \text{(definition of injectivity)}\\
+    &= 0 + \dim \mathrm{range}(T) & \text{(0 has dimension 0)}\\
+    &= \dim \mathrm{range}(T) & \text{(additive identity)}\\
+    &\leq \dim W & \text{($\mathrm{range}(T)$ subspace of W)}
+\end{align*}
+
+\paragraph{\large
+Therefore, we have that the existence of an injective linear map $T(V, W) \in L(V, W)$ implies $\dim V \leq \dim W$.}
+
+\paragraph{\large
+Since $\dim V \leq \dim W$ implies the existence of an injective $T(V, W) \in L(V, W)$, and the existence of an injective $T(V, W) \in L(V, W)$ implies $\dim V \leq \dim W$, we have that there exists an injective linear map from $V$ to $W$ if and only if $\dim V \leq \dim W$.}
+
+\newpage
+
+\section{Prove that there does not exist a linear map from $\mathbb{R}^5$ to $\mathbb{R}^2$ whose null space equals
+$$
+\{(x_1,x_2,x_3,x_4,x_5)\ |\ x_1 = 3 x_2,\ x_3 = x_4 = x_5\}.
+$$}
+
+\paragraph{\large
+\\The given definition of the null space can be rewritten as:
+\\ $\{(3x_2,x_2,x_3,x_3,x_3)\ |\ x_i \in \mathbb{R}\}$.
+\\\\
+This representation has two free variables, $x_2, x_3 \in \mathbb{R}$, which suggests a basis of the null space composed of two vectors.
+\\\\
+Fixing each variable to $0$ and the other to $1$ yields the following set of two vectors:
+\\\\
+$\{(3, 1, 0, 0, 0), (0, 0, 1, 1, 1)\}$}
+
+\paragraph{\large
+If this is a basis of the null space, the following two conditions must be met:
+\\\indent 1. $\{(3, 1, 0, 0, 0), (0, 0, 1, 1, 1)\}$ is linearly independent.
+\\\indent 2. $\{(3, 1, 0, 0, 0), (0, 0, 1, 1, 1)\}$ spans the null space.}
+
+\paragraph{\large
+First we will prove the set is linearly independent:}
+
+\begin{align*}
+0 = 
+\lambda_1
+\begin{pmatrix}
+    3 \\ 1 \\ 0 \\ 0 \\ 0
+\end{pmatrix}
++ \lambda_2
+\begin{pmatrix}
+    0 \\ 0 \\ 1 \\ 1 \\ 1
+\end{pmatrix}
+\end{align*}
+
+\paragraph{\large
+After distributing the coefficients across each vector, this linear combination can be modified into the following relations:
+\\\indent 1. $0 = 3\lambda_1$
+\\\indent 2. $0 = \lambda_1$
+\\\indent 3. $0 = \lambda_2$}
+
+\paragraph{\large
+From equations 2 and 3, we have that if a linear combination of the set equals 0, the coefficients must also be 0. Thus, we have proven that $\{(3, 1, 0, 0, 0), (0, 0, 1, 1, 1)\}$ is linearly independent.}
+
+\paragraph{\large
+Next, we will show that the set spans the null space:}
+
+\begin{align*}
+\begin{pmatrix}
+    3x_2 \\ x_2 \\ x_3 \\ x_3 \\ x_3
+\end{pmatrix}
+=
+\lambda_1
+\begin{pmatrix}
+    3 \\ 1 \\ 0 \\ 0 \\ 0
+\end{pmatrix}
++ \lambda_2
+\begin{pmatrix}
+    0 \\ 0 \\ 1 \\ 1 \\ 1
+\end{pmatrix}
+\end{align*}
+
+\paragraph{\large
+Distributing the coefficients yields the following relations:
+\\\indent 1. $3x_2 = 3\lambda_1$
+\\\indent 2. $x_2 = \lambda_1$\
+\\\indent 3. $x_3 = \lambda_2$}
+
+\paragraph{\large
+Therefore, equations 2 and 3 prove that any $x_2$ and $x_3$ can be expressed using $\lambda_1$ and $\lambda_2$, implying that $\{(3, 1, 0, 0, 0), (0, 0, 1, 1, 1)\}$ spans the null space.}
+
+\paragraph{\large
+Because both conditions are met, we have that $\{(3, 1, 0, 0, 0), (0, 0, 1, 1, 1)\}$ is a basis of the null space. Since the dimension of a vector space is defined as the length of its basis, we can conclude that the dimension of the null space is 2, since its basis has 2 elements.}
+
+\paragraph{\large
+Assume there exists a $T: \mathbb{R}^5 \rightarrow \mathbb{R}^2 \in L(V, W)$ \\such that $\mathrm{null}(T) = \{(x_1,x_2,x_3,x_4,x_5)\ |\ x_1 = 3 x_2,\ x_3 = x_4 = x_5\}$:}
+
+\begin{align*}
+    \dim \mathbb{R}^5 &= \dim \mathrm{null}(T) + \dim \mathrm{range}(T) & \text{(rank-nullity theorem)}\\
+    5 &= \dim \mathrm{null}(T) + \dim \mathrm{range}(T) & \text{($\dim \mathbb{R}^5 = 5$)}\\
+    5 &= 2 + \dim \mathrm{range}(T) & \text{($\dim \mathrm{null}(T) = 2$)}\\
+    3 &= \dim \mathrm{range}(T) & \text{(additive inverse)}\\
+\end{align*}
+
+\paragraph{\large
+$T$ maps to $\mathbb{R}^2$. Thus, $\mathrm{range}(T)$ is a subspace of $\mathbb{R}^2$ (Axler, 3.19). This implies $\dim \mathrm{range}(T) \leq \dim \mathbb{R}^2 = 2$ (Axler, 2.38). However, we also have that $\dim \mathrm{range}(T) = 3$, which produces $3 \leq 2$. Therefore, we have a contradiction, proving that there does not exist a linear map from $\mathbb{R}^5$ to $\mathbb{R}^2$ whose null space equals $\{(x_1,x_2,x_3,x_4,x_5)\ |\ x_1 = 3 x_2,\ x_3 = x_4 = x_5\}$.}
+
+\newpage
+
+\section{Suppose $T$ is a linear map from $\mathbb{R}^4$ to $\mathbb{R}^2$ such that 
+$$
+\mathrm{null}(T) = \{(x_1,x_2,x_3,x_4) \in \mathbb{R}^4 \ |\ x_1 = 5x_2,\ x_3 = 7x_4\}.
+$$
+Prove that $T$ is surjective.}
+
+\paragraph{\large
+\\The given definition of the null space can be rewritten as
+\\$\{(5x_2,x_2,7x_4,x_4) \in \mathbb{R}^4\}$.
+\\
+\\This representation has two free variables, $x_2, x_4 \in \mathbb{R}$, which suggests a basis of the null space composed of two vectors.
+\\
+\\ Fixing each variable to $0$ and the other to $1$ yields the following set of two vectors:
+\\
+\\$\{(5, 1, 0, 0), (0, 0, 7, 1)\}$}
+
+\paragraph{\large
+If this is a basis of the null space, the following two conditions must be met:
+\\\indent 1. $\{(5, 1, 0, 0), (0, 0, 7, 1)\}$ is linearly independent.
+\\\indent 2. $\{(5, 1, 0, 0), (0, 0, 7, 1)\}$ spans the null space.}
+
+\paragraph{\large
+First we will prove the set is linearly independent:}
+
+\begin{align*}
+0 = \lambda_1
+\begin{pmatrix}
+    5 \\ 1 \\ 0 \\ 0
+\end{pmatrix}
++ \lambda_2
+\begin{pmatrix}
+    0 \\ 0 \\ 7 \\ 1
+\end{pmatrix}
+\end{align*}
+
+\paragraph{\large
+Distributing the coefficients across each vector results in the following relations:
+\\\indent 1. $0 = 5\lambda_1$
+\\\indent 2. $0 = \lambda_1$
+\\\indent 3. $0 = 7\lambda_2$
+\\\indent 4. $0 = \lambda_2$}
+
+\paragraph{\large
+From equations 2 and 4, we have that if a linear combi-
+nation of the set equals 0, the coefficients must also be 0. Thus, we have proven that $\{(5, 1, 0, 0), (0, 0, 7, 1)\}$ is linearly independent.}
+
+\paragraph{\large
+Next, we will show that the set spans the null space:}
+
+\begin{align*}
+\begin{pmatrix}
+    5x_2 \\ x_2 \\ 7x_4 \\ x_4
+\end{pmatrix}
+= \lambda_1
+\begin{pmatrix}
+    5 \\ 1 \\ 0 \\ 0
+\end{pmatrix}
++ \lambda_2
+\begin{pmatrix}
+    0 \\ 0 \\ 7 \\ 1
+\end{pmatrix}
+\end{align*}
+
+\paragraph{\large
+Distributing the coefficients yields the following relations:
+\\\indent 1. $5x_2 = 5\lambda_1$
+\\\indent 2. $x_2 = \lambda_1$
+\\\indent 3. $7x_4 = 7\lambda_2$
+\\\indent 4. $x_4 = \lambda_2$}
+
+\paragraph{\large
+Therefore, equations 2 and 4 prove that any $x_2$ and $x_3$ can be expressed using $\lambda_1$ and $\lambda_2$, implying that $\{(5, 1, 0, 0), (0, 0, 7, 1)\}$ spans the null space.}
+
+\paragraph{\large
+Because both conditions are met, we have that $\{(5, 1, 0, 0), (0, 0, 7, 1)\}$ is a basis of the null space. Since the dimension of a vector space is defined as the length of its basis, we can conclude that the dimension of the null space is 2, since its basis has 2 elements.}
+
+\paragraph{\large
+Define $T: \mathbb{R}^4 \rightarrow \mathbb{R}^2 \in L(V, W)$ \\such that $\mathrm{null}(T) = \{(x_1,x_2,x_3,x_4) \in \mathbb{R}^4 \ |\ x_1 = 5x_2,\ x_3 = 7x_4\}$:}
+
+\begin{align*}
+    \dim \mathbb{R}^4 &= \dim \mathrm{null}(T) + \dim \mathrm{range}(T) & \text{(rank-nullity theorem)}\\
+    4 &= \dim \mathrm{null}(T) + \dim \mathrm{range}(T) & \text{(definition of $\mathbb{R}^4$)}\\
+    4 &= 2 + \dim \mathrm{range}(T) & \text{($\dim \mathrm{null}(T) = 2$)}\\
+    2 &= \dim \mathrm{range}(T) & \text{(additive inverse)}\\
+\end{align*}
+
+\paragraph{\large
+Next we will prove the following lemma:
+\\ If $U$ is a subspace of $V$, and $\dim U = \dim V$, then $U = V$.
+\\
+\\Let $u_1,...\,,u_n$ be the basis of $U$.
+\\Let $v_1,...\,,v_n$ be the basis of $V$.
+\\
+\\$u_1,...\,,u_n$ is linearly independent because it is a basis. Additionally, we have that $\mathrm{length}(u_1,...\,,u_n) = \dim U = \dim V$. Therefore, since a $u_1,...\,,u_n$ is a linearly independent set of vectors with a length equal to the dimension of $V$, we have that $u_1,...\,,u_n$ spans $V$. Thus, $u_1,...\,,u_n$ is a basis of $V$. Since $U$ and $V$ share a common basis, $U = V$.}
+
+\paragraph{\large
+Now consider $\dim \mathrm{range}(T)$ once more:}
+
+\begin{align*}
+    \dim \mathrm{range}(T) &= 2 & \text{(from above)}\\
+    \dim \mathrm{range}(T) &= \dim \mathbb{R}^2 & \text{(definition of $\mathbb{R}^2$)}\\
+    \mathrm{range}(T) &= \mathbb{R}^2 & \text{(lemma)}
+\end{align*}
+
+\paragraph{\large
+Therefore, since the range of $T$ equals its codomain, we have that $T$ is surjective.}
+
+\end{document}

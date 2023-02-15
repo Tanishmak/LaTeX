@@ -1,0 +1,351 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+\onehalfspacing
+
+\title{MATH 0540 Problem Set 5}
+\author{Collaborated with Esmé, Edward, and Mariana}
+\date{October 2022}
+
+\begin{document}
+\maketitle
+
+\section{Suppose $U$ and $W$ are both five-dimensional subspaces of $\mathbb{R}^9$. Prove that $U \cap W \not = 0$.}
+
+\paragraph{\large
+\\Assume $U \cap W = 0$:
+\\ We have that $dim(U) = 5$ and $dim(W) = 5$, therefore}
+
+\begin{align*}
+    dim(U + W) &= dim(U) + dim(W) - dim(U \cap W) & \text{(Axler, 2.43)}\\
+    &= 5 + 5 - dim(U \cap W) & \text{(definition of U and W)}\\
+    &= 5 + 5 - dim(0) & \text{(assumption)}\\
+    &= 5 + 5 - 0 & \text{(definition of zero vector space)}\\
+    &= 10 & \text{(addition)}
+\end{align*}
+
+\paragraph{\large
+However, since $U$ and $W$ are subspaces of $\mathbb{R}^9$, we know that $U + W$ is also a subspace of $\mathbb{R}^9$ (Axler, 1.39). This means $dim(U + W) \leq dim(\mathbb{R}^9)$ (Axler, 2.38). In other words, $dim(U + W) \leq 9$.}
+
+\paragraph{\large
+Substituting the value of $dim(U + W)$ yields:
+$10 \leq 9$.}
+
+\paragraph{\large
+Since $10$ is not less than or equal to $9$, we have a contradiction, therefore $U \cap W \neq 0$.}
+
+\newpage
+
+\section{Suppose $U_1, \ldots, U_m$ are finite-dimensional subspaces of $V$. Prove that $U_1 + \cdots + U_m$ is finite dimensional, and
+$$
+\dim(U_1 + \cdots + U_m) \leq \dim U_1 + \cdots + \dim U_m
+$$}
+
+\paragraph{\large
+Consider $U_1,...\,,U_m$:
+\\\\
+There exists $B_1,...\,,B_m$ such that each $B_i$ is a basis of $U_i$.
+\\\\
+Each $U_i$ in $U_1+...+U_m$ can be expressed as a linear combination $\{(a_1u_1+...+a_mu_m)\;|\; a_i \in \mathbb{F}, u_i \in U_i\}$.
+\\\\
+$span(B_i) = U_i$ (definition of a basis)
+\\ $span(B_i) = \{(a_1u_1+...+a_mu_m)\;|\; a_i \in \mathbb{F}, u_i \in U_i\}$
+\\\\
+$U_1+...+U_m$ can now be expressed as $\{(span(B_1)+...+span(B_m)\}$
+\\\\
+Now consider two arbitrary $B_j, B_k \in B_1,...\,,B_m$:
+\\ Let $\{u_1,...\,,u_m\} = B_j$
+\\ Let $\{v_1,...\,,v_n\} = B_k$
+\\ $span(B_j) = \{(a_1u_1+...+a_mu_m)\;|\;a_i \in \mathbb{F}, u_i \in B_j\}$
+\\ $span(B_k) = \{(b_1v_1+...+b_mv_n)\;|\;b_i \in \mathbb{F}, v_i \in B_k\}$
+\\\\
+Taking the union of both bases yields:
+\\ $B_j \cup B_k = \{u_1,...\,,u_m, v_1,...\,,v_n\}$
+\\ $span(B_j \cup B_k) = 
+\\\{(a_1u_1+...+a_mu_m+b_1v_1+...+b_nv_n)\;|\;a_i,b_i \in \mathbb{F}, u_i \in B_j, v_i \in B_k\}$
+\\\\
+Thus, $span(B_j \cup B_k) = \{span(B_j) + span(B_k)\}$
+\\\\
+From above, we have that:
+\\ $span(B_j) = U_j$ and $span(B_k) = U_k$
+\\Thus, $span(B_j \cup B_k) = U_j + U_k$.
+\\\\
+Generalizing this, $span(B_1 \cup ... \cup B_m) = U_1+...+U_m$. Therefore, we have that $B_1 \cup ... \cup B_m$ spans $U_1+...+U_m$.}
+
+\paragraph{\large
+Since a set of vectors spans $U_1+...+U_m$, we have that it is finite dimensional (Axler, 2.10).}
+
+\paragraph{\large
+Now suppose $B$ is a basis of $U_1+...+U_m$:
+\\then $|B| \leq |B_1 \cup ... \cup B_m|$ since the length of a list of linearly independent vectors must be less than or equal to the length of a spanning list (Axler, 2.23).
+\\\\
+It follows that $|B_1 \cup ... \cup B_m| \leq |B_1|+...+|B_m|$ because any identical vectors in any $B_i,...\,,B_{i'}$ would only contribute 1 to $|B_1 \cup ... \cup B_m|$, while $|B_1|+...+|B_m|$ would increase by the total number of duplicates. In other words, because a union is the smallest set containing all elements of two sets, and there are no repeat elements in sets, the length of the union of all bases must be less than or equal to the individual lengths summed together.
+\\\\
+Finally, since the length of a basis equals the dimension of the vector space it is a basis of (Axler, 2.36), we have that $|B| = dim(U_1+...+U_m)$ and $|B_i| = dim(U_i)$. 
+\\\\
+Thus, we can rewrite $|B| \leq |B_1 \cup ... \cup B_m| \leq |B_1|+...+|B_m|$ as $|B| \leq |B_1|+...+|B_m|$, which can be expressed as:
+\\ $dim(U_1+...+U_m) \leq dim(U_1)+...+dim(U_m)$.
+}
+
+\newpage
+
+\section{Suppose $b,c \in \mathbb{R}$. Define $T : \mathbb{R}^3 \rightarrow \mathbb{R}^2$ by
+$$
+T(x,y,z) = (2x - 4 y + 3z + b, 6x + cxyz).
+$$
+Show that $T$ is linear if and only if $b = 0$ and $c = 0$.}
+
+\paragraph{\large
+\\Assume $T$ is a linear map:
+\\ Therefore, $\forall x,y,z,\lambda \in \mathbb{R}$,}
+
+\begin{align*}
+    \lambda \cdot T(x, y, z) &= T(\lambda \cdot (x, y, z)) & \text{(homogeneity)} \\
+    \lambda T(x, y, z) &= T(\lambda x, \lambda y, \lambda z) & \text{(scalar multiplication)} \\
+    \lambda (2x - 4y + 3z + b, 6x + cxyz) &= (2\lambda x - 4\lambda y + 3\lambda z + b, 6\lambda x + c\lambda^3 xyz)) & \text{(definition of T)}\\
+    (2\lambda x - 4\lambda y + 3\lambda z + \lambda b, 6\lambda x + c\lambda xyz) &= (2\lambda x - 4\lambda y + 3\lambda z + b, 6\lambda x + c\lambda^3 xyz)) & \text{(scalar multiplication)}\\
+    (\lambda b, c\lambda xyz) &= (b, c\lambda^3xyz) & \text{(additive inverse)}
+\end{align*}
+
+\paragraph{\large
+Therefore, we have that $\lambda b = b$ and $c\lambda xyz = c\lambda^3xyz$. $\lambda,x,y,z$ are free and have no fixed relation to each other. The only way for these relations to hold, then, is if $b = 0$ and $c = 0$.}
+
+\paragraph{\large
+Now, from the other side, assuming $b = 0$ and $c = 0$, we must show that $T$ is a linear map by proving the following two conditions $\forall \lambda,x,y,z,l,m,n \in \mathbb{R}$:
+\\\indent 1. $T(x, y, z) + T(l, m, n) = T((x, y, z) + (l, m, n))$
+\\\indent 2. $\lambda T(x, y, z) = T(\lambda(x, y, z))$}
+
+\paragraph{\large
+Since $b=0$ and $c=0$, the definition of $T(x, y, z)$ can be rewritten as $T(x,y,z) = (2x-4y+3z,6x)$.}
+
+\begin{align*}
+    T(x,y,z) + T(l,m,n) &= (2x-4y+3z,6x) + (2l-4m+3n,6l) & \text{(definition of T)}\\
+    &= (2x+2l-4y-4m+3z+3n, 6x+6l) & \text{(vector addition)}\\
+    &= (2(x+l)-4(y+m)+3(z+n),6(x+l)) & \text{(distributive property)}\\
+    &= T(x+l,y+m,z+n) & \text{(definition of T)}\\
+    &= T((x,y,z)+(l,m,n)) & \text{(vector addition)}
+\end{align*}
+
+\begin{align*}
+    \lambda T(x,y,z) &= \lambda (2x-4y+3z,6x) & \text{(definition of T)}\\
+    &= (2\lambda x-4\lambda y+3\lambda z,6\lambda x) & \text{(scalar multiplication)}\\
+    &= T(\lambda x, \lambda y, \lambda z) & \text{(definition of T)}\\
+    &= T(\lambda (x,y,z)) & \text{(scalar multiplication)}
+\end{align*}
+
+\paragraph{\large
+Therefore, we have that $T$ is a linear map.}
+
+\paragraph{\large
+Since $b = 0$ and $c = 0$ implies $T$ is linear, and $T$ being linear implies $b=0$ and $c=0$, we have that $T$ is linear if and only if $b = 0$ and $c = 0$.}
+
+\newpage
+
+\section{Find a basis for $L(\mathbb{R}^2,\mathbb{R}^2)$, the vector space of linear maps from $\mathbb{R}^2$ to $\mathbb{R}^2$.}
+
+\paragraph{\large
+\\A linear map is defined by its behavior on a basis of the vector space it consumes. In this case, $L$ is a linear map $\mathbb{R}^2 \rightarrow \mathbb{R}^2$.}
+
+\paragraph{\large
+Therefore, let's examine the standard basis of $\mathbb{R}^2$, which is $\{(0, 1), (1, 0)\}$.}
+
+\paragraph{\large
+Suppose $T \in L(\mathbb{R}^2 \rightarrow \mathbb{R}^2)$:
+\\ $T(1, 0) = (a, b)$
+\\ $T(0, 1) = (c, d)$}
+
+\paragraph{\large
+This leads to a general solution:}
+
+\begin{align*}
+T(x, y) &= T(x \cdot (1, 0) + y \cdot (0, 1))
+\\&= T(x \cdot (1, 0)) + T(y \cdot (0, 1)) & \text{(additivity)}
+\\&= x \cdot T(1, 0) + y \cdot T(0, 1) & \text{(homogeneity)}
+\\&= x \cdot (a, b) + y \cdot (c, d) & \text{(definition of T on standard basis)}
+\\&= (ax, bx) + (cy, dy) & \text{(scalar multiplication)}
+\\&= (ax + cy, bx + dy) & \text{(vector addition)}
+\end{align*}
+
+\paragraph{\large
+A basis can then be extracted from this general solution by fixing all but one coefficient to $0$ and the remaining coefficient to $1$:}
+
+\begin{align*}
+T_a(x, y) &= (x, 0)
+\\T_b(x, y) &= (0, x)
+\\T_c(x, y) &= (y, 0)
+\\T_d(x, y) &= (0, y)
+\end{align*}
+
+\paragraph{\large
+To prove $\{(x, 0), (0, x), (y, 0), (0, y)\}$ is a basis of $L(\mathbb{R}^2 \rightarrow \mathbb{R}^2)$, we must prove the following:
+\\\indent 1. $\{(x, 0), (0, x), (y, 0), (0, y)\}$ is linearly independent
+\\\indent 2. $\{(x, 0), (0, x), (y, 0), (0, y)\}$ spans $L(\mathbb{R}^2 \rightarrow \mathbb{R}^2)$}
+
+\paragraph{\large
+Assume
+}
+\begin{align*}
+0 = \lambda_1
+\begin{pmatrix}
+    x \\ 0
+\end{pmatrix}
++ \lambda_2
+\begin{pmatrix}
+    0 \\ x
+\end{pmatrix}\
++ \lambda_3
+\begin{pmatrix}
+    y \\ 0
+\end{pmatrix}
++ \lambda_4
+\begin{pmatrix}
+    0 \\ y
+\end{pmatrix}
+\end{align*}
+
+\paragraph{\large
+It follows that:
+\\1. $0 = \lambda_1 \cdot x + \lambda_3 \cdot y$
+\\2. $0 = \lambda_2 \cdot x + \lambda_4 \cdot y$}
+
+\paragraph{\large
+For equation 1, in order for $x$ and $y$ to remain free, $\lambda_1$ and $\lambda_3$ must be fixed in relation to $x$ and $y$. Since $x$ and $y$ have no fixed relation to each other, the only way $0 = \lambda_1 \cdot x + \lambda_3 \cdot y$ is if $\lambda_1$ and $\lambda_3$ equal $0$.}
+
+\paragraph{\large
+For equation 2, in order for $x$ and $y$ to remain free, $\lambda_2$ and $\lambda_4$ must be fixed in relation to $x$ and $y$. Since $x$ and $y$ have no fixed relation to each other, the only way $0 = \lambda_2 \cdot x + \lambda_4 \cdot y$ is if $\lambda_2$ and $\lambda_4$ equal $0$.}
+
+\paragraph{\large
+Therefore, we have that $\{(x, 0), (0, x), (y, 0), (0, y)\}$ is linearly independent.}
+
+\paragraph{\large
+In order for $\{(x, 0), (0, x), (y, 0), (0, y)\}$ to span $L(\mathbb{R}^2 \rightarrow \mathbb{R}^2)$, we must show that there exists some scalars $k_1,k_2,k_3,k_4 \in \mathbb{R}$ which can produce any element of the general solution $T(x,y) = (ax + cy, bx + dy)$.}
+
+\begin{align*}
+\begin{pmatrix}
+    ax+cy \\ bx+dy
+\end{pmatrix}
+= k_1
+\begin{pmatrix}
+    x \\ 0
+\end{pmatrix}
++ k_2
+\begin{pmatrix}
+    0 \\ x
+\end{pmatrix}
++ k_3
+\begin{pmatrix}
+    y \\ 0
+\end{pmatrix}
++ k_4
+\begin{pmatrix}
+    0 \\ y
+\end{pmatrix}
+\end{align*}
+
+\paragraph{\large
+It follows that:
+\\\indent 1. $ax+cy = k_1 x + k_3 y$
+\\\indent 2. $bx+dy = k_2 x + k_4 y$}
+
+\paragraph{\large
+This leads to the following four relations:
+\\\indent 1. $a = k_1$
+\\\indent 2. $c = k_3$
+\\\indent 3. $b = k_2$
+\\\indent 4. $d = k_4$}
+
+\paragraph{\large
+Therefore, we have that $\{(x, 0), (0, x), (y, 0), (0, y)\}$ spans 
+\\$L(\mathbb{R}^2 \rightarrow \mathbb{R}^2)$.}
+
+\paragraph{\large
+Since both conditions are met, we have proven that $\{(x, 0), (0, x), (y, 0), (0, y)\}$ is a basis of $L(\mathbb{R}^2 \rightarrow \mathbb{R}^2)$.}
+
+\newpage
+
+\section{Is the product of linear maps commutative? Meaning, given linear maps $S,T \in L(V,V)$, is it true that $ST = TS$? Prove or disprove.}
+
+\paragraph{\large
+\setlength{\parindent}{0pt}
+\\Define $S,T \in L(\mathbb{R}^2, \mathbb{R}^2)$ by 
+\\$T(x, y) = (x, x)$
+\\$S(x, y) = (x-y, y-x)$
+}
+
+\paragraph{\large
+A map F is linear if:
+\\\indent 1. $F(x, y) + F(a, b) = F((x, y) + (a, b))$
+\\\indent 2. $\lambda F(x, y) = F(\lambda (x, y))$}
+
+\paragraph{\large
+We will first show that $S$ and $T$ are linear maps by proving these two conditions.}
+
+\paragraph{\large
+Assuming the first condition is true for $T$:}
+\begin{align*}
+    T(x, y) + T(a, b) &= T((x, y) + (a, b)) & \text{(assumption)} \\
+    T(x, y) + T(a, b) &= T(x+a, y+b) & \text{(vector addition)}\\
+    (x, x) + (a, a) &= (x+a, x+a) & \text{(definition of T)}\\
+    (x+a, x+a) &= (x+a, x+a) & \text{(vector addition)}
+\end{align*}
+
+\paragraph{\large
+Assuming the second condition is true for $T$:}
+
+\begin{align*}
+    \lambda T(x, y) &= T(\lambda (x, y)) & \text{(assumption)}\\
+    \lambda T(x, y) &= T(\lambda x, \lambda y) & \text{(scalar multiplication)}\\
+    \lambda (x, x) &= (\lambda x, \lambda x) & \text{(definition of T)}\\
+    (\lambda x, \lambda x) &= (\lambda x, \lambda x) & \text{(scalar multiplication)}
+\end{align*}
+
+\paragraph{\large
+Assuming the first condition is true for $S$:}
+
+\begin{align*}
+    S(x, y) + S(a, b) &= S((x, y) + (a, b)) & \text{(assumption)}\\
+    S(x, y) + S(a, b) &= S(x+a, y+b) & \text{(vector addition)}\\
+    (x-y, y-x) + (a-b, b-a) &= ((x+a)-(y+b), (y+b)-(x+a)) & \text{(definition of S)}\\
+    (x-y, y-x) + (a-b, b-a) &= (x+a-y-b, y+b-x-a) & \text{(distributive property)}\\
+    (x+a-y-b, y+b-x-a) &= (x+a-y-b, y+b-x-a) & \text{(vector addition)}\\
+\end{align*}
+
+\paragraph{\large
+Assuming the second condition is true for $S$:}
+
+\begin{align*}
+    \lambda S(x, y) &= S(\lambda (x, y)) & \text{(assumption)}\\
+    \lambda S(x, y) &= S(\lambda x, \lambda y) & \text{(scalar multiplication)}\\
+    \lambda (x-y, y-x) &= (\lambda x-\lambda y, \lambda y-\lambda x) & \text{(definition of S)}\\
+    (\lambda (x-y), \lambda (y-x)) &= (\lambda x-\lambda y, \lambda y-\lambda x) & \text{(scalar multiplication)}\\
+    (\lambda x-\lambda y, \lambda y-\lambda x) &= (\lambda x-\lambda y, \lambda y-\lambda x) & \text{(distributive property)}
+\end{align*}
+
+\paragraph{\large
+Therefore, we have that $S$ and $T$ both satisfy additivity and homogeneity, proving they are linear maps.}
+
+\paragraph{\large
+Assume $ST = TS$:}
+
+\begin{align*}
+    S(T(x, y)) &= T(S(x, y)) & \text{(assumption)}\\
+    S(x, x) &= T(x-y,y-x) & \text{(definition of S and T)}\\
+    (x-x, x-x) &= (x-y, x-y) & \text{(definition of S and T)}\\
+    (0, 0) &= (x-y, x-y) & \text{(additive inverse)}\\
+    0 &= (x-y, x-y) & \text{(definition of zero vector)}
+\end{align*}
+
+\paragraph{\large
+Since $x$ and $y$ are free and can be any value in $\mathbb{R}$, we have a contradiction. Therefore, it is disproven that the product of linear maps is commutative.}
+
+\end{document}

@@ -1,0 +1,140 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb}
+
+\onehalfspacing
+
+\title{MATH 0540 Problem Set 1}
+\author{Tanish Makadia}
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Let \(A, B, C\) be sets. Prove or disprove that \(A \setminus\,(B \cup C) = (A \setminus B) \cap (A \setminus C)\).}
+
+\paragraph{\large 
+\\ Suppose \(a \in A \setminus (B \cup C)\):
+\\\indent It follows that \(a \in A\), and \(a \notin B \cup C\).
+\\\indent Since \(a \notin B \cup C\), \(a \notin B\) and \(a \notin C\).
+\\\indent Thus, \(a \in A\), \(a \notin B\), and \(a \notin C\).}
+
+\paragraph{\large
+\(a \in A\) and \(a \notin B\) can be expressed as \(a \in A \setminus B\).
+\\ \(a \in A\) and \(a \notin C\) can be expressed as \(a \in A \setminus C\).
+\\ Putting both statements together, \(a \in (A \setminus B) \cap (A \setminus C)\).}
+
+\paragraph{\large
+Now suppose \(b \in (A \setminus B) \cap (A \setminus C)\):
+\\\indent It follows that \(b \in A \setminus B\), and \(b \in A \setminus C\).
+\\\indent Since \(b \in A \setminus B\), \(b \in A\) and \(b \notin B\).
+\\\indent And since \(b \in A \setminus C\), \(b \in A\) and \(b \notin C\).}
+
+\paragraph{\large
+Therefore, \(b\in A\), \(b \notin B\), and \(b \notin C\).
+\\\indent \(b \notin B\) and \(b \notin C\) can be simplified to \(b \notin B \cup C\),
+\\\indent so \(b \in A\) and \(b \notin B \cup C\).
+\\\indent This can be expressed as \(b \in A \setminus (B \cup C)\).
+}
+
+\paragraph{\large
+Finally, this means \(a \subseteq b\), and \(b \subseteq a\), so \(a = b\).
+\\ thus, \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\).}
+
+\newpage
+
+\section{Prove that if \(f: A \rightarrow B\) and \(g: B \rightarrow C\) are surjections, then \(g \circ f: A \rightarrow C\) is also a surjection.}
+
+\paragraph{\large
+\\ For this to be the case, the range of \(g \circ f\) must equal its codomain \(C\).}
+
+\paragraph{\large
+Since \(f\) is a surjection, \(\forall b \in B, \exists a \in A \thickspace s.t. \thickspace f(a) = b\).
+\\ Since \(g\) is a surjection, \(\forall c \in C, \exists b \in B \thickspace s.t. \thickspace g(b) = c\).}
+
+\paragraph{\large
+Thus, the range of \(f\) can be expressed as \(R_f = f(A) = B\),
+\\ and the range of \(g\) can be expressed as \(R_g = g(B) = C\).
+}
+
+\paragraph{\large
+\(g \circ f: A \rightarrow C\) is defined by \((g \circ f)(a) = g(f(a))\),
+\\\indent so the range of \(g \circ f\) can be expressed as \(R_{g \circ f} = g(f(A))\).
+\\\indent Since \(f(A) = B\), \(R_{g \circ f} = g(B)\).
+\\\indent And since \(g(B) = C\), it follows that \(R_{g \circ f} = C\).}
+
+\paragraph{\large
+Therefore, if \(f: A \rightarrow B\) and \(g: B \rightarrow C\) are surjections, then \(g \circ f: A \rightarrow C\) is indeed also a surjection.}
+
+\newpage
+
+\section{Prove that the natural numbers \(\mathds{N} = \{0, 1, 2, 3, 4, . . .\}\) 
+have the same cardinality as the even numbers \(\mathds{E} = 
+\{. . . , -4, -2, 0, 2, 4, . . .\}\)}
+
+\paragraph{\large
+\\ For this to be the case, there must be a bijection \(f: \mathds{E} \rightarrow \mathds{N}\).}
+
+\paragraph{\large
+\(\forall a \in \mathds{E}\), let \(f: \mathds{E} \rightarrow \mathds{N}\) be defined by \(f(a) =\) 
+    \begin{cases}
+        \(a\) & \(a \geq 0\)\\
+        \(-(a + 1)\) & \(a < 0\)
+    \end{cases}}
+
+\paragraph{\large
+Assume \(\forall a_1, a_2 \in \mathds{E}, f(a_1) = f(a_2)\):
+\\\indent Therefore, \(\forall a_1, a_2 \geq 0\),
+\\\indent\indent \(a_1 = a_2\).
+\\\indent And \(\forall a_1, a_2 < 0\),
+\\\indent\indent \(-(a_1 + 1) = -(a_2 + 1)\)
+\\\indent\indent \(a_1 + 1 = a_2 + 1\)
+\\\indent\indent \(a_1 = a_2\).
+\\ Thus, \(f(a)\) is injective \(\forall a \in \mathds{E}.}
+
+\paragraph{\large
+Additionally, \(\forall c \in \mathds{N}, \exists a \in \mathds{E} \thickspace s.t. \thickspace f(a) = c\).
+\\ Thus, \(f(a)\) is surjective \(\forall a \in \mathds{E}\).}
+
+\paragraph{\large
+Finally, because \(f\) is both injective and surjective, there is a bijection \(f: \mathds{E} \rightarrow \mathds{N}\), meaning \(\mathds{N}\) has the same cardinality as \(\mathds{E}\).}
+
+\newpage
+
+\section{Find an example of an injection \(f: A \rightarrow B\) and a surjection \(g: B \rightarrow C\) such that \(g \circ f\) is neither injective nor surjective}
+
+\paragraph{\large
+\\Let \(f\) be a function:
+\\\indent\(f: \mathds{R} \rightarrow \mathds{R}\)
+\\\indent\(x \mapsto 2^x\)
+\\ Let \(g\) be a function:
+\\\indent \(g: \mathds{R} \rightarrow \mathds{R}\)
+\\\indent \(x \mapsto x(x + 1)(x - 1)\)
+\\ In this case, \(g \circ f\) is neither injective nor surjective.}
+
+\newpage
+
+\section{Suppose \(f\) and \(g\) are both functions from \(A\) to \(A\). If \(f \circ f = g \circ g\), does it follow that \(f = g\)?}
+
+\paragraph{\large
+\\ Let f be a function:
+\\\indent \(f: \mathds{R} \rightarrow \mathds{R}\)
+\\\indent \(x \mapsto x\)
+\\ Let g be a function:
+\\\indent \(g: \mathds{R} \rightarrow \mathds{R}\)
+\\\indent \(x \mapsto -x\)}
+
+\paragraph{\large
+\((f \circ f)\)(x) is  defined as \(f(f(x))\).
+\\\indent Since \(f(x) = x\), \(f(f(x)) = f(x) = x\).
+\\ \((g \circ g)(x)\) is defined as \(g(g(x))\).
+\\\indent Since \(g(x) = -x\), \(g(g(x)) = g(-x) = x\).}
+
+\paragraph{\large
+Thus, \(\forall x \in \mathds{R}, f \circ f = g \circ g\).
+\\ However, \(f \neq g\), meaning the given statement is not true.}
+
+\end{document}}\)

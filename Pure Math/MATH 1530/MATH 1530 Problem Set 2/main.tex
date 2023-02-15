@@ -1,0 +1,213 @@
+\documentclass[12pt,reqno]{article}
+
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+\usepackage[T1]{fontenc}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsthm,bbm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{extarrows}
+\usepackage{color}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage[colorlinks, linktocpage, citecolor = red, linkcolor = blue]{hyperref}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{euler}
+
+%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%%%%%%%%% COMMANDS %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\range}{\mathrm{range\,}}
+\newcommand{\nul}{\mathrm{null\,}}
+\newcommand{\spn}{\mathrm{span\,}}
+\newcommand{\card}{\mathrm{cardinality}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\bd}{\mathrm{bd\,}}
+\newcommand{\divline}{\hrule\vspace{12pt}\noindent}
+\newcommand{\sgn}{\mathrm{sgn}}
+
+%%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem{maintheorem}{Theorem}
+\renewcommand*{\themaintheorem}{\Alph{maintheorem}}
+
+\newtheorem{theorem}{Theorem}[section] 
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+
+\newtheorem*{maintheorema}{Theorem \ref{thm:main}}
+
+%%%%%%%%%%%%%%%%%%%% TITLE-PAGE %%%%%%%%%%%%%%%%%%%%
+
+\title{MATH 1530 Problem Set 2}
+\author{Collaborated with Esmé and Kazuya}
+\date{February 2023}
+
+%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 1 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} Prove that the set $\{5,15,25,35\}$ is a group under multiplication mod 40.
+\end{problem}
+
+\begin{proof}
+    Consider the \emph{Cayley Table} of this set:
+    
+    \begin{tabular}{c | c c c c}
+         & 5 & 15 & 25 & 35 \\
+         \cline{1-5}
+         5 & 25 & 35 & 5 & 15\\
+         15 & 35 & 25 & 15 & 5\\ 
+         25 & 5 & 15 & 25 & 35\\ 
+         35 & 15 & 5 & 35 & 25
+    \end{tabular}
+
+    Closure: As can be seen in the table, $a,b\in\{5,15,25,35\}$ implies $ab\bmod{40}\in\{5,15,25,35\}$.
+
+    Identity: $(25\cdot a)\bmod{40} = (a\cdot25)\bmod{40}=a$ for all $a\in\{5, 15, 25, 35\}$. Therefore, $25$ is the identity of this group.
+
+    Inverse: Let $a \in \{5, 15, 25, 35\}$. There exists some $b \in \{5, 15, 25, 35\}$ such that $ab\bmod{40} = ba\bmod{40} = 25$.
+
+    Associativity: We will first prove the following lemma.
+    \begin{lemma}
+    \label{lem:modulo}
+    Multiplication modulo $n\in\Z$ is associative over the integers.
+    \begin{proof}
+        Let $a,b,c,n\in\Z$.
+        \begin{align*}
+            (ab\bmod{n})c\bmod{n} &= (ab\bmod{n} \cdot c\bmod{n})\bmod{n} & \text{(definition of $\bmod$)}\\
+            &= (ab\cdot c)\bmod{n} & \text{(definition of $\bmod$)}\\
+            &= (a\cdot bc)\bmod{n} & \text{(associativity)}\\
+            &= (a\bmod{n}\cdot bc\bmod{n})\bmod{n} & \text{(definition of $\bmod$)}\\
+            &= a(bc\bmod{n})\bmod{n} & \text{(definition of $\bmod$)}
+        \end{align*}
+    \end{proof}
+    \end{lemma}
+    
+    Associativity follows immediately from lemma \ref{lem:modulo}.
+    \end{proof}
+    
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 2 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+For any integer $n > 2$, prove that there are at least two elements of $U(n)$ that satisfy $x^2 = 1$. 
+\end{problem}
+
+\begin{proof}
+    For all integers $n>2$, we have that $1,(n-1)\in U(n)$ since the linear combinations $1(1) + n(0)$ and $n(1)+(n-1)(-1)$ both equal $1$.
+
+    Now, we will prove that both satisfy $x^2\bmod{n}=1$.
+    \begin{align*}
+        (n-1)^2\bmod{n} &= (n^2-2n+1)\bmod{n} & \text{(distributive property)}\\
+        &= (n(n-2) + 1)\bmod{n} & \text{(polynomial division)}\\
+        &= 1 & \text{(definition of $\bmod$)}
+    \end{align*}
+    \begin{align*}
+        1^2 \bmod{n} &= 1 & \text{(definition of $\bmod$)}
+    \end{align*}
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 3 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+Prove that the set $\{1,2,\ldots,n-1\}$ is a group under multiplication mod $n$ if and only if $n$ is prime.
+\end{problem}
+
+\begin{proof}
+Let $S = \{1,2,\ldots,n-1\}$.
+
+$\Rightarrow$ Assume $S$ is a group under multiplication modulo $n$. Suppose $n$ is not prime. Then, there exists some $b,q\in S$ such that $bq=n$. Thus, $bq\bmod{n}=0\notin S$. We have reached a contradiction, since $S$ being a group implies that it is closed. Thus, $n$ must be prime.
+
+$\Leftarrow$ Assume $n$ is prime. We will prove that $S$ is a group under multiplication modulo $n$.
+
+Closure: Let $a,b\in S$. By definition, $0\leq ab\bmod{n}<n$. Additionally, $ab\bmod{n}\neq 0$ because this would imply that $ab=nq$ where $q\in\Z$. By Euclid's Lemma, this implies that $n$ divides $a$ or $b$ which cannot be true. Therefore, since $0 < ab\bmod{n} < n$ we have proven that $ab\bmod{n}\in S$.
+
+Associativity: By lemma \ref{lem:modulo}, we have that multiplication modulo $n$ is associative over the integers.
+
+Identity: $1\in S$ is the identity since for all $a\in S$, $(1\cdot a)\bmod{n}=(a\cdot 1)\bmod{n}=a$.
+
+Inverses: We will first prove the following lemma.
+\begin{lemma}
+    \label{lem:mod1}
+    Let $a,x,n\in\Z_{>0}$. $ax\bmod{n}=1$ has a solution if and only if $a$ and $n$ are relatively prime.
+    \begin{proof}
+        $\Rightarrow$ Assume $ax\bmod{n}=1$ has a solution. Then, $ax-nq=1$ where $q$ is the largest integer such that $nq\leq ax$. Since we have shown that a linear combination of $a$ and $n$ which equals $1$ exists, we have proven that they are relatively prime.
+
+        $\Leftarrow$ Assume $a$ and $n$ are relatively prime. For some $x,q\in\Z$, we have that the linear combination $ax + n(-q) = 1$. Thus, we have proven that $ax\bmod{n}=1$ has a solution.
+    \end{proof}
+\end{lemma}
+Let $a\in S$. $a$ is relatively prime with $n$ because $n$ itself is prime. By lemma \ref{lem:mod1}, there exists some $x\in\Z_{>0}$ such that $ax\bmod{n}=1$.
+\begin{align*}
+    1 &= ax\bmod{n} & \text{(lemma \ref{lem:mod1})}\\
+    &= (a\bmod{n} \cdot x\bmod{n})\bmod{n} & \text{(definition of $\bmod$)}\\
+    &= (a \cdot x\bmod{n})\bmod{n} & \text{($a<n$)}
+\end{align*}
+Let $b=x\bmod{n}$. We have that $b\in S$ since $0<x\bmod{n}<n$. Therefore, we have proven that for all $a\in S$, there exists some $b\in S$ such that $ab\bmod{n}=ba\bmod{n}=1$.
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} Suppose $G$ is a group with identity $e$ such that for all $x \in G$, $x^2 = e$. Prove that $G$ is Abelian.
+\end{problem}
+
+\begin{proof}
+    Let $a,b\in G$. We will prove that the group operation is commutative by showing that $ab=ba$.
+    \begin{align*}
+        a &= a\\
+        a(bb) &= a & \text{($b^2=e$)}\\
+        (ab)b &= a & \text{(associativity)}\\
+        (ab)(ba) &= a^2 & \text{(right multiply $a$)}\\
+        (ab)(ba) &= e & \text{($a^2=e$)}\\
+        ab &= ba & \text{(definition of $G$)}
+    \end{align*}
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 5 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} Let $G$ be a finite group with identity $e$. Show that the number of elements $x$ of $G$ such that $x^2 \not = e$ is even.
+\end{problem}
+
+\begin{proof}
+    Let $S\subseteq G$ be the set of elements in $G$ that are not their own inverse. For all $x\in S$, there must be some unique $x'\in S$ such that $x\neq x'$ and $xx'=x'x=e$ (Gallian, 2.3). Let $K\subseteq S = \{x,x'\}$. For any other $y\in S\setminus K$, we have that there exists another $y'\neq y$ that is in $S\setminus K$; together, these two elements form another set $K_2\subseteq S = \{y,y'\}$ that is disjoint from $K$. Thus, this process can be repeated until we can partition $S$ cleanly into sets of exactly two elements. This implies that the elements of $S$ can be divided evenly into pairs, proving that the cardinality of $S$ is even.
+\end{proof}
+
+\end{document}

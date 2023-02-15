@@ -1,0 +1,222 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\graphicspath{ {./} }
+
+\onehalfspacing
+
+\title{MATH 0540 Problem Set 3}
+\author{Collaborated with Esmé, Mariana, and Edward}
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{A function $f : \mathds{R} \rightarrow \mathds{R}$ is called periodic if there exists a positive number $p$ such that $f(x) = f(x + p)$ for all $x \in \mathds{R}$. Is the set of periodic functions from $\mathds{R}$ to $\mathds{R}$ a subspace of $\mathds{R}^{\mathds{R}}$? Prove or disprove.}
+
+\paragraph{\large
+\\Let $P$ be the set of all periodic functions from $\mathds{R}$ to $\mathds{R}$.}
+
+\paragraph{\large
+$P$ is a subspace of $\mathds{R}^{\mathds{R}}$ if and only if:
+\\\indent 1. $0 \in P$
+\\\indent 2. $u,w \in P$ implies $u + w \in P$
+\\\indent 3. $a \in \mathds{F}$, $u \in P$ implies $au \in P$}
+
+\paragraph{\large
+\begin{multicols}{2}
+Let $f$ be a function:
+\\\indent\indent $\mathds{R} \rightarrow \mathds{R}$
+\\\indent\indent $x \rightarrow cos(x)$
+\\\\\indent $\forall x \in \mathds{R}$, 
+\\\indent $cos(x) = cos(x + 2\pi)$
+\\\indent Thus, $f$ is periodic,
+\\\indent meaning $f \in P$.
+\columnbreak
+\\Let $g$ be a function:
+\\\indent $\mathds{R} \rightarrow \mathds{R}$
+\\\indent $x \rightarrow cos(\pi x)$
+\\\\$\forall x \in \mathds{R}$, 
+\\$cos(\pi x) = cos(\pi x + 2)$
+\\Thus, $g$ is periodic,
+\\meaning $g \in P$.
+\end{multicols}}
+
+\paragraph{\large
+Consider the following lemma:}
+
+\paragraph{\large
+$\forall j, k \in P$ with periods $p_j, p_k$ respectively, $j + k \in P$ if and only if $\exists$ non-zero $m,n \in \mathds{N}$ such that $mp_j = np_k$.}
+
+\paragraph{\large
+If $j + k$ is periodic, $\forall x \in \mathds{R}, \exists p \in \mathds{R}$ such that $(j + k)(x + p) = (j + k)(x)$. In other words, $j(x + p) + k(x + p) = j(x) + k(x)$, $\forall x \in \mathds{R}$. This implies that at some regular interval $p$, the periods of $j$ and $k$ must coincide. Therefore, if $j + k$ is periodic, it implies that $\exists$ non-zero $m,n \in \mathds{N}$ such that $mp_j = np_k$.}
+
+\paragraph{\large
+From the other side, if $j$ and $k$ are periodic with periods $p_{j}$ and $p_{k}$, and $\exists$ non-zero $m,n \in \mathds{N}$ such that $mp_j = np_k$, it follows that there is a certain least common multiple between $p_j$ and $p_k$. This implies that for some $p \in \mathds{R}$, $(j + k)(x + p) = (j + k)(x)$. In other words, $j + k$ is periodic.}
+
+\paragraph{\large
+Now consider $f$ and $g$ once more:
+\\\indent The period of $f$ is $2\pi$.
+\\\indent The period of $g$ is $2$.}
+
+\paragraph{\large
+$\forall$ non-zero $m,n \in \mathds{N}, m \cdot 2\pi \neq n \cdot 2$.
+\\\\Thus, $f + g \notin P$, contradicting condition 2. from above. Therefore, $P$ cannot be a subspace of $\mathds{R}^{\mathds{R}}$.}
+
+\newpage
+
+\section{Let $V$ be the set of functions from $\mathds{R} \rightarrow \mathds{R}$. Let $U = \{f \in V \thickspace | \thickspace f(5) = 1\}$. Is this a linear subspace? Prove or disprove.}
+
+\paragraph{\large
+\\$U$ is a subspace of $V$ if and only if:
+\\\indent 1. $0 \in U$
+\\\indent 2. $u,w \in U$ implies $u + w \in U$
+\\\indent 3. $a \in \mathds{F}$, $u \in U$ implies $au \in U$}
+
+\paragraph{\large
+Let $f$ and $g$ be functions:
+\\\indent $\mathds{R} \rightarrow \mathds{R}$}
+
+\paragraph{\large
+$\forall x \in \mathds{R}$, consider $(f + g)(x)$:
+\\\indent To have $0 \in U$, there must be some function $g$ 
+\\\indent such that $f(x) + g(x) = f(x)$.}
+
+\paragraph{\large
+However, at $x = 5$, $f$ and $g$ must output $1$.
+\\\indent In other words, $U$ contains no function $g$ such that 
+\\\indent $g(5) = 0$, meaning it is impossible for $f(5) + g(5) = f(5)$ to 
+\\\indent be true.}
+
+\paragraph{\large
+By this logic, the first condition for $U$ to be a subspace fails, implying that $U$ is not a linear subspace.}
+
+\newpage
+
+\section{Let $W$ be a subset of a vector space $V$. Prove or disprove: if $W + W = W$, then $W$ is a subspace of $W$.}
+
+\paragraph{\large
+\\Consider the empty set, $\emptyset$.
+\\\indent $\emptyset \subset V$.
+\\\indent $\emptyset + \emptyset = \emptyset$, since there are no vectors
+\\\indent to add in the first place.}
+
+\paragraph{\large
+$\emptyset$ is a subspace if and only if $0 \in \emptyset$.}
+
+\paragraph{\large
+By definition, the empty set has no vectors, so it cannot contain $0$. Therefore, the statement that $W$ is a subspace of $W$ if $W + W = W$ is disproven.}
+
+\newpage
+
+\section{Suppose $U = \{(x, x, y, y) \in \mathds{F}^{4} \thickspace | \thickspace x, y \in F\}$. Find a subspace $W$ of $\mathds{F}^{4}$ such that $\mathds{F}^{4} = U \oplus W$.}
+
+\paragraph{\large
+\\$\mathds{F}^{4} = U \oplus W$ if:
+\\\indent 1. $W \cap U = \{0\}$
+\\\indent 2. $W + U = \mathds{F}^{4}$}
+
+\paragraph{\large
+Let $W = \{(0, a, a, b) \in \mathds{F}^{4} \thickspace | \thickspace a,b \in \mathds{F}\}$}
+
+\paragraph{\large
+$W$ is a subspace of $\mathds{F}^{4}$ if and only if:
+\\\indent 1. $0 \in W$
+\\\indent 2. $u,w \in W$ implies $u + w \in W$
+\\\indent 3. $c \in \mathds{F}$, $u \in W$ implies $cu \in W$}
+
+\paragraph{\large
+Fixing $a$ and $b$ to $0$ results in $(0, 0, 0, 0)$, thus $0 \in W$.}
+
+\paragraph{\large
+$\forall a,a',b,b' \in \mathds{F}$,
+\\\indent let $u,w \in W$ such that $u = (0, a, a, b)$ and $w = (0, a', a', b')$
+\\\indent $ u + w = (0, a + a', a + a', b + b')$.
+\\\indent By the definition of a field, $\mathds{F}$ is closed over addition, 
+\\\indent meaning $a + a' \in \mathds{F}$, and $b + b' \in \mathds{F}$.
+\\\indent This means $u + w \in W$.
+\\\indent Therefore, $u,w \in W$ implies $u + w \in W$.}
+
+\paragraph{\large
+$\forall a,b,c \in \mathds{F}$,
+\\\indent let $u \in W$ such that $u = (0, a, a, b)$
+\\\indent $ cu = (0, a \cdot c, a \cdot c, b \cdot c)$.
+\\\indent By the definition of a field, $\mathds{F}$ is closed over 
+\\\indent multiplication, meaning $a \cdot c \in \mathds{F}$, and $b \cdot c \in \mathds{F}$.
+\\\indent This means $cu \in W$.
+\\\indent Therefore, $c \in \mathds{F}$ and $u \in W$ implies $cu \in W$.}
+
+\paragraph{\large
+Since all three conditions are met, $W$ is a subspace.}
+
+\paragraph{\large
+Consider $W \cap U$:
+\\\indent $(x, x, y, y) = (0, a, a, b)$
+\\\indent implies $0 = x = a = y$,
+\\\indent meaning $W \cap U = \{0\}$}
+
+\paragraph{\large
+Now consider $W + U$:
+\\\indent $W + U = \{(x, x + a, y + a, y + b) \thickspace | \thickspace a,b,x,y \in \mathds{F}\}$
+\\\indent $\mathds{F}^{4} = \{(k, l, m, n) \thickspace | \thickspace k,l,m,n \in \mathds{F}\}$
+\\\indent It follows that:
+\\\indent $x = k$
+\\\indent $l = x + b = k + b$
+\\\indent $b = l - k$
+\\\indent $m = y + b = y + l - k$
+\\\indent $y = m - l + k$
+\\\indent $n = y + a = m - l + k + a$
+\\\indent $a = n - m + l - k$,
+\\\indent meaning $W + U = \mathds{F}^{4}$.}
+
+\paragraph{\large
+Since both conditions are met, $\mathds{F}^{4} = U \oplus W$.}
+
+\newpage
+
+\section{Let $U1$ and $U2$ be subsets of a vector space $V$. Prove that $span(U1 \cap U2) \subset span(U1) \cap span(U2)$. Prove that if $U1$ and $U2$ are subspaces, then $span(U1 \cap
+U2) = span(U1) \cap span(U2)$.}
+
+\paragraph{\large
+\\Let $V \in span(U1 \cap U2)$.
+\\\\ This means $V \in \{a_{1}v_{1} + ... + a_{n}v_{n} \thickspace | \thickspace a \in \mathds{F}, v \in U1 \cap U2\}$.
+\\\indent Since $v_{1}, ... ,v_{n} \in U1 \cap U2$,
+\\\indent it follows that $v_{1}, ... ,v_{n} \in U1$ and $v_{1}, ... ,v_{n} \in U2$.
+\\\indent Therefore, $V \in \{a_{1}v_{1} + ... + a_{n}v_{n} \thickspace | \thickspace a \in \mathds{F}, v \in U1\}$ and 
+\\\indent $V \in \{a_{1}v_{1} + ... + a_{n}v_{n} \thickspace | \thickspace a \in \mathds{F}, v \in U2\}$.}
+
+\paragraph{\large
+Now consider $span(U1)$ and $span(U2)$ individually:
+\\\indent $span(U1) = \{a_{1}v_{1} + ... + a_{n}v_{n} \thickspace | \thickspace a \in \mathds{F}, v \in U1\}$
+\\\indent $span(U2) = \{a_{1}v_{1} + ... + a_{n}v_{n} \thickspace | \thickspace a \in \mathds{F}, v \in U2\}$}
+
+\paragraph{\large
+This means $V \in span(U1)$ and $V \in span(U2)$, which can be rewritten as $V \in span(U1) \cap span(U2)$. 
+\\\\Finally, since $V \in span(U1 \cap U2)$, 
+\\\indent it follows that $span(U1 \cap U2) \subset span(U1) \cap span(U2)$.}
+
+\paragraph{\large
+From the other side, since a subspace is closed under addition 
+and multiplication, it follows that:
+\\\indent $U1 = span(U1)$ and $U2 = span(U2)$.
+\\\indent Thus, $U1 \cap U2 = span(U1) \cap span(U2)$,
+\\\indent which means $span(U1) \cap span(U2) \subset U1 \cap U2$.}
+
+\paragraph{\large
+Finally,
+\\\indent $U1 \cap U2 \subset span(U1 \cap U2)$.
+\\\indent So, $span(U1) \cap span(U2) \subset U1 \cap U2 \subset span(U1 \cap U2)$,
+\\\indent which simplifies to $span(U1) \cap span(U2) \subset span(U1 \cap U2)$.}
+
+\paragraph{\large
+Since $span(U1) \cap span(U2) \subset span(U1 \cap U2)$ and
+\\ $span(U1 \cap U2) \subset span(U1) \cap span(U2)$, it must follow that
+\\ $span(U1 \cap U2) = span(U1) \cap span(U2)$.}
+
+\end{document}

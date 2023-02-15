@@ -1,0 +1,346 @@
+\documentclass[11pt,reqno]{article}
+
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+\usepackage[T1]{fontenc}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsthm,bbm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{extarrows}
+\usepackage{color}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage[colorlinks, linktocpage, citecolor = red, linkcolor = blue]{hyperref}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{euler}
+
+%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+
+%%%%%%%%%%%%%%%%%%%% COMMANDS %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\range}{\mathrm{range\,}}
+\newcommand{\nul}{\mathrm{null\,}}
+\newcommand{\spn}{\mathrm{span\,}}
+\newcommand{\card}{\mathrm{cardinality}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\bd}{\mathrm{bd\,}}
+\newcommand{\divline}{\hrule\vspace{12pt}\noindent}
+\newcommand{\sgn}{\mathrm{sgn}}
+
+%%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+%%%%%%%%%%%%%%%%%%%% TITLE-PAGE %%%%%%%%%%%%%%%%%%%%
+
+\title{MATH 0540 Final Review}
+\author{Tanish Makadia}
+\date{December 2022}
+
+%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%% MAIN CONTENT %%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\subsection*{Field Axioms}
+1. Commutativity
+\begin{align*}
+    \alpha + \beta &= \beta + \alpha\\
+    \alpha\beta &= \beta\alpha
+\end{align*}
+2. Associativity
+\begin{align*}
+    (\alpha + \beta) + \lambda &= \alpha + (\beta + \lambda)\\
+    (\alpha\beta)\lambda &= \alpha(\beta\lambda)
+\end{align*}
+3. Additive and Multiplicative Identities
+\begin{align*}
+    \alpha + 0 &= \alpha\\
+    \alpha \cdot 1 &= \alpha
+\end{align*}
+4. Unique Additive Inverse
+\begin{align*}
+    \forall \alpha\in\F,\ \exists\beta\in\F \text{ such that } \alpha + \beta = 0
+\end{align*}
+5. Unique Multiplicative Inverse
+\begin{align*}
+    \forall\alpha\in\F,\ \exists\beta\in\F \text{ such that } \alpha\beta = 1
+\end{align*}
+6. Distributive Property
+\begin{align*}
+    \alpha(\beta + \lambda) &= \alpha\beta + \alpha\lambda
+\end{align*}
+
+\subsection*{Vector Spaces} 
+1. A vector space is a set $V$ with an addition on $V$ and scalar multiplication on $V$ such that the following properties hold:\\\\
+\indent a) Commutativity\\
+\indent b) Associativity\\
+\indent c) Unique Additive Identity\\
+\indent d) Multiplicative Identity\\
+\indent e) Unique Additive Inverse\\
+\indent f) Distributive Properties:
+\begin{align*}
+    v(a + b) &= av + bv\\
+    a(u + v) &= au + av
+\end{align*}
+2. Let $p$ be a prime number. Then $\F_p = \{0, 1, \ldots, p-1\}$ is a vector space with addition and scalar multiplication $\mod p$.
+
+\subsection*{$\F^S$ Notation}
+If $S$ is a set, $\F^S$ denotes the set of functions from $S$ to $\F$. For any $f,g\in\F^S$ and $\lambda\in\F$
+\begin{align*}
+    &f + g \in\F^S \text{ is defined by } (f+g)(x) = f(x) + g(x) & \text{for all $x\in S$}\\
+    &\lambda f\in\F^S \text{ is defined by } (\lambda f)(x) = \lambda f(x) & \text{for all $x\in S$}
+\end{align*}
+
+\subsection*{Subspaces}
+$U$ is a subspace of a vector space $V$ if it is also a vector space under the same addition and scalar multiplication on $V$.\\\\
+1. Unique Additive Identity $0\in U$\\
+2. Closed Under Addition and Scalar Multiplication
+
+\subsection*{Subsets}
+1. Sum of subsets:
+\begin{align*}
+    U_1 + \cdots + U_m = \{u_1 + \cdots + u_m\ |\ u_i\in U_i\}
+\end{align*}
+2. If $U_1,\ldots,U_m$ are subspaces of $V$, then $U_1+\cdots+U_m$ is the smallest subspace of $V$ containing $U_1,\ldots,U_m$.
+3. Every subspace of a finite-dimensional vector space is also finite-dimensional
+
+\subsection*{Direct Sum}
+Let $U_1,\ldots,U_m$ be subspaces of $V$.\\\\
+1. $U_1+\cdots+U_m$ is called a direct sum if each of its elements can only be written in one way as a sum $u_1+\cdots+u_m$ where each $u_i\in U_i$.\\\\
+2. $U_1\oplus\cdots\oplus U_m$ denotes that $U_1+\cdots + U_m$ is a direct sum.\\\\
+3. $U_1+\cdots +U_m$ is a direct sum if and only if the only way to express $0 = u_1+\cdots+u_m$ is by taking each $u_i = 0$.\\\\
+4. $U_1 + U_2$ is a direct sum if and only if $U_1 \cap U_2 = \{0\}$.\\\\
+5. There exists a direct sum $U_1 \oplus W = V$ where $W$ is some other subspace of $V$; \emph{i.e.} every subspace is part of a direct sum equaling its parent space.
+
+\subsection*{Span}
+1. The span of a list of vectors is the set of all possible linear combinations of them
+\begin{align*}
+    span(v_1,\ldots,v_m) = \{a_1v_1+\cdots+a_mv_m\ |\ a_i\in\F\}
+\end{align*}
+2. The span of an empty list of vectors $(\ )$ is defined to be $\{0\}$.\\\\
+3. The span of a list of vectors in $V$ is the smallest subspace of $V$ containing all of the vectors.\\\\
+4. Every spanning list contains a basis
+
+\subsection*{Dimension}
+1. A vector space is finite-dimensional if some finite list of vectors spans the space.\\\\
+2. Every finite dimensional vector space has a basis\\\\
+4. If $U$ is a subspace of $V$, $\dim U\leq \dim V$.\\\\
+5. Dimension of a sum of two subspaces
+\begin{align*}
+    \dim(U_1 + U_2) = \dim U_1 + \dim U_2 - \dim(U_1 \cap U_2)
+\end{align*}
+
+\subsection*{Linear Independence}
+1. The length of a linearly independent list of vectors is less than or equal to the length of a spanning list of vectors\\\\
+2. The only way to express $0 = a_1v_1+\cdots + a_mv_m$ is by fixing each $a_1,\ldots,a_m$ to zero.
+
+\subsection*{Linear Dependence}
+Let $v_1,\ldots,v_m$ be a linearly dependent list of vectors in $V$. The following must be true:\\\\
+1. There exists $v_j\in span(v_1,\ldots,v_{j-1})$\\\\
+2. If this $v_j$ is removed, the span of the list does not change
+
+\subsection*{Bases}
+1. Linearly Independent\\\\
+2. Spanning\\\\
+3. All bases of the same space have the same length\\\\
+4. Every linearly independent or spanning list of vectors of length $\dim V$ is a basis of $V$.
+
+\subsection*{Linear Maps}
+1. Additivity
+\begin{align*}
+    T(u + v) &= T(u) + T(v)
+\end{align*}
+2. Homogeneity
+\begin{align*}
+    T(\lambda u) &= \lambda T(u)
+\end{align*}
+3. Suppose $v_1,\ldots,v_n$ are a basis of $V$ and $w_1,\ldots,w_n\in W$. Then there exists a unique linear map $T\in\mathcal{L}(V, W)$ such that $T(v_j) = w_j$ for each $j = 1,\ldots,n$\\\\
+4. Suppose $S,T\in\mathcal{L}(V, W)$, and $\lambda\in\F$. Then for all $v\in V$,
+\begin{align*}
+    (S + T)(v) &= Sv + Tv\\
+    (\lambda T)(v) &= \lambda (Tv)
+\end{align*}
+5. $\mathcal{L}(V, W)$ is a vector space with the addition and scalar multiplication defined in (4).\\\\
+6. The product of linear maps is their composition such that if $S\in\mathcal{L}(V, W)$ and $T\in\mathcal{L}(U, V)$
+\begin{align*}
+    (ST)(u) = S(Tu)
+\end{align*}
+7. Whenever the products make sense (i.e. the codomain of one map is the domain of the next), linear maps follow associativity, identity, and distributive properties as follows
+\begin{align*}
+    (T_1T_2)T_3 &= T_1(T_2T_3)\\
+    TI &= IT = T\\
+    (S_1 + S_2)T &= S_1T + S_2T
+\end{align*}
+8. All linear maps take $0$ to $0$.
+
+\subsection*{Range and Null Space}
+Consider a linear map $T\in\mathcal{L}(V, W)$:\\\\
+1. $\nul T = \{v\in V\ |\ T(v) = 0\}$\\\\
+2. $\nul T$ is a subspace of $V$\\\\
+3. $\range T = \{T(v)\ |\ v\in V\}$\\\\
+4. $\range T$ is a subspace of $T$\\\\
+5. $\dim V = \dim\nul T + \dim\range T$
+
+\subsection*{Injective and Surjective Maps}
+1. A function $T: V\rightarrow W$ is injective if $T(u) = T(v)$ implies $u = v$.\\\\
+2. Injectivity is equivalent to null space equals $\{0\}$.\\\\
+3. A linear map is surjective if its range equals its codomain\\\\
+4. A map to a smaller dimensional space cannot be injective\\\\
+5. A map to a larger dimensional space cannot be surjective
+
+\subsection*{Matrices}
+1. $T(v_k) = A_{1,k}w_1 + \cdots + A_{m,k}w_m$ (column is the result of the map on a basis vector)\\\\
+2. $M(S+T) = M(S) + M(T)$\\\\
+3. $M(\lambda T) = \lambda M(T)$\\\\
+4. $\F^{m,n}$ is a vector space with dimension $mn$.\\\\
+5. $M(ST) = M(S)M(T)$\\\\
+6. If $A$ is an $mxn$ matrix and $C$ is an $nxp$ matrix, $AC$ is an $mxp$ matrix\\\\
+7. Suppose $A$ is an $mxn$ matrix and $C$ is an $nx1$ matrix such that $C = 
+\begin{bmatrix}
+    c_1\\
+    \vdots\\
+    c_n
+\end{bmatrix}$.
+\begin{align*}
+    AC = c_1A_{\cdot,1}+\cdots+c_nA_{\cdot,n}
+\end{align*}
+8. $M(v) = 
+\begin{bmatrix}
+    c_1\\
+    \vdots\\
+    c_n
+\end{bmatrix}$
+where $v = c_1v_1 + \cdots + c_nv_n$.\\\\
+9. $M(T(v)) = M(T)M(v)$\\\\
+10. Let $T\in\mathcal{L}(V)$. If $\mathcal{M}(T)$ is upper triangular, then $\spn(v_1,\ldots,v_n)$ is invariant under $T$.\\\\
+10. An upper triangular matrix is invertible if and only if all the diagonal entries are non-zero.\\\\
+11. Suppose $u_1,\ldots,u_n$ and $v_1,\ldots,v_n$ are bases of $V$. Then $M(I, (u_1,\ldots,u_n), (v_1,\ldots,v_n))$ and $M(I, (v_1,\ldots,v_n), (u_1,\ldots,u_n))$ are inverses of each other.\\\\
+12. Change of basis: $M(T, (u_1,\ldots,u_n)) = M(I, (v_1,\ldots,v_n), (u_1,\ldots,u_n)) \cdot M(T, (v_1,\ldots,v_n)) \cdot M(I, (u_1,\ldots,u_n), (v_1,\ldots,v_n))$\\\\
+13. Let $T\in\mathcal{L}(V)$. $M(T)$ is diagonalizable if and only if $V$ has a basis of eigenvectors of $T$.
+
+\subsection*{Isomorphisms}
+1. For a linear map, $T$, another linear map $S$ is the inverse of $T$ if $ST = I$ and $TS = I$.\\\\
+2. An invertible linear map has a unique inverse.\\\\\
+3. Invertibility is equivalent to injectivity and surjectivitiy.\\\\
+4. Two finite-dimensional vector spaces are isomorphic if and only if they have the same dimension.\\\\
+5. Suppose $v_1,\ldots,v_n$ is a basis of $V$ and $w_1,\ldots,w_m$ is a basis of $W$. Then $\mathcal{M}$ is an isomorphism between $\mathcal{L}(V, W)$ and $\F^{m,n}$.\\\\
+6. Suppose $V$ and $W$ are finite-dimensional. Then $\mathcal{L}(V, W)$ is finite-dimensional and 
+\begin{align*}
+    \dim \mathcal{L}(V, W) = (\dim V)(\dim W)
+\end{align*}\\\\
+7. Invertible is equivalent to columns being a basis for codomain\\\\
+8. $A^{-1} = \frac{1}{\det A}C^T$\\\\
+9. For an $nxn$ matrix $A$, the following are equivalent\\
+\indent a) $A$ is invertible\\
+\indent b) $\det A\neq 0$\\
+\indent c) the rows and columns of $A$ are linearly independent
+
+\subsection*{Operators}
+Suppose $T\in\mathcal{L}(V)$\\\\
+1. Injectivity, surjectivity, and invertibility are equivalent\\\\
+2. Every operator has an upper triangular matrix
+
+\subsection*{Polynomials}
+1. Fundamental Theorem of Algebra: every non-constant polynomial with complex coefficients has a zero.\\\\
+2. Every non-constant polynomial has a unique factorization
+\begin{align*}
+    p(z) = c(z - \lambda_1)\cdots(z - \lambda_m)
+\end{align*}\\\\
+3. If $p,q\in\mathcal{P}(\F)$, then $pq\in\mathcal{P}(\F)$ is defined as $(pq)(z) = p(z)q(z)$.\\\\
+4. A monic polynomial is a polynomial in which the highest degree term has a coefficient of one.\\\\
+5. Suppose $T\in\mathcal{L}(V)$. The mimimal polynomial of $T$ is the unique monic polynomial $p$ of smallest degree such that $p(T) = 0$.
+
+\subsection*{Invariance and Eigenvectors}
+1. $U$ is invariant under $T$ if $T(u)\in U$ for all $u\in U$.\\\\
+2. Zero can be an eigenvalue, but zero cannot be an eigenvector\\\\
+3. Suppose $T\in\mathcal{L}(V)$ and $\lambda\in\F$. The following are equivalent:\\
+\indent a) $\lambda$ is an eigenvalue of $T$\\
+\indent b) $T - \lambda I$ is not injective\\
+\indent c) $T - \lambda I$ is not surjective\\
+\indent d) $T - \lambda I$ is not invertible\\\\
+4. If $\lambda_1,\ldots,\lambda_m$ are distinct eigenvalues of $T$, then the corresponding eigenvectors $v_1,\ldots,v_m$ are linearly independent.\\\\
+5. If $V$ is finite-dimensional, each operator on $V$ has at most $\dim V$ distinct eigenvalues.\\\\
+6. The eigenvalues of an upper triangular matrix are the diagonal values
+
+\subsection*{Characteristic Polynomial}
+1. Suppose $V$ is a complex vector space and $T\in\mathcal{L}(V)$. Then the characteristic polynomial of $T$ has degree $\dim V$.\\\\
+2. Cayley-Hamilton Theorem: Let $T\in\mathcal{L}(V)$ and let $q$ be the characteristic polynomial of $T$. Then $q(t) = 0$.
+
+\subsection*{Determinant}
+1. Three properties\\
+\indent a) Multi-linear
+\begin{align*}
+    D(v_1,\ldots,av_k+bv_k',\ldots,v_n) = aD(v_1,\ldots,v_k,\ldots,v_n)+bD(v_1,\ldots,v_k',\ldots,v_n)
+\end{align*}
+\indent b) Alternating
+\begin{align*}
+    D(v_1,\ldots,v_j,\ldots,v_k,\ldots,v_n)=0 \text{ if } v_j=v_k
+\end{align*}
+\indent c) Normalized
+\begin{align*}
+    \det(e_1,\ldots,e_n)=1
+\end{align*}
+2. Invertible is equivalent to non-zero determinant\\\\
+3. Leibniz (Permutation) Formula \[\det A = \sum_{\sigma\in S_n} sgn(\sigma)\prod_{i=1}^n A_{\sigma_i,i}\]
+4. Interchanging two columns in a matrix flips the sign of the determinant.\\\\
+5. If a matrix has two columns that are equal, its determinant is zero.\\\\
+6. $\det (AB) = \det (BA) = (\det A) (\det B)$\\\\
+7. Co-factor Expansion: $\det A = A_{j,1}C_{j,1}+\cdots+A_{j,n}C_{j,n}$ where $C_{j,k} = (-1)^{j+k}\det A_{\hat{j},\hat{k}}$\\\\
+8. $\det A = \det A^T$\\\\
+9. Let $A\in\C^{nxn}$ with eigenvalues $\lambda_1,\ldots,\lambda_n$. Then $\det A = \lambda_1\cdots\lambda_n$.
+
+\subsection*{Elementary Matrices}
+1. Row exchange: $I$ with two rows switched\\
+2. Scaling: $I$ except with $I_{k,k}$ equal to a scalar $\lambda$\\
+3. Row Replacement: Add $\lambda$ in $k$th entry of $j$th row in $I$
+
+\subsection*{Reduced Row Echelon Form}
+1. Reduced row echelon form:\\
+\indent a) All $0$ rows come last\\
+\indent b) For any nonzero row, its first nonzero entry (pivot) is strictly to the right of pivot in the previous row\\
+\indent c) All pivot entries are 1\\
+\indent d) All entries above the pivots are $0$\\\\
+2. Suppose $v_1,\ldots,v_n\in\F^n$, and let $A=
+\begin{bmatrix}
+    | & & |\\
+    v_1 & \cdots & v_n\\
+    | & & |
+\end{bmatrix}$. Then the following is true:\\
+\indent a) $v_1,\ldots,v_n$ are linearly independent if and only if the echelon form of $A$ has a pivot in every column\\
+\indent b) $v_1,\ldots,v_n$ spans $\F^n$ if and only if the echelon form of $A$ had a pivot in every row\\
+\indent c) $v_1,\ldots,v_n$ is a basis for $\F^n$ if and only if the echelon form of $A$ is $I$.\\\\
+3. A matrix is invertible if and only if its echelon form is $I$.
+
+\subsection*{Homework Results}
+1. $\spn(U_1 \cap U_2) \subset \spn(U_1) \cap \spn(U_2)$\\\\
+2. $\dim(U_1 + \cdots + U_m) \leq \dim(U_1) + \cdots + \dim(U_m)$\\\\
+3. Product of upper triangular matrices is upper triangular\\\\
+4. $M(T(v)) = M(T)M(v)$\\\\
+5. $(ST)^{-1} = T^{-1}S^{-1}$\\\\
+6. Determinant of upper triangular matrix is product of diagonals\\\\
+7. $T$ and $T^{-1}$ have the same eigenvectors (and eigenvalues are reciprocals of each other)
+
+\end{document}

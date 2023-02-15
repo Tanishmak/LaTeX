@@ -1,0 +1,393 @@
+\documentclass[12pt,reqno]{article}
+
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+\usepackage[T1]{fontenc}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsthm,bbm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{extarrows}
+\usepackage{color}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage[colorlinks, linktocpage, citecolor = red, linkcolor = blue]{hyperref}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{euler}
+
+%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+
+%%%%%%%%%%%%%%%%%%%% COMMANDS %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\range}{\mathrm{range\,}}
+\newcommand{\nul}{\mathrm{null\,}}
+\newcommand{\spn}{\mathrm{span\,}}
+\newcommand{\card}{\mathrm{cardinality}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\bd}{\mathrm{bd\,}}
+\newcommand{\divline}{\hrule\vspace{12pt}\noindent}
+\newcommand{\sgn}{\mathrm{sgn}}
+
+%%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+%%%%%%%%%%%%%%%%%%%% TITLE-PAGE %%%%%%%%%%%%%%%%%%%%
+
+\title{MATH 0540 Problem Set 9}
+\author{Collaborated with Esmé}
+\date{November 2022}
+
+%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 1 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} Prove that the function 
+$\det: \mathbb{F}^{n \times n} \rightarrow \mathbb{F}$ given by
+$$
+det(v_1, \ldots, v_n) = \sum_{\sigma \in S_n} \left( 
+sgn(\sigma) \prod_{i=1}^n v_{i,\sigma(i)}
+\right)
+$$
+is multilinear, alternating, and normalized.
+\end{problem}
+
+\begin{proof}
+    To prove that $\mathrm{det}(v_1,\ldots,v_n)$ is multilinear, we will show that $D(v_1,\ldots,av_k+bv_k',\ldots,v_n) = aD(v_1,\ldots,v_k,\ldots,v_n)+bD(v_1,\ldots,v_k',\ldots,v_n)$:
+    \begin{align*}
+        \mathrm{det}(v_1,\ldots,v_n) &= \sum_{\sigma\in S_n}\sgn(\sigma)\left[\left(\prod_{i=1,i\neq k}^{n}v_{\sigma(i),i}\right)(av_{\sigma(k),k}+bv'_{\sigma(k),k})\right] & \text{(definition of $\det$)}\\
+        &= \sum_{\sigma\in S_n}\sgn(\sigma)\left[a\prod^{n}_{i=1}v_{\sigma(i),i}+b\left(\prod_{i=1,i\neq k}^{n}v_{\sigma(i),i}\right)\cdot v'_{\sigma(k),k}\right] & \text{(distributive prop.)}\\
+        &= a\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i=1}^n v_{\sigma(i),i}+b\sum_{\sigma\in S_n} \sgn(\sigma)\left(\prod_{i=1,i\neq k}^{n}v_{\sigma(i),i}\right)\cdot v'_{\sigma(k),k} & \text{(distributive prop.)}\\
+        &= aD(v_1,\ldots,v_k,\ldots,v_n)+bD(v_1,\ldots,v_k',\ldots,v_n) & \text{(definition of $\det$)}
+    \end{align*}
+    \divline
+    \noindent Next, we will prove $\det(v_1,\ldots,v_n)$ is alternating by showing that \\$D(v_1,\ldots,v_j,\ldots,v_k,\ldots,v_n)=0$ if $v_j=v_k$.
+    \\\\
+    Let $\sigma$ be a permutation of $1,\ldots,n$.\\Let $\sigma'=\sigma$ with entries $j,k$ switched. Therefore, $\sigma(j)=\sigma'(k)$ and $\sigma(k)=\sigma'(j)$.
+    \\\\
+    Consider a single component of the determinant of $v_1,\ldots,v_n$. We will prove that each term of the summation formed using $\sigma \in S_n$ has a corresponding term formed using $\sigma'$ that is the additive inverse of it:
+    \begin{align*}
+        \sgn(\sigma)\prod_{i=1}^{n}v_{\sigma(i),i} &= 
+        \sgn(\sigma)\left(\prod_{i=1,i \neq j,k}^{n}v_{\sigma(i),i}\right)v_{\sigma(j),j}v_{\sigma(k),k} & \text{(extract terms)}\\
+        &= \sgn(\sigma)\left(\prod_{i=1,i\neq j,k}^{n}v_{\sigma'(i),i}\right)v_{\sigma'(k),j}v_{\sigma'(j),k} & \text{(definition of $\sigma'$)}\\
+        &= \sgn(\sigma)\left(\prod_{i=1,i\neq j,k}^{n}v_{\sigma'(i),i}\right)v_{\sigma'(k),k}v_{\sigma'(j),j} & \text{($v_j=v_k$)}\\
+        &= \sgn(\sigma)\prod_{i=1}^{n}v_{\sigma'(i),i} & \text{(reinsert terms)}\\
+        &= -\sgn(\sigma')\prod_{i=1}^{n}v_{\sigma'(i),i} & \text{($\sigma'$ has 1 extra transposition)}
+    \end{align*}
+    Therefore, we have shown that each term in the summation used to calculate $\det(v_1,\ldots,v_n)$ has an additive inverse that is also present in the summation. Therefore:
+    \begin{align*}
+        \sum_{\sigma\in S_n}\left(\sgn(\sigma)\prod_{i=1}^{n}v_{\sigma(i),i}\right) = 0
+    \end{align*}
+    \divline
+    Finally, we will prove that $\det(v_1,\ldots,v_n)$ is normalized by showing that $\det(e_1,\ldots,e_n)=1$. 
+    \begin{align*}
+        \text{Let $e$} = M(e_1,\ldots,e_n) &=
+        \begin{bmatrix}
+            1 &   & 0 \\
+             & \ddots & \\
+            0 & & 1
+        \end{bmatrix}
+        & \text{(each $e_i$ is a standard basis vector)}
+    \end{align*}
+    \begin{align*}
+        \det(e_1,\ldots,e_n) &= \sum_{\sigma\in S_n}\left(\sgn(\sigma)\prod_{i=1}^{n}e_{\sigma(i),i}\right) & \text{(definition of $\det$)}
+    \end{align*}
+    Consider the permutation $\sigma = 1,\ldots,n$. $\sgn(\sigma) = 1$, and each $e_{\sigma(i),i}=e_{i,i}=1$. Thus, 
+    \begin{align*}
+        \sgn(\sigma)\prod_{i=1}^{n}e_{\sigma(i),i}=1 \text{ for $\sigma=1,\ldots,n$}
+    \end{align*}
+    Every other permutation $\sigma\neq 1,\ldots,n$ will include a term $e_{\sigma(i),i}\neq e_{i,i}=0$. Thus,
+    \begin{align*}
+        \sgn(\sigma)\prod_{i=1}^{n}e_{\sigma(i),i}=0 \text{ for $\sigma\neq 1,\ldots,n$}
+    \end{align*}
+    This means the determinant of $e_1,\ldots,e_n$ can be rewritten as
+    \begin{align*}
+        \det(e_1,\ldots,e_n) &= \left(\sgn(1,\ldots,n)\prod_{i=1}^{n}e_{i,i}\right) + \sum_{\sigma\in S_n,\sigma\neq 1,\ldots,n}\left(\sgn(\sigma)\prod_{i=1}^{n}e_{\sigma(i),i}\right)\\
+        &= 1 + \sum 0\\
+        &= 1
+    \end{align*}
+    Therefore, we have that $\det(v_1,\ldots,v_n)$ is multilinear, alternating, and normalized.
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 2 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+Let $A$ be an upper triangular matrix. Show that the determinant of $A$ is the product of its diagonal entries:
+$
+\det(A) = \prod_{i = 1}^n A_{i,i}.
+$
+\end{problem}
+
+\begin{proof}
+    \begin{align*}
+        \text{Let } A =
+        \begin{bmatrix}
+            \lambda_1 &  & *\\
+             & \ddots & \\
+             0 &  & \lambda_n
+        \end{bmatrix}
+        \text{ where each $\lambda_i = A_{i,i}$}
+    \end{align*}
+    We will use induction to prove that for any upper triangular $nxn$ matrix $A$:
+    \begin{align*}
+        \det A = \prod_{i = 1}^n A_{i,i}
+    \end{align*}
+    Let the base case be when $n=1$. Thus the determinant equals the only diagonal entry:
+    \begin{align*}
+        A &= 
+        \begin{bmatrix}
+           \lambda_1 
+        \end{bmatrix}
+        & \text{(definition of $A$)}\\
+        \det A &= \lambda_1 & \text{(definition of $det$)}
+    \end{align*}
+    Our inductive hypothesis is that the determinant of an $(n-1)x(n-1)$ upper triangular matrix equals the product of its diagonal entries, $\lambda_1,\ldots,\lambda_{n-1}$. 
+    Using this hypothesis, we will prove that the determinant of an $nxn$ upper triangular matrix, $A$, also equals the product of its diagonal entries, $\lambda_1,\ldots,\lambda_n$.
+    \\\\
+    Apply the co-factor expansion formula to the very last row of $A$:
+    \begin{align*}
+        \det A &= A_{n,1}C_{n,1}+\cdots+A_{n,n}C_{n,n} & \text{(co-factor expansion)}\\
+        &= 0\cdot C_{n,1} + \cdots + 0\cdot C_{n,n-1} + \lambda_n C_{n,n} & \text{($A$ is upper triangular)}\\
+        &= \lambda_n C_{n,n} & \text{(multiplication)}\\
+        &= \lambda_n \cdot (-1)^{n+n} \det  A_{\hat{n},\hat{n}} & \text{(definition of co-factor)}\\
+        &= \lambda_n \det  A_{\hat{n},\hat{n}} & \text{($n+n$ is even)}
+    \end{align*}
+    At this point, we can use the inductive hypothesis to express $\det A_{\hat{n},\hat{n}}$. Thus, the determinant of $A$ is equal to:
+    \begin{align*}
+        \det A &= \lambda_n \cdot \lambda_1,\ldots,\lambda_{n-1} & \text{(inductive hypothesis)}\\
+        &= \lambda_1,\ldots,\lambda_n & \text{(commutativity)}\\
+        &= \prod_{i=1}^{n}A_{i,i}
+    \end{align*}
+    
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 3 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+Let $D_n$ be the determinant of the $n\times n$ matrix
+$$
+\begin{bmatrix}
+1 & -1 & 0 & & \cdots & 0 \\
+1 & 1 & -1 & 0 & \cdots & 0 \\
+0 & 1 & 1 & \ddots & & \vdots \\
+0 & & \ddots & \ddots  & &\\
+0 & \cdots & 0 & 1 & 1 & -1 \\
+0 & \cdots & & 0 & 1 & 1
+\end{bmatrix}.
+$$
+Show that $D_n = D_{n-1} + D_{n-2}$. What are the values $D_1, D_2, \ldots, D_{10}$?
+\end{problem}
+
+\begin{proof}
+    Let $A$ be the given matrix and let $B = A_{\hat{1},\hat{1}}$. Apply the co-factor expansion formula to the first row of $A$:
+    \begin{align*}
+        D_n &= 1 \cdot C_{1,1} + -1 \cdot C_{1,2} + 0 \cdot C_{1,3} + \cdots + 0 \cdot C_{1,n} & \text{(co-factor expansion)}\\
+         &= C_{1,1} - C_{1,2} & \text{(multiplication)}\\
+         &= (-1)^{1 + 1}\det A_{\hat{1},\hat{1}} - (-1)^{1 + 2}\det A_{\hat{1},\hat{2}} & \text{(definition of co-factor)}\\
+         &= \det A_{\hat{1},\hat{1}} + \det A_{\hat{1},\hat{2}} & \text{(multiplication)}\\
+         &= D_{n-1} + \det A_{\hat{1},\hat{2}} & \text{(definition of $D_{n-1}$)}
+    \end{align*}
+    At this point, let the matrix $B = A_{\hat{1},\hat{2}}$:
+    \begin{align*}
+        B =
+        \begin{bmatrix}
+            1 & -1 & 0 & \cdots & 0 \\
+            0 & 1 & \ddots & & \vdots \\
+            0 & \ddots & \ddots  & &\\
+            0 & 0 & 1 & 1 & -1 \\
+            0 & & 0 & 1 & 1
+        \end{bmatrix}
+    \end{align*}
+    Now let's resume our computation of $D_n$:
+    \begin{align*}
+        D_n &= D_{n-1} + \det A_{\hat{1},\hat{2}} & \text{(from above)}\\
+         &= D_{n-1} + (-1)^{1+1} \cdot \det B_{\hat{1},\hat{1}} - (-1)^{1+2} \cdot \det B_{\hat{1},\hat{2}} & \text{(co-factor expansion)}\\
+         &= D_{n-1} + \det B_{\hat{1},\hat{1}} + \det B_{\hat{1},\hat{2}} & \text{(multiplication)}\\
+         &= D_{n-1} + \det B_{\hat{1},\hat{1}} + 0 & \text{(first column of $B_{\hat{1},\hat{2}}=0$)}\\
+         &= D_{n-1} + D_{n-2} & \text{(definition of $D_{n-2}$)}
+    \end{align*}
+\end{proof}
+
+\begin{align*}
+    D_1 &= 1\\
+    D_2 &= 2\\
+    D_3 &= 3\\
+    D_4 &= 5\\
+    D_5 &= 8\\
+    D_6 &= 13\\
+    D_7 &= 21\\
+    D_8 &= 34\\
+    D_9 &= 55\\
+    D_{10} &= 89
+\end{align*}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Find all invertible $2\times2$ matrices over $\mathbb{F}_2$, and write their inverses.
+\end{problem}
+
+\begin{proof}
+    A matrix is invertible if and only if its columns are linearly independent. There are only 6 matrices on $\F_2$ which satisfy this condition:
+    \begin{align*}
+        \begin{bmatrix}
+            1 & 0\\
+            0 & 1
+        \end{bmatrix}\ 
+        \begin{bmatrix}
+            0 & 1\\
+            1 & 0
+        \end{bmatrix}\ 
+        \begin{bmatrix}
+            1 & 1\\
+            1 & 0
+        \end{bmatrix}\ 
+        \begin{bmatrix}
+            1 & 1\\
+            0 & 1
+        \end{bmatrix}\ 
+        \begin{bmatrix}
+            0 & 1\\
+            1 & 1
+        \end{bmatrix}\ 
+        \begin{bmatrix}
+            1 & 0\\
+            1 & 1
+        \end{bmatrix}
+    \end{align*}
+    We will compute the inverse for the last matrix, and apply the same process to write all of the inverses. For a matrix $A$:
+    \begin{align*}
+        A^{-1} &= \frac{C^T}{\det A}
+    \end{align*}
+    Thus, for $A = 
+    \begin{bmatrix}
+        1 & 0\\
+        1 & 1
+    \end{bmatrix}$
+    \begin{align*}
+        C^T &=
+        \begin{bmatrix}
+            1 & 1\\
+            0 & 1
+        \end{bmatrix}^T
+        =
+        \begin{bmatrix}
+            1 & 0\\
+            1 & 1
+        \end{bmatrix}\\\\
+        \det A &= (1 \cdot 1) - (0 \cdot 1) = 1 - 0 = 1\\\\
+        A^{-1} &= \frac{1}{1}
+        \begin{bmatrix}
+            1 & 0\\
+            1 & 1
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            1 & 0\\
+            1 & 1
+        \end{bmatrix}
+    \end{align*}
+Therefore, the following inverses can be computed for each invertible matrix over $\F_2$:
+\begin{align*}
+    \begin{bmatrix}
+        1 & 0\\
+        0 & 1
+    \end{bmatrix}^{-1} &=
+    \begin{bmatrix}
+        1 & 0\\
+        0 & 1
+    \end{bmatrix}\\
+    \begin{bmatrix}
+        0 & 1\\
+        1 & 0
+    \end{bmatrix}^{-1} &=
+    \begin{bmatrix}
+        0 & 1\\
+        1 & 0
+    \end{bmatrix}\\
+    \begin{bmatrix}
+        1 & 1\\
+        1 & 0
+    \end{bmatrix}^{-1} &= 
+    \begin{bmatrix}
+        0 & 1\\
+        1 & 1
+    \end{bmatrix}\\
+    \begin{bmatrix}
+        1 & 1\\
+        0 & 1
+    \end{bmatrix}^{-1} &= 
+    \begin{bmatrix}
+        1 & 1\\
+        0 & 1
+    \end{bmatrix}\\
+    \begin{bmatrix}
+        0 & 1\\
+        1 & 1
+    \end{bmatrix}^{-1} &= 
+    \begin{bmatrix}
+        1 & 1\\
+        1 & 0
+    \end{bmatrix}\\
+    \begin{bmatrix}
+        1 & 0\\
+        1 & 1
+    \end{bmatrix}^{-1} &=
+    \begin{bmatrix}
+        1 & 0\\
+        1 & 1
+    \end{bmatrix}
+\end{align*}
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 5 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $\sigma \in S_n$ be a permutation, i.e., a bijection $\{1,2,\ldots, n\} \rightarrow \{1,2,\ldots, n\}$. Define the \emph{permutation matrix} $M(\sigma)$ associated to $\sigma$ to have entries 
+\begin{equation}
+M(\sigma)_{i,j}=
+    \begin{cases}
+        1 & \text{if } j = \sigma(i),\\
+        0 & \text{otherwise.}
+    \end{cases}
+\end{equation}
+Compute the determinant $\det(M(\sigma))$.
+\end{problem}
+
+\begin{proof}
+    Based on the definition of $M(\sigma)$, each column will be composed of all zeroes except for a single element which is $1$. We also have that the columns of $M(\sigma)$ are linearly independent, because each element of the permutation is unique. Therefore, we can say that the columns of $M(\sigma)$ are some permutation of the standard basis vectors $e_1,\ldots,e_n$.
+    \\\\
+    By a lemma proved in class, a transposition of any two vectors $v_j,v_k$ in $\det(v_1,\ldots,v_n)$ will flip the sign of the determinant. 
+    \\\\
+    We also have that the determinant function is normalized when zero transpositions are made, so $D(e_1,\ldots,e_n)=1$. It follows that an even number of transpositions made to $e_1,\ldots,e_n$ will result in an even number of sign flips to the determinant. Thus, an even number of sign flips will preserve the original sign of the permutation. On the other hand, an odd number of transpositions will cause an odd number of sign flips, which will invert the sign of the determinant.
+    \\\\
+    Therefore, if the number of transpositions required to transform $\{1,\ldots,n\}$ into $\sigma$ is even, $\det M(\sigma) = 1$; if the required number of transpositions is odd, $\det M(\sigma) = -1$.
+\end{proof}
+
+\end{document}

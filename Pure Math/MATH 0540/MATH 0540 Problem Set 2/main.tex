@@ -1,0 +1,420 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+
+\graphicspath{ {./} }
+
+\onehalfspacing
+
+\title{MATH 0540 Problem Set 2}
+\author{Collaborated with Esmé, Mariana, Michael, Kazuya, and Eric}
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Let \(\mathds{F}\) be a field. Prove that \(a \cdot b = 0\) if and only if \(a = 0\) or \(b = 0\).}
+
+\paragraph{\large
+\\Let \(a, a', b, b' \in \mathds{F}\) such that \(a', b'\) are the multiplicative inverses of \(a, b\) respectively.
+\\\\If we assume \(a \cdot b = 0\), it follows that:
+\\\indent \(a \cdot b \cdot b' = 0 \cdot b'\)
+\\\indent \(a \cdot 1 = 0 \cdot b'\) (b' is multiplicative inverse of b)
+\\\indent \(a = 0 \cdot b'\) (1 is multiplicative identity)
+\\\indent \(a = 0\) (0 times a scalar is 0)
+\\ Or,
+\\\indent \(a' \cdot a \cdot b = a' \cdot 0\)
+\\\indent \(1 \cdot b = a' \cdot 0\) (a' is multiplicative inverse of a)
+\\\indent \(b = a' \cdot 0\) (1 is multiplicative identity)
+\\\indent \(b = 0\) (0 times a scalar is 0)}
+
+\paragraph{\large
+Conversely, if we assume \(a = 0\), it follows that:
+\\\indent \(a \cdot b = 0 \cdot b\)
+\\\indent \(a \cdot b = 0\) (0 times a scalar is 0)
+\\ Or, if we assume \(b = 0\),
+\\\indent \(a \cdot b = a \cdot 0\)
+\\\indent \(a \cdot b = 0\) (0 times a scalar is 0)}
+
+\paragraph{\large
+Thus, if \(a \cdot b = 0\) then \(a = 0\) or \(b = 0\), and if \(a = 0\) or \(b = 0\) then \(a \cdot b = 0\), meaning \(a \cdot b = 0\) if and only if \(a = 0\) or \(b = 0\).}
+
+\newpage
+
+\section{Show that there is a unique field with 4 elements (prove 3 axioms).}
+
+\paragraph{\large
+\\Beginning with the definition of multiplication for this field:}
+
+\paragraph{\large
+Given that
+\\\indent 1. 0 times a scalar is 0.
+\\\indent 2. 1 is the unique multiplicative identity.
+\\\\We can deduce the following values in the multiplication table:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 0 & 0 & 0 \\
+    1 & 0 & 1 & x & y \\
+    x & 0 & x &  &  \\
+    y & 0 & y &  &  \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+To determine the remaining four values, we must evaluate the following cases for \(x \cdot y\):
+\\\indent 1. \(x \cdot y = 0\) 
+\\\indent\indent (forces x or y to equal 0)
+\\\indent 2. \(x \cdot y = x\)
+\\\indent\indent (forces y to be the multiplicative identity of x)
+\\\indent 3. \(x \cdot y = y\)
+\\\indent\indent (forces x to be the multiplicative identity of y)
+\\\indent 4. \(x \cdot y = 1\)
+\\\indent\indent (by process of elimination, must be correct)
+\\Thus, \(x \cdot y\) must equal 1, allowing two more elements to be added to the multiplication table:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 0 & 0 & 0 \\
+    1 & 0 & 1 & x & y \\
+    x & 0 & x &  & 1 \\
+    y & 0 & y & 1 &  \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+For multiplication to be closed on this field, each row and column must list each element exactly once. Therefore, the final two values can be deduced, thereby completing the table:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 0 & 0 & 0 \\
+    1 & 0 & 1 & x & y \\
+    x & 0 & x & y & 1 \\
+    y & 0 & y & 1 & x \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+Now, moving to the definition of addition for this field:
+\\\\Given that:
+\\\indent 1. 0 is the unique additive identity
+\\\\ We can deduce the following values for the addition table:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 1 & x & y \\
+    1 & 1 &  &  &  \\
+    x & x &  &  &  \\
+    y & y &  &  &  \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+To determine the remaining values, we must evaluate the following cases for \(x + 1\):
+\\\indent 1. \(x + 1 = x\)
+\\\indent\indent (forces a non-unique additive identity)
+\\\indent 2. \(x + 1 = 1\)
+\\\indent\indent (forces a non-unique additive identity)
+\\\indent 3. \(x + 1 = 0\)
+\\\indent 4. \(x + 1 = y\)
+\\Thus, \(x + 1\) is either equal to \(0\) or \(y\).}
+
+\paragraph{\large
+Assuming commutativity is held and that \(x + 1 = 0\), we can fill in the following values in the addition table:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 1 & x & y \\
+    1 & 1 &  & 0 &  \\
+    x & x & 0 &  &  \\
+    y & y &  &  &  \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+We also know that \(y + 1 \neq 1\) and \(y + 1 \neq y\) because these would create non-unique additive identities. Additionally, for addition to be complete over the field, \(y + 1 \neq 0\) because each row and column must list every element exactly once.
+\\\\Therefore, by process of elimination, we know \(y + 1 = x\), allowing the following values to be filled with the assumption of commutativity:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 1 & x & y \\
+    1 & 1 &  & 0 & x \\
+    x & x & 0 &  &  \\
+    y & y & x &  &  \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+At this point, we can make an assumption using the distributive property to verify whether \(x + 1 = 0\). If \(x + 1 = 0\), it follows that:
+\\\indent \(y (x + 1) = y \cdot x + y \cdot 1\) (distributive property)
+\\\indent \(y \cdot 0 = y \cdot x + y \cdot 1\) (get sum from addition table)
+\\\indent \(0 = y \cdot x + y \cdot 1\) (0 times any scalar is 0)
+\\\indent \(0 = 1 + y\) (get products from multiplication table)
+\\\indent \(0 = x\) (get sum from addition table)
+\\This is a contradiction, therefore \(x + 1 \neq 0\). 
+\\\\By process of elimination, we can deduce that \(x + 1 = y\), allowing us to reach the following table assuming commutativity:
+}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 1 & x & y \\
+    1 & 1 &  & y &  \\
+    x & x & y &  &  \\
+    y & y &  &  &  \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+Since \(x + 1 = y\), it follows that:
+\\\indent \(y (x + 1) = y \cdot x + y \cdot 1\) (distributive property)
+\\\indent \(y \cdot y = y \cdot x + y \cdot 1\) (get sum from addition table)
+\\\indent \(x = y \cdot x + y \cdot 1\) (get product from multiplication table)
+\\\indent \(x = 1 + y\) (get sums from addition table)
+\\Thus, since we now know that \(y + 1 = x\), two more values can be added to the table while preserving commutativity:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 1 & x & y \\
+    1 & 1 &  & y & x \\
+    x & x & y &  &  \\
+    y & y & x &  &  \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+The only possible result of \(1 + 1\) that keeps addition closed over this field is 0, meaning the table gains one more value:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 1 & x & y \\
+    1 & 1 & 0 & y & x \\
+    x & x & y &  &  \\
+    y & y & x &  &  \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+Now, for the value of \(x + x\), it follows that:
+\\\indent \(x + x = x(1 + 1)\) (distributive property)
+\\\indent \(x + x = x \cdot 0\) (get sum from addition table)
+\\\indent \(x + x = 0\) (0 times any scalar is 0)
+\\Once more, we can add a value to the addition table:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 1 & x & y \\
+    1 & 1 & 0 & y & x \\
+    x & x & y & 0 &  \\
+    y & y & x &  &  \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+Finally, it is possible to deduce the rest of the table by assuming commutativity and that addition is closed. Thus, addition over this field can be defined as:}
+
+\paragraph{\large
+\begin{center}
+\begin{tabular}{ c | c c c c }
+    & 0 & 1 & x & y \\
+    \hline
+    0 & 0 & 1 & x & y \\
+    1 & 1 & 0 & y & x \\
+    x & x & y & 0 & 1 \\
+    y & y & x & 1 & 0 \\
+\end{tabular}
+\end{center}}
+
+\paragraph{\large
+Using the definitions of addition and multiplication over this field, the following axioms will be proven:
+\\\indent 1. Commutativity
+\\\indent 2. Identities
+\\\indent 3. Inverses}
+
+\paragraph{\large
+Using the completed addition and multiplication tables, it follows that:
+\\\indent \(0 + 0 = 0 = 0 + 0\)
+\\\indent \(1 + 0 = 1 = 0 + 1\)
+\\\indent \(x + 0 = x = 0 + x\)
+\\\indent \(y + 0 = y = 0 + y\)
+\\\indent \(1 + 1 = 0 = 1 + 1\)
+\\\indent \(x + 1 = y = 1 + x\)
+\\\indent \(y + 1 = x = 1 + y\)
+\\\indent \(x + x = 0 = x + x\)
+\\\indent \(y + x = 1 = x + y\)
+\\\indent \(y + y = 0 = y + y\)
+\\and:
+\\\indent \(0 \cdot 0 = 0 = 0 \cdot 0\)
+\\\indent \(1 \cdot 0 = 0 = 0 \cdot 1\)
+\\\indent \(x \cdot 0 = 0 = 0 \cdot x\)
+\\\indent \(y \cdot 0 = 0 = 0 \cdot y\)
+\\\indent \(1 \cdot 1 = 1 = 1 \cdot 1\)
+\\\indent \(x \cdot 1 = x = 1 \cdot x\)
+\\\indent \(y \cdot 1 = y = 1 \cdot y\)
+\\\indent \(x \cdot x = y = x \cdot x\)
+\\\indent \(y \cdot x = 1 = x \cdot y\)
+\\\indent \(y \cdot y = x = y \cdot y\)
+\\Thus, commutativity holds for all addition and multiplication operations over the field. Additionally, 0 is the unique additive identity, and 1 is the unique multiplicative identity for \(0,1,x,y \in \mathds{F}_{4}\). Finally, \(\forall k \in \mathds{F}_{4}, \exists v \in \mathds{F}_{4} \thickspace s.t. \thickspace k + v = 0\), and \(\forall k \in \mathds{F}_{4}, \exists w \in \mathds{F}_{4} \thickspace s.t. \thickspace k \cdot w = 1\).}
+
+\newpage
+
+\section{Let \(X\) be any set. Let \(V\) be the set of all subsets of \(X\).\\\\For \(A, B \subset X\), define \(A + B = (A \cup B) \setminus (A \cap B)\)\\\\We define a scalar multiplication on \(V\), with scalars \(\mathds{F}_{2} = {0, 1}\), by defining \(0 \cdot A = \emptyset, 1 \cdot A = A\). Show that \(V\) is a vector space over \(\mathds{F}_{2}\).}
+
+\paragraph{\large
+\\To prove that \(V\) is a vector space over \(\mathds{F}_{2}\), the following axioms will proven:
+\\\indent 1. Commutativity
+\\\indent 2. Associativity
+\\\indent 3. Additive Identity
+\\\indent 4. Multiplicative Identity
+\\\indent 5. Additive Inverse
+\\\indent 6. Distributive Property}
+
+\paragraph{\large
+\(\forall A, B \subset X\):
+\\\indent \(A + B = (A \cup B) \setminus (A \cap B)\)
+\\\indent \(A + B = (B \cup A) \setminus (A \cap B)\) (union is commutative)
+\\\indent \(A + B = (B \cup A) \setminus (B \cap A)\) (intersection is commutative)
+\\\indent \(A + B = B + A\) (definition of addition),
+\\and
+\\\indent \(0 \cdot A = \emptyset = A \cdot 0\) (0 times a set is empty set)
+\\\indent \(1 \cdot A = A = A \cdot 1\) (1 is unique multiplicative identity)
+\\ Therefore, addition and multiplication are commutative.}
+
+\paragraph{\large
+\(\forall A, B, C \subset X:\)
+\\\includegraphics[scale = 0.06]{IMG_1518.png}
+\includegraphics[scale = 0.06]{IMG_1519.png}
+\\\indent meaning \((A + B) + C = A + (B + C)\),
+\\and
+\\\indent \((1 \cdot A) \cdot 1 = 1 \cdot (A \cdot 1)\) (definition of associative property)
+\\\indent \(A \cdot 1 = 1 \cdot A\) (1 is the multiplicative identity)
+\\\indent \(A = A\) (1 is the multiplicative identity)
+\\and
+\\\indent \((0 \cdot A) \cdot 0 = 0 \cdot (A \cdot 0)\) (associative property)
+\\\indent \(\emptyset \cdot 0 = 0 \cdot \emptyset\) (0 times a set is the empty set)
+\\\indent \(\emptyset = \emptyset\) (0 times a set is the empty set)
+\\and
+\\\indent \((1 \cdot A) \cdot 0 = 1 \cdot (A \cdot 0)\) (associative property)
+\\\indent \(A \cdot 0 = 1 \cdot \emptyset\) (definition of scalar multiplication)
+\\\indent \(\emptyset = \emptyset\) (definition of scalar multiplication)
+\\and
+\\\indent \((0 \cdot A) \cdot 1 = 0 \cdot (A \cdot 1)\) (associative property)
+\\\indent \(\emptyset \cdot 1 = 0 \cdot A\) (definition of scalar multiplication)
+\\\indent \(\emptyset = \emptyset\) (definition of scalar multiplication)
+\\Thus, associativity holds for addition and multiplication.}
+
+\paragraph{\large
+\(\forall A \subset X:\)
+\\\indent \(A + \emptyset = (A \cup \emptyset) \setminus (A \cap \emptyset)\) (definition of addition)
+\\\indent \(A + \emptyset = A \setminus (A \cap \emptyset)\) (definition of union)
+\\\indent \(A + \emptyset = A \setminus \emptyset\) (definition of intersection)
+\\\indent \(A + \emptyset = A\) (definition of set-difference)
+\\Therefore, there is a unique additive identity, \(\emptyset\).}
+
+\paragraph{\large
+\(\forall A \subset X:\)
+\\\indent \(1 \cdot A = A\) (definition of multiplication by 1)
+\\Therefore, there is a unique multiplicative identity, 1.}
+
+\paragraph{\large
+\(\forall A \subset X:\)
+\\\indent \(A + A = (A \cup A) \setminus (A \cap A)\) (definition of addition)
+\\\indent \(A + A = A \setminus (A \cap A)\) (definition of union)
+\\\indent \(A + A = A \setminus A\) (definition of intersection)
+\\\indent \(A + A = \emptyset\) (definition of set-difference)
+\\Therefore, every element is its own additive inverse.}
+
+\paragraph{\large
+\(\forall A, B \subset X\), if the distributive property holds, it follows that:
+\\\indent \(0 (A + B) = 0 \cdot A + 0 \cdot B\) (distributive property)
+\\\indent \(\emptyset = \emptyset + \emptyset\) (definition of multiplication by 0)
+\\\indent \(\emptyset = \emptyset\) (the empty set is the additive identity)
+\\and
+\\\indent \(1(A + B) = 1 \cdot A + 1 \cdot B\) (distributive property)
+\\\indent \(A + B = A + B\) (definition of multiplication by 1)
+\\and
+\\\indent \(A(1 + 1) = A \cdot 1 + A \cdot 1\) (distributive property)
+\\\indent \(A(1 + 1) = A + A\) (1 is the multiplicative identity)
+\\\indent \(A(1 + 1) = \emptyset\) (each set is its own additive inverse)
+\\\indent \(A \cdot 0 = \emptyset\) (definition of addition in \(\mathds{F}_{2}\))
+\\\indent \(\emptyset = \emptyset\) (0 times a set is the empty set)
+\\and 
+\\\indent \(A(1 + 0) = A \cdot 1 + A \cdot 0\) (distributive property)
+\\\indent \(A(1 + 0) = A + \emptyset\) (definition of scalar multiplication)
+\\\indent \(A(1 + 0) = A\) (the empty set is the additive identity)
+\\\indent \(A \cdot 1 = A\) (0 is additive identity)
+\\\indent \(A = A\) (1 is the multiplicative identity)
+\\and
+\\\indent \(A(0 + 1) = A \cdot 0 + A \cdot 1\) (distributive property)
+\\\indent \(A(0 + 1) = \emptyset + A\) (definition of scalar multiplication)
+\\\indent \(A(0 + 1) = A\) (the empty set is the additive identity)
+\\\indent \(A \cdot 1 = A\) (0 is additive identity)
+\\\indent \(A = A\) (1 is multiplicative identity)
+\\and
+\\\indent \(A(0 + 0) = A \cdot 0 + A \cdot 0\) (distributive property)
+\\\indent \(A(0 + 0) = \emptyset + \emptyset\) (0 times a set is empty set)
+\\\indent \(A(0 + 0) = \emptyset\) (empty set is additive identity)
+\\\indent \(A \cdot 0 = \emptyset\) (0 is additive identity)
+\\\indent \(\emptyset = \emptyset\) (0 times a set is empty set)
+\\Therefore, the distributive property holds.}
+
+\newpage
+
+\section{Let \(V\) be the set of all functions from \(\mathds{R} \rightarrow \mathds{R}\). For \(f, g \in V\), define \((f + g)(x) = f(x) + g(x)\), and for any \(a \in \mathds{R}\), define scalar multiplication by \((a \cdot f)(x) = f(ax)\). Prove or disprove that \(V\) is a vector space.}
+
+\paragraph{\large
+\\Let \(f\) be a function:
+\\\indent \(\mathds{R} \rightarrow \mathds{R}\)
+\\\indent \(x \rightarrow 3\)}
+
+\paragraph{\large
+If the distributive property holds, it follows that \(\forall a, b \in \mathds{R}\):
+\\\indent \(((a + b) \cdot f)(x) = (a \cdot f)(x) + (b \cdot f)(x)\)
+\\\indent \(f((a+b)x) = f(ax) + f(bx)\)
+\\\indent \(3 = 3 + 3\) (definition of function f)
+\\This would force a non-unique additive identity, meaning that the distributive property does not hold. Therefore, \(V\) cannot be a vector space.}
+
+\newpage
+
+\section{Let \(V\) be a vector space. Prove that \(-(-v) = v\)  for every \(v \in V\).}
+
+\paragraph{\large
+\\\(\forall v \in V\), let \(v, -v\) be additive inverses of each other, and let \(-(-v)\) be the additive inverse of \(-v\):
+\\\indent \(v + -v = 0\) (definition of additive inverses)
+\\\indent \(-(-v) + -v = 0\) (definition of additive inverses)
+\\\indent \(-(-v) = v\) (transitive property)}
+
+\end{document}

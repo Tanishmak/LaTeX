@@ -1,0 +1,414 @@
+\documentclass[11pt,reqno]{article}
+
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+\usepackage[T1]{fontenc}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsthm,bbm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{extarrows}
+\usepackage{color}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage[colorlinks, linktocpage, citecolor = red, linkcolor = blue]{hyperref}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{euler}
+
+%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+
+%%%%%%%%%%%%%%%%%%%% COMMANDS %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\range}{\mathrm{range\,}}
+\newcommand{\nul}{\mathrm{null\,}}
+\newcommand{\spn}{\mathrm{span\,}}
+\newcommand{\card}{\mathrm{cardinality}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\bd}{\mathrm{bd\,}}
+\newcommand{\divline}{\hrule\vspace{12pt}\noindent}
+\newcommand{\sgn}{\mathrm{sgn}}
+
+%%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+%%%%%%%%%%%%%%%%%%%% TITLE-PAGE %%%%%%%%%%%%%%%%%%%%
+
+\title{PHYS 0270 Final Review}
+\author{Tanish Makadia}
+\date{December 2022}
+
+%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%% MAIN CONTENT %%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\section*{Lecture 1}
+Meridian\\\\
+Right Ascension\\\\
+Sidereal Time\\\\
+Local Sidereal Time $LST = HA + RA$\\\\
+Rising and Setting\\\\
+
+\section*{Lecture 2}
+Sun's Path\\\\
+Declination\\\\
+Ecliptic\\\\
+Calendars\\\\
+
+\section*{Lecture 3}
+Moon Phases\\\\
+Lunar Cycles\\\\
+Eclipses\\\\
+
+\section*{Lecture 4}
+Parallax\\\\
+Telescopes\\\\
+Lenses\\\\
+Magnification\\\\
+Resulution and Plate Scale\\\\
+Atmospheric Opacity\\\\
+Waves\\\\
+Inferometry\\\\
+
+\section*{Lecture 5}
+Flux and Luminosity\\\\
+Inverse Square Law\\\\
+Magnitudes\\\\
+Blackbodies\\\\
+Weins and Boltzmann Laws\\\\
+Emission and Absorption\\\\
+Balmer Sequence\\\\
+Energy Levels\\\\
+
+\section*{Lecture 6}
+Circular Motion\\\\
+Kepler's Laws\\\\
+2 Body Problem\\\\
+Doppler Effect\\\\
+Escape Velocity\\\\
+Virial Theorem and Lagrange Points\\\\
+
+\section*{Lecture 7}
+Disks and Accretion\\\\
+Oligarchical Phase\\\\
+Temperature across Disk (and flux/luminosity)\\\\
+Composition of Planets\\\\
+Atmospheres and Greenhouse Effect\\\\
+
+\section*{Lecture 8}
+Magnetic Fields\\\\
+Aurorae\\\\
+Types of Moons\\\\
+Bombardment\\\\
+Tides\\\\
+Procession\\\\
+Composition of Planets\\\\
+Roche Limit (no moons) $\rightarrow$ Rings\\\\
+Asteroids, KBOs, Comets, and Planet IX\\\\
+
+\section*{Lecture 9}
+Kuiper Belt Objects\\\\
+Planet IX\\\\
+Oort Cloud\\\\
+OBAFGKM\\\\
+Boltzmann Equation\\\\
+Ionization\\\\
+HR Diagram\\\\
+Size/Mass Relation\\\\
+Main Sequence\\\\
+Center of Mass\\\\
+Period and Velocity\\\\
+Orbit Size\\\\
+Binary System Orbits\\\\
+Eclipsing Binaries\\\\
+Mass and Luminosity Relationship\\\\
+
+\section*{Lecture 10}
+Gravitational Potential\\\\
+Clouds\\\\
+Jean's Length\\\\
+Fragmentation\\\\
+Infall Time\\\\
+Heat Transport\\\\
+Diff Eqs
+
+\section*{Lecture 11}
+Stellar Structure Equations Including Pressure\\\\
+Stefan-Boltzmann Law and its relation to temperature\\\\
+Convective Transport\\\\
+Optical Depth and Equations:
+\begin{align*}
+    \sigma = \pi r^2\\
+    \tau = n\sigma\lambda
+\end{align*}
+Absorption Coefficients and Mean Free Path Equation:
+\begin{align*}
+    1 / n\sigma
+\end{align*}
+X-Ray Corona\\\\
+Chromosphere\\\\
+Photosphere\\\\
+Sunspots\\\\
+
+\section*{Lecture 12}
+Weak Force and Deuterium one in $10^{27}$ Collisions
+PP-I Chain\\\\
+Stellar Lifetimes\\\\
+Mass vs. Final Outcome\\\\
+
+\section*{Lecture 13}
+Helium Flash\\\\
+HR Diagrams\\\\
+Electron Degeneracy\\\\
+Giant Stars\\\\
+Helium Shell\\\\
+Heat Pulsations\\\\
+Cepheid Variables\\\\
+Leavitt's Law and Standard Candles:
+\begin{align*}
+    m - M = 5\log(d) - 5
+\end{align*}
+Planetary Nebulae\\\\
+White Dwarfs\\\\
+Chandrasekhar Mass\\\\
+Massive Stars (> 8 Solar Masses)\\\\
+P-P vs. CNO\\\\
+Layers of Ash - Fusion Diagram\\\\
+
+\section*{Lecture 14}
+Iron Death Star Collapse\\\\
+Photodisintegration\\\\
+Supernovae and Remnants\\\\
+Special Relativity\\\\
+General Relativity\\\\
+Degeneracy Pressure\\\\
+Neutron Star Rotation\\\\
+Pulsars\\\\
+
+\section*{Lecture 15}
+General Relativity\\\\
+Interferometers (LIGO)\\\\
+Merger Events with Black Holes and Neutron Stars\\\\
+Escape Velocity:
+\begin{align*}
+    v_{esc} = \sqrt{\frac{2GM}{R}}
+\end{align*}
+Schwarzschild Radius or Event Horizon:
+\begin{align*}
+    R_s = \frac{2GM}{c^2}
+\end{align*}
+Tidal forces (difference in force between head and foot):
+\begin{align*}
+    \frac{2GMm}{r^3}
+\end{align*}
+Light Distortion by Gravity\\\\
+Hawking Radiation\\\\
+Binary Systems and Roche Lobes\\\\
+Roche Lobes $\rightarrow$ Accretion Disk:
+\begin{align*}
+    L = mv_{rot}R\\
+    a = v^2 / r
+\end{align*}
+Accretion Disk Luminosities:
+\begin{align*}
+    L = \frac{dM}{dt}GM(\frac{1}{r_f}-\frac{1}{r_i})
+\end{align*}
+Accretion Disk Temperature and Virial Theorem\\\\
+Novae and Types\\\\
+Virial Theorem; Potential/Kinetic Energy for a Uniform Density Sphere of Stars:
+\begin{align*}
+    U = -\frac{3}{5}\frac{GM^2}{r}\\
+    \langle K\rangle = \frac{1}{2} M\langle v^2\rangle\\
+    \langle v^2\rangle = \frac{3}{5} \frac{GM}{r}\\
+    \langle v_r^2\rangle = \frac{\langle v^2\rangle}{3}\\
+    M = 5r\langle v_r^2\rangle / G
+\end{align*}
+Population I and II Stars\\\\
+Interactions of Stars within a Cluster:
+\begin{align*}
+    t_s = 1 / (n\pi r^2 v)\\
+    t = \frac{v^3}{4\pi G^2 m^2 n}\\
+    t = NR/v
+\end{align*}
+
+\section*{Lecture 16}
+Herschel and Kapteyn's Models\\\\
+Galactic Dust\\\\
+Globular Clusters and Galactic Center\\\\
+Extinction $A$:
+\begin{align*}
+    A = m_{observed} - m_{true} = 2.5 \log(I_{true}/ I_{observed})
+\end{align*}
+Shift of measured magnitudes:
+\begin{align*}
+    m = M + 5\log(d/10) + A
+\end{align*}
+Color dependence based on dust\\\\
+Blue Scattered Light\\\\
+Composition and Temperature of Dust Grains:
+\begin{align*}
+    T_{dust} = T \cdot (\frac{R}{2d})^{1/2}
+\end{align*}
+Distance of HI Dust - Redshift/Blueshift and Infrared\\\\
+Giant Bubbles in the Milky Way\\\\
+Molecular Clouds:
+\begin{align*}
+    U = -\frac{3GM^2}{5R}\\
+    K = \frac{3MkT}{2m}\\
+    \frac{M}{R} = \frac{4\pi R^3\rho}{3R} = \frac{5kT}{2Gm}
+\end{align*}
+Masers\\\\
+Jeans Length and Mass:
+\begin{align*}
+    R_j = \sqrt{\frac{15kT}{8\pi Gm\rho}}\\
+    M_j = 4\pi R_j^3 / 3
+\end{align*}
+Gas Collapse\\\\
+O and B Stars and Photoionization\\\\
+HII Regions and Stromgren Radius\\\\
+Disks, Jets, and Outflows\\\\
+T-Tauri Stars\\\\
+
+\section*{Lecture 17}
+Measuring Shift of HI Clouds\\\\
+Galactic Arms\\\\
+Spiral Arms as Density Waves\\\\
+Components of a Galaxy\\\\
+Bulges and Halos\\\\
+Spiral Galaxy Classification\\\\
+Grand Design vs. Flocculent\\\\
+Elliptical Galaxies\\\\
+Irregular Galaxies\\\\
+Rotation Curves $\rightarrow$ Dark Matter:
+\begin{align*}
+    \rho(r) = \frac{v_0^2}{4\pi Gr^2}
+\end{align*}
+WIMPs\\\\
+Shapley Curtis Debate\\\\
+
+\section*{Lecture 18}
+Cepheids to measure distance to galaxies\\\\
+The Hubble Law:
+\begin{align*}
+    v = Hd
+\end{align*}
+Tully-Fisher Relation\\\\
+Distance Ladder\\\\
+Cosmic Acceleration\\\\
+Local Group\\\\
+Virgo Cluster\\\\
+Local Supercluster\\\\
+Coma Cluster\\\\
+Clusters of Galaxies and X-ray emitting hot gas\\\\
+Dark matter in clusters\\\\
+Gravitational Lensing\\\\
+Filamentary Structures\\\\
+Redshift Space Distortions\\\\
+Universe is Homogenous and Isotropic\\\\
+
+\section*{Lecture 19}
+Hubble Deep Field and Galaxies\\\\
+Red Shift Galaxies\\\\
+Starburst Galaxies\\\\
+Galaxy Evolution\\\\
+Active Galaxies\\\\
+Radio Galaxies\\\\
+Seyfert Galaxies\\\\
+Quasars and QSO's\\\\
+Blazars\\\\
+Active Galactic Nuclei\\\\
+Eddington Luminosity\\\\
+Lyman Alpha Forest\\\\
+Gunn-Peterson trough\\\\
+Gamma Ray Bursts and Afterglow\\\\
+Cosmology and why the night sky is not dark\\\\
+Olber's Paradox\\\\
+
+\section*{Lecture 20}
+Big Bang Model\\\\
+Hubble Law\\\\
+Expansion and Scale Factor:
+\begin{align*}
+    H^2 = \frac{8\pi G\rho}{3} - \frac{kc^2}{R^2}
+\end{align*}
+Various Densities of Matter\\\\
+Matter vs. Radiation:
+\begin{align*}
+    \rho_c = \frac{3H^2}{8\pi G}
+\end{align*}
+Curvature\\\\
+Quantized Gravity and Inflation Epoch\\\\
+Planck time\\\\
+Matter from Energy\\\\
+Annihilations and $kT > mc^2$\\\\
+Freeze Out\\\\
+Baryogenesis\\\\
+Asymmetry\\\\
+Helium Bottleneck\\\\
+Recombination\\\\
+Heat Death and Big Rip\\\\
+
+\section*{Lecture 21}
+Friedman Equations for Hubble's Constant\\\\
+Recombination and "Cosmic Photosphere"\\\\
+Cosmic Microwave Background\\\\
+Fluctuations in CMB\\\\
+Cosmological Parameters\\\\
+Unsolved Problems in Cosmology\\\\
+Flatness Problem\\\\
+Horizon Problem\\\\
+Structure Formation Problem\\\\
+Topological Defect Problem\\\\
+
+\section*{Lecture 22}
+Inflation\\\\
+Quantum Fluctuations\\\\
+Cosmic Acceleration\\\\
+Hubble's Constant\\\\
+
+\section*{Lecture 23}
+Direct Imaging of Exoplanets\\\\
+Astrometric Method\\\\
+Doppler Method\\\\
+Hot Jupiters\\\\
+Highly eccentric planet orbits\\\\
+Habitable Zone\\\\
+Exoplanet Transits\\\\
+Planet Migration and Ice Lines\\\\
+
+\section*{Lecture 24}
+Search for Life\\\\
+Planets and liquid water\\\\
+JWST atmospheric composition\\\\
+Tree of Life\\\\
+
+\section*{Lecture 25}
+Drake Equation: $N = R^* \cdot fp\cdot ne\cdot fl\cdot fi\cdot fc\cdot L$\\\\
+Cosmic Rays and Cerenkov Radiation\\\\
+Neutrino Detection\\\\
+Lensing\\\\
+
+
+\end{document}
