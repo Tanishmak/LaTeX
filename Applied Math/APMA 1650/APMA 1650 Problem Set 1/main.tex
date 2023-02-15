@@ -93,7 +93,33 @@
         \item \begin{enumerate}
             \item \(P(A\cup B) = P(A) + P(B) =0.4+0.12=0.52\)
             \item \(P(A\cap B) = 0\) (disjointness implies \(A\cap B=\emptyset,\ P(\emptyset)=0\))
+            \item \(P((A\cap B)^C)=1 - P(A\cap B) = 1\) \bigskip
         \end{enumerate}
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item \(31/366\)
+        \item \(12/366=2/61\)
+        \item \(1/366\) \bigskip
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item \(S = \{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(2,1),(2,2),(2,3),(2,4),(2,5),\\(2,6),(3,1),(3,2),(3,3),(3,4),(3,5),(3,6),4,5,6\}\)
+        \item 21 elements
+        \item \(A = \{(1,5),(2,4),(2,6),(3,3),(3,5),6\}\)
+        \item 6 elements
+        \item \(P(A) = 5(\frac{1}{36}) + \frac{1}{6} = \frac{11}{36}\)
+        \item \(3/36 = 1/12\) \bigskip
+    \end{enumerate}
+    \item \begin{enumerate}
+        \item \begin{proof}
+            Let \(A\subseteq S\). By the definition of a complement, we have that \(A\cup A^C=S\)
+            and \(A\cap A^C=\emptyset\). Thus, 
+            \begin{align*}
+               1 &= P(S) & \text{(\(P(S)=1\))}\\
+               &= P(A\cup A^C) & \text{(definition of complement)}\\
+               &=P(A)+P(A^C) & \text{(\(A\) and \(A^C\) disjoint)}
+            \end{align*}
+            Therefore, we can conclude that \(P(A)=1-P(A^C)\)
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
