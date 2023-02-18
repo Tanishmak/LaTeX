@@ -1,0 +1,152 @@
+\documentclass[12pt,reqno]{article}
+
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+\usepackage[T1]{fontenc}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsthm,bbm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{extarrows}
+\usepackage{color}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage[colorlinks, linktocpage, citecolor = red, linkcolor = blue]{hyperref}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{euler}
+
+%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%%%%%%%%% COMMANDS %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\range}{\mathrm{range\,}}
+\newcommand{\nul}{\mathrm{null\,}}
+\newcommand{\spn}{\mathrm{span\,}}
+\newcommand{\card}{\mathrm{cardinality}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\bd}{\mathrm{bd\,}}
+\newcommand{\divline}{\hrule\vspace{12pt}\noindent}
+\newcommand{\sgn}{\mathrm{sgn}}
+
+%%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem{maintheorem}{Theorem}
+\renewcommand*{\themaintheorem}{\Alph{maintheorem}}
+
+\newtheorem{theorem}{Theorem}[section] 
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+
+\newtheorem*{maintheorema}{Theorem \ref{thm:main}}
+
+%%%%%%%%%%%%%%%%%%%% TITLE-PAGE %%%%%%%%%%%%%%%%%%%%
+
+\title{MATH 1530 Problem Set 2}
+\author{Collaborated with Esmé and Kazuya}
+\date{February 2023}
+
+%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 1 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+    Consider $U(40)$. Find a subgroup which is cyclic of order 4. Find a subgroup which is noncyclic of order 4. 
+\end{problem}
+\begin{proof}
+    
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 2 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    If $H$ and $K$ are subgroups of a group $G$, prove that $H \cap K$ is a subgroup of $G$. If $H \not \subset K$ and $K \not \subset H$, prove that $H \cup K$ is never a subgroup of $G$.
+\end{problem}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 3 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+    Prove that a group $G$ is Abelian if and only if $G = Z(G)$.
+\end{problem}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+    Suppose $G$ is a group with exactly 8 elements of order $3$. how many subgroups of order $3$ does $G$ have?
+\end{problem}
+
+\begin{proof}
+    Let \(H\subset G\) be a subgroup of order 3:
+    \begin{align*}
+        H = \{e, a, b\}
+    \end{align*}
+    Since \(e\) is unique, we have that \(ab\neq a\) and \(ab\neq b\). In order for \(H\) to be closed, 
+    the only remaining choice is \(ab = e\). Thus, for any subgroup of order \(3\), the two elements besides
+    the identity must be each other's inverse.
+
+    Now, we will show that \(|a|=|b|=3\). Consider \(a^2\in H\). Since the identity is unique, \(a^2\neq a\),
+    and since \(b\) is the unique inverse of \(a\), the only remaining choice is \(a^2=b\). Therefore,
+    \begin{equation*}
+        \begin{aligned}[c]
+            a^3 &= a \cdot a^2 \\
+            &= a \cdot b\\
+            &= e
+        \end{aligned}
+        \qquad\qquad
+        \begin{aligned}[c]
+            b^3 &= (a^2)^3\\
+            &= (a^3)^2\\
+            &= e
+        \end{aligned}
+    \end{equation*}
+    We have that there are exactly \(8\) elements of \(G\) of order \(3\). Because a subgroup of order \(3\) 
+    requires two distinct elements of order \(3\), we can conclude that the number of distinct subgroups of 
+    order \(3\) in \(G\) is \(8 / 2 = 4\).
+
+    
+
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 5 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem} 
+    Let $G$ be a finite group with more than one element. Show that $G$ has an element of prime order.
+\end{problem}
+
+\end{document}
