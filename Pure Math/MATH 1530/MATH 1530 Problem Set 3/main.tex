@@ -25,13 +25,12 @@
 \usepackage{fullpage}
 \usepackage{color}
 \usepackage{euler}
+\usepackage{parskip}
 
 %%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
 
 \MakeOuterQuote{"}
 \graphicspath{ {./} }
-\setlength{\parskip}{\baselineskip}
-\setlength{\parindent}{0pt}
 
 %%%%%%%%%%%%%%%%%%%% COMMANDS %%%%%%%%%%%%%%%%%%%%
 
@@ -81,30 +80,35 @@
 \begin{problem} 
     Consider $U(40)$. Find a subgroup which is cyclic of order 4. Find a subgroup which is noncyclic of order 4. 
 \end{problem}
+
 \begin{proof}
     \(U(40)\) is defined as follows:
     \begin{align*}
         U(40) = \{1,3,7,9,11,13,17,19,21,23,27,29,31,33,37,39\}
     \end{align*}
-    We will now create a cyclic subgroup of order \(4\) using \(7\) as the generator.
-    \begin{align*}
-        \langle 7\rangle &= \{7,9,23,1\} & \text{(Gallian, 3.4)}
-    \end{align*}
-    Next, we will show that \(\{1,9,11,19\}\) is a noncyclic subgroup of \(U(40)\).
-    
-    Cayley Table:
-    \begin{tabular}{c | c c c c}
-        & 1 & 9 & 11 & 19\\
-        \cline{1-5}
-        1 & 1 & 9 & 11 & 19 \\
-        9 & 9 & 1 & 19 & 11 \\
-        11 & 11 & 19 & 1 & 9 \\
-        19 & 19 & 11 & 9 & 1
-    \end{tabular}
 
-    Since \(\{1,9,11,19\}\) is finite and closed under multiplication mod \(40\), we have proven
-    that it is subgroup of \(U(40)\). Additionally, since \(|9|=|11|=|19|=2\), there is no element
-    in this group which can generate the entire group, proving that it is noncyclic.
+    \begin{itemize}
+        \item \textbf{Cyclic subgroup:} We will create a cyclic subgroup of order \(4\) using \(7\) as the generator.
+        \begin{align*}
+            \langle 7\rangle &= \{7,9,23,1\} & \text{(Gallian, 3.4)}
+        \end{align*}
+        \item \textbf{Non-cyclic subgroup:} We will show that \(\{1,9,11,19\}\) is a noncyclic subgroup.
+
+        Cayley Table:
+        \begin{tabular}{c | c c c c}
+            & 1 & 9 & 11 & 19\\
+            \cline{1-5}
+            1 & 1 & 9 & 11 & 19 \\
+            9 & 9 & 1 & 19 & 11 \\
+            11 & 11 & 19 & 1 & 9 \\
+            19 & 19 & 11 & 9 & 1
+        \end{tabular}
+    
+        Since \(\{1,9,11,19\}\) is finite and closed under multiplication mod \(40\), we have proven
+        that it is subgroup of \(U(40)\). Additionally, since \(|9|=|11|=|19|=2\), there is no element
+        in this group which can generate the entire group, proving that it is noncyclic.
+    
+    \end{itemize}
 \end{proof}
 
 \newpage
@@ -114,6 +118,26 @@
 \begin{problem}
     If $H$ and $K$ are subgroups of a group $G$, prove that $H \cap K$ is a subgroup of $G$. If $H \not \subset K$ and $K \not \subset H$, prove that $H \cup K$ is never a subgroup of $G$.
 \end{problem}
+
+\bigskip
+1. \(H\cap K\) is a subgroup of \(G\).
+
+\begin{proof}
+    We will use the two-step subgroup test.
+    \begin{itemize}
+        \item \textbf{Closed over inverses:} \(x\in H\cap K \implies x\in H\) and
+        \(x\in K\). Since \(H\) and \(K\) are subgroups, we have the existence of \(x^{-1}\in H\) and 
+        \(x^{-1}\in K \implies x^{-1}\in H\cap K\). 
+
+        \item \textbf{Closed under group operation:} \(a,b\in H\cap K\implies a,b\in H\) and \(a,b\in K\).
+        Since \(H\) and \(K\) are subgroups, we have that \(ab\in H\) and \(ab\in K\implies ab\in H\cap K\).
+    \end{itemize}
+\end{proof}
+
+2. If $H \not \subset K$ and $K \not \subset H$, $H \cup K$ is never a subgroup of $G$.
+\begin{proof}
+    
+\end{proof}
 
 \newpage
 
@@ -158,9 +182,6 @@
     We have that there are exactly \(8\) elements of \(G\) of order \(3\). Because a subgroup of order \(3\) 
     requires two distinct elements of order \(3\), we can conclude that the number of distinct subgroups of 
     order \(3\) in \(G\) is \(8 / 2 = 4\).
-
-    
-
 \end{proof}
 
 \newpage
