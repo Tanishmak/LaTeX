@@ -136,7 +136,24 @@
 
 2. If $H \not \subset K$ and $K \not \subset H$, $H \cup K$ is never a subgroup of $G$.
 \begin{proof}
-    
+    We will show that \(H\cup K\) is not closed under the group operation. 
+    Since neither \(H\) nor \(K\) are subsets of each other, we have the existence of some 
+    \(a,a^{-1}\in H\setminus K\) and \(b,b^{-1}\in K\setminus H\).
+
+    If \(H\cup K\) is a subgroup, it must be closed. This implies that 
+    \(ab\in H\cup K \implies ab\in H\) or \(ab\in K\). Thus, we have two cases:
+
+    \begin{itemize}
+        \item Case 1 (\(ab\in H\)): Since \(H\) is closed, \(a^{-1}\cdot ab \in H\).
+        \begin{align*}
+            a^{-1}(ab)=(a^{-1}a)b=b\in H
+        \end{align*}
+
+        \item Case 2 (\(ab\in K\)): 
+    \end{itemize}
+
+    Since both cases lead to a contradiction, we have proven that \(H\cup K\) is not closed
+    and therefore is not a subgroup.
 \end{proof}
 
 \newpage
