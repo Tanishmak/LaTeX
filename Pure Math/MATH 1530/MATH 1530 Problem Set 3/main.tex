@@ -144,15 +144,12 @@
     \(ab\in H\cup K \implies ab\in H\) or \(ab\in K\). Thus, we have two cases:
 
     \begin{itemize}
-        \item Case 1 (\(ab\in H\)): Since \(H\) is closed, \(a^{-1}\cdot ab \in H\).
-        \begin{align*}
-            a^{-1}(ab)=(a^{-1}a)b=b\in H
-        \end{align*}
+        \item Case 1 (\(ab\in H\)): Since \(H\) is closed, \(a^{-1}\cdot ab \in H\implies b\in H\). This is a contradiction.
 
-        \item Case 2 (\(ab\in K\)): 
+        \item Case 2 (\(ab\in K\)): Since \(K\) is closed, \(ab\cdot b^{-1}\in K\implies a\in K\). This is a contradiction.
     \end{itemize}
 
-    Since both cases lead to a contradiction, we have proven that \(H\cup K\) is not closed
+    Because both cases lead to a contradiction, we have proven that \(H\cup K\) is not closed
     and therefore is not a subgroup.
 \end{proof}
 
@@ -164,11 +161,19 @@
     Prove that a group $G$ is Abelian if and only if $G = Z(G)$.
 \end{problem}
 
+\begin{proof}
+    \(\Rightarrow\) Assume \(G\) is an Abelian group. Of course, \(Z(G)\subset G\) by definition. Since 
+    \(G\) is Abelian, \(a\in G\implies ax=xa\) for all \(x\in G\implies a\in Z(G)\). Therefore, \(G \subset Z(G)\), completing the double inclusion.
+
+    \(\Leftarrow\) Assume \(G = Z(G)\). Thus, \(a\in G\implies a\in Z(G)\implies ax=xa\) for all \(x\in G\). 
+    Therefore, \(G\) must be Abelian.
+\end{proof}
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%
 
-\begin{problem} 
+\begin{problem}
     Suppose $G$ is a group with exactly 8 elements of order $3$. how many subgroups of order $3$ does $G$ have?
 \end{problem}
 
@@ -181,8 +186,8 @@
     the only remaining choice is \(ab = e\). Thus, for any subgroup of order \(3\), the two elements besides
     the identity must be each other's inverse.
 
-    Now, we will show that \(|a|=|b|=3\). Consider \(a^2\in H\). Since the identity is unique, \(a^2\neq a\),
-    and since \(b\) is the unique inverse of \(a\), the only remaining choice is \(a^2=b\). Therefore,
+    Now, we will show that \(|a|=|b|=3\). Consider \(a^2\in H\). Since identities and inverses are unique,
+    \(a^2\neq a\) and \(a^2\neq e\). The only remaining choice is \(a^2=b\). Therefore,
     \begin{equation*}
         \begin{aligned}[c]
             a^3 &= a \cdot a^2 \\
