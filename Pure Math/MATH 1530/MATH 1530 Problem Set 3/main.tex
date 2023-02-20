@@ -150,7 +150,7 @@
     \end{itemize}
 
     Because both cases lead to a contradiction, we have proven that \(H\cup K\) is not closed
-    and therefore is not a subgroup.
+    and is therefore not a subgroup.
 \end{proof}
 
 \newpage
@@ -213,5 +213,28 @@
 \begin{problem} 
     Let $G$ be a finite group with more than one element. Show that $G$ has an element of prime order.
 \end{problem}
+
+\begin{proof}
+    Let \(a\in G\) such that \(a\neq e\). Let \(|a| = n\) where \(n\) is the smallest positive
+    integer such that \(a^n = e\) (such an integer exists because \(G\) is finite). 
+    
+    Because \(a\) is not the identity, we have that \(n > 1\). By the fundamental theorem of arithmetic,
+    \(n\) can be separated into a unique product of primes \(p_1\cdots p_m\):
+    \begin{align*}
+        e &= a^n & \text{(definition of order)}\\
+        &= a^{p_1\cdots p_m} & \text{(fundamental theorem of arithmetic)}\\
+        &= (a^{p_1\cdots p_{m-1}})^{p_m} & \text{(power rule for exponents)}
+    \end{align*}
+    Let \(b = a^{p_1\cdots p_{m-1}}\). We have that \(b\in G\) because \(b\in \langle a\rangle \subset G\). Thus,
+    we have that \(b^{p_m} = e\). We will now show that \(|b| = p_m\).
+    \begin{align*}
+        |b| &= |a^{p_1\cdots p_{m-1}}| & \text{(definition of \(b\))}\\
+        &= n / gcd(n, p_1\cdots p_{m-1}) & \text{(Gallian, 4.2)}\\
+        &= p_1\cdots p_m / gcd(p_1\cdots p_m, p_1\cdots p_{m-1}) & \text{(\(n=p_1\cdots p_m\))}\\
+        &= p_1\cdots p_m / p_1\cdots p_{m-1} & \text{(definition of \(gcd\))}\\
+        &= p_m & \text{(division)}
+    \end{align*}
+    Therefore, we have proven that \(G\) has an element of prime order.
+\end{proof}
 
 \end{document}
