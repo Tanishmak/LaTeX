@@ -188,6 +188,14 @@ Suppose we are interested in a sample space $\Omega$. Please review the followin
 E_1\cup E_2=\bigcup_{n=1}^\infty A_n,
 \end{align*}
 where $A_1,A_2,\ldots$ are defined in Eq.~\eqref{eq: E1 E2 question}.
+
+\begin{proof}
+  Since \(A_1=E_1\) and \(A_2=E_2\), we have that \(E_1\cup E_2\subset \bigcup_{n=1}^\infty A_n\).
+  Additionally, for all \(A_i\in \{A_n\}^{\infty}_{n=1}\), we have that \(A_i\subset E_1\cup E_2\).
+  Thus, \(\bigcup_{n=1}^\infty A_n \subset E_1\cup E_2\), completing the double inclusion. Therefore,
+  we have proven that \(E_1\cup E_2 = \bigcup_{n=1}^\infty A_n\).
+\end{proof}
+
 \end{enumerate}
 
 \item (1 points) Let $\Omega=\mathbb{R}=$ the collection of all real numbers. We define a sequence of events as follows
