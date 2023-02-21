@@ -23,6 +23,7 @@
 \usepackage{latexsym}
 \usepackage{fullpage}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{euler}
 \usepackage{amsthm}
@@ -221,6 +222,11 @@ where $A_1, A_2, A_3,\ldots$ are defined in Eq.~\eqref{eq: infinite intersection
 \end{align*}
 \end{enumerate}
 
+\begin{proof}
+  \(A_{n+1}\subsetneq A_n\)
+  since \([0,1+\frac{1}{n+1}]\subsetneq [0,1+\frac{1}{n}]\). Thus,
+  \[\bigcap_{n=1}^\infty A_n = \lim_{n\to\infty} A_n = \lim_{n\to\infty} [0, 1+\frac{1}{n}] = [0,1]\].
+\end{proof}
 
 \newproblem{Definition of Probability Spaces}{}
 
