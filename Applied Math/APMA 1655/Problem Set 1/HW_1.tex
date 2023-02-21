@@ -25,6 +25,7 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{euler}
+\usepackage{amsthm}
 
 % \setlength{\oddsidemargin}{.0in} \setlength{\evensidemargin}{.0in}
 % \setlength{\textwidth}{6.5in} \setlength{\topmargin}{-0.4in}
@@ -151,6 +152,12 @@ Suppose we are interested in a sample space $\Omega$. Please review the followin
 \begin{align}\label{eq: infinite union example}
 \Omega=\bigcup_{n=1}^\infty A_n.
 \end{align}
+
+\begin{proof}
+  Since \(A_1=\Omega\), we immediately have that \(\Omega\subset \bigcup_{n=1}^\infty A_n\). Additionally,
+  we have that for all \(A_i\in \{A_n\}^{\infty}_{n=1}\), \(A_i\subset\Omega\). Thus, \(\bigcup_{n=1}^\infty A_n\subset\Omega\)
+  completing the double inclusion. Therefore, we have proven that \(\Omega = \bigcup_{n=1}^\infty A_n\) as desired.
+\end{proof}
 
 \item Let $E_1$ and $E_2$ be two events with $E_1\cap E_2=\emptyset$. We define a sequence $\{A_n\}_{n=1}^\infty=\{A_1, A_2,\ldots,A_n,\ldots\}$ of events as the following: 
 \begin{align}\label{eq: E1 E2 question}
