@@ -170,6 +170,19 @@ Suppose we are interested in a sample space $\Omega$. Please review the followin
 \textbf{Please prove the following:}
 \begin{enumerate}
 \item (0.5 points) The sequence $\{A_n\}_{n=1}^\infty=\{A_1, A_2,\ldots,A_n,\ldots\}$ defined in Eq.~\eqref{eq: E1 E2 question} is mutually disjoint.
+
+\begin{proof}
+  Let \(x,y\in \{A_n\}^{\infty}_{n=1}\) such that \(x\neq y\). The possible combinations of \(x\) and \(y\) 
+  can be expressed with the following cases: (we have that \(\cap\) is commutative, so the order of \(x\) and \(y\) does not matter)
+  \begin{itemize}
+    \item Case 1 (\(x = E_1\) and \(y = E_2\)): \(x\cap y=E_1\cap E_2=\emptyset\)
+    \item Case 2 (\(x = E_1\) and \(y = \emptyset\)): \(x\cap y=E_1\cap \emptyset=\emptyset\)
+    \item Case 3 (\(x = E_2\) and \(y = \emptyset\)): \(x\cap y=E_2\cap \emptyset=\emptyset\)
+  \end{itemize}
+  Therefore, since \(x,y\in \{A_n\}^{\infty}_{n=1} : x\neq y \implies x\cap y=\emptyset\), we have proven that \(\{A_n\}^{\infty}_{n=1}\)
+  is mutually disjoint.
+\end{proof}
+
 \item (0.5 points) We have the following identity
 \begin{align*}
 E_1\cup E_2=\bigcup_{n=1}^\infty A_n,
