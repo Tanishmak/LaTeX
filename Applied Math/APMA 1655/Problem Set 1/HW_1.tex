@@ -260,12 +260,37 @@ Let $(\Omega, \mathbb{P})$ be a probability space. Then, we have the following p
 \item (0 point) $\mathbb{P}(\emptyset)=0$, i.e., the probability of the impossible event is zero; 
 \item (0 point) if two events $E_1$ and $E_2$ satisfy $E_1\cap E_2=\emptyset$, we have $\mathbb{P}(E_1\cup E_2)=\mathbb{P}(E_1)+ \mathbb{P}(E_2)$;
 \item (0.5 points) suppose $A,B\subset\Omega$. If $A\subset B$, then $\mathbb{P}(A)\le \mathbb{P}(B)$;\footnote{Hint: If $A\subset B$, we have $B=(B\cap A^c)\cup A$; furthermore, $(B\cap A^c)$ and $A$ are disjoint.}
+
+\begin{proof}
+  Let \(A\subset B\). We have that \(B=(B\cap A^c)\cup A\) and \((B\cap A^c)\cap A=\emptyset\).
+  Thus, \((B\cap A^c)\) and \(A\) are additive, which implies that \(\p(B)=\p((B\cap A^c)\cup A) = \p(B\cap A^c) + \p(A)\).
+  Because \(\p(B\cap A^c)\geq 0\) by the definition of a probability space, it must be the case that
+  \(\p(B)\geq \p(A)\implies \p(A)\leq\p(B)\).
+\end{proof}
+
 \item (0.5 points) $0\le \mathbb{P}\{A\} \le 1$ for any subsets $A \subset \Omega$; 
+
+\begin{proof}
+  Let \(A\subset\Omega\). Immediately, we have that \(\p(A)\leq\p(\Omega)\implies\p(A)\leq 1\). Since \(\emptyset\subset A\), we have that \(\p(\emptyset)\leq\p(A)\implies0\leq\p(A)\).
+\end{proof}
+
 \item (0.5 points) $\mathbb{P}(A^c)=1-\mathbb{P}(A)$.
+ 
+\begin{proof}
+  Let \(A\subseteq \Omega\). By the definition of a complement, we have that \(A\cup A^c=\Omega\)
+  and \(A\cap A^c=\emptyset\). Thus,
+  \begin{align*}
+     1 &= P(\Omega) & \text{(\(P(\Omega)=1\))}\\
+     &= P(A\cup A^c) & \text{(definition of complement)}\\
+     &=P(A)+P(A^c) & \text{(\(A\) and \(A^c\) disjoint)}
+  \end{align*}
+  Therefore, we can conclude that \(P(A^c)=1-P(A)\)
+\end{proof}
+
     \item (1 point) for any $A,B\subset\Omega$, we have $\mathbb{P}\{A\cup B\}=\mathbb{P}\{A\}+\mathbb{P}\{B\}-\mathbb{P}\{A\cap B\}$;
     \item (1 point) for any sequence of subsets $\{A_n\}_{n=1}^\infty$, we have $\mathbb{P}\{\bigcup_{n=1}^\infty A_n\}\le\sum_{n=1}^\infty\mathbb{P}\{A_n\}$.\footnote{More precisely, we have the following: 
     \begin{align*}
-    \mathbb{P}\left(\bigcup_{k=1}^n A_k\right)=\sum_{k=1}^n(-1)^{k-1}\left\{\sum_{1\le i_1<i_2<\cdots<i_k\le n} \mathbb{P}\left(\bigcap_{l=1}^k A_{i_l}\right)\right\};  
+      \mathbb{P}\left(\bigcup_{k=1}^n A_k\right)=\sum_{k=1}^n(-1)^{k-1}\left\{\sum_{1\le i_1<i_2<\cdots<i_k\le n} \mathbb{P}\left(\bigcap_{l=1}^k A_{i_l}\right)\right\};  
     \end{align*}
     However, the identity above is not usually used in applications. You do not need to prove this precise identity in HW 1.}
 \end{enumerate}
