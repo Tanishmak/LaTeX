@@ -275,7 +275,7 @@ Let $(\Omega, \mathbb{P})$ be a probability space. Then, we have the following p
 \end{proof}
 
 \item (0.5 points) $\mathbb{P}(A^c)=1-\mathbb{P}(A)$.
- 
+
 \begin{proof}
   Let \(A\subseteq \Omega\). By the definition of a complement, we have that \(A\cup A^c=\Omega\)
   and \(A\cap A^c=\emptyset\). Thus,
@@ -287,8 +287,31 @@ Let $(\Omega, \mathbb{P})$ be a probability space. Then, we have the following p
   Therefore, we can conclude that \(P(A^c)=1-P(A)\)
 \end{proof}
 
-    \item (1 point) for any $A,B\subset\Omega$, we have $\mathbb{P}\{A\cup B\}=\mathbb{P}\{A\}+\mathbb{P}\{B\}-\mathbb{P}\{A\cap B\}$;
-    \item (1 point) for any sequence of subsets $\{A_n\}_{n=1}^\infty$, we have $\mathbb{P}\{\bigcup_{n=1}^\infty A_n\}\le\sum_{n=1}^\infty\mathbb{P}\{A_n\}$.\footnote{More precisely, we have the following: 
+\item (1 point) for any $A,B\subset\Omega$, we have $\mathbb{P}\{A\cup B\}=\mathbb{P}\{A\}+\mathbb{P}\{B\}-\mathbb{P}\{A\cap B\}$;
+\begin{proof}
+  Let \(A,B\in\Omega\). 
+  \begin{align*}
+    A\cup B &= (A\cup B)\cap \Omega & \text{(definition of \(\cap\))}\\
+    &= (A\cup B) \cap (A\cup A^c) & \text{(definition of complement)}\\
+    &= A\cup (B\cap A^c) & \text{(distributive law)}
+  \end{align*}
+
+  Thus, \(\p(A\cup B)\) can be expressed as the probability of the union of two disjoint events.
+
+  \[\p(A\cup B) = \p(A\cup (B\cap A^c)) = \p(A) + \p(B\cap A^c)\]
+
+  Now, we can rewrite \(\p(B\cap A^c)\) using a relation derived from \(\p(B)\).
+
+  \begin{align*}
+    \p(B) &= \p(B\cap \Omega) & \text{(definition of \(\cap\))}\\
+    &= \p(B\cap (A\cup A^C)) & \text{(definition of complement)}\\
+    &= \p((B\cap A)\cup (B\cap A^c)) & \text{(distributive law)}\\
+    &= \p(A\cap B) + \p(B\cap A^c) & \text{(\(p\) is additive))}
+  \end{align*}
+  Using this relation, we have that \(\p(B\cap A^c)=\p(B)-\p(A\cap B)\).
+\end{proof}
+
+\item (1 point) for any sequence of subsets $\{A_n\}_{n=1}^\infty$, we have $\mathbb{P}\{\bigcup_{n=1}^\infty A_n\}\le\sum_{n=1}^\infty\mathbb{P}\{A_n\}$.\footnote{More precisely, we have the following: 
     \begin{align*}
       \mathbb{P}\left(\bigcup_{k=1}^n A_k\right)=\sum_{k=1}^n(-1)^{k-1}\left\{\sum_{1\le i_1<i_2<\cdots<i_k\le n} \mathbb{P}\left(\bigcap_{l=1}^k A_{i_l}\right)\right\};  
     \end{align*}
