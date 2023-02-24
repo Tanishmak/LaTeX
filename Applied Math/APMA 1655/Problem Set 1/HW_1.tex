@@ -352,10 +352,30 @@ Let $(\Omega, \mathbb{P})$ be a probability space.
 \mathbb{P}(A^c) \le \mathbb{P}(B^c).
 \end{align*}
 
+\begin{proof}
+  Let \(B\subset A\). We have that
+  \begin{align*}
+    \p(B)&\leq\p(A) & \text{(definition of \(\p\))}\\
+    1-\p(B^c)&\leq 1-\p(A^c) & \text{(definition of complement)}\\
+    -\p(B^c)&\leq -\p(A^c) & \text{(subtraction)}\\
+    \p(A^c)&\leq\p(B^c) & \text{(addition)}
+  \end{align*}
+\end{proof}
+
 \item (1 point) Let $A$ and $B$ are two events. If $\mathbb{P}(A) = 0.7$ and $\mathbb{P}(B)=0.6$,  what is the smallest possible value of $\mathbb{P}(A\cup B)$? What is the largest possible value of $\mathbb{P}(A\cup B)$? 
+
+The smallest possible value of \(\p(A\cup B)\) is when \(B\subset A\implies \p(A\cap B)\) is largest (\emph{i.e.} when \(\p(A\cap B)=\p(B)=0.6\)). In this case,
+\[\p(A\cup B)=\p(A)+\p(B)-\p(A\cap B)=0.7 + 0.6 - 0.6 = 0.7\]
+
+The largest possibe value is attainable when \(A\cup B=\Omega\):
+\[\p(A\cup B)=\p(\Omega)=1\]
 
 \item (1 point) Let $A$ and $B$ are two events. If $\mathbb{P}(A) = 0.7$ and $\mathbb{P}(B)=0.6$, what is the smallest possible value of $P(A\cap B)$? What is the largest possible value of $P(A\cap B)$? 
 
+The smallest possible value of \(\p(A\cap B)\) is attainable when the overlap between \(A\) and \(B\) is smallest.
+This occurs when \(A\cup B=\Omega\). Thus, \(\p(A\cap B)=0.6-0.3=0.3\).
+
+The largest possible value of \(\p(A\cap B)\) occurs when \(B\subset A\). In this case, \(\p(A\cap B)=\p(B)=0.6\).
 
 \end{enumerate}
 
