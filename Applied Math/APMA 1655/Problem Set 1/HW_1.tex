@@ -308,7 +308,8 @@ Let $(\Omega, \mathbb{P})$ be a probability space. Then, we have the following p
     &= \p((B\cap A)\cup (B\cap A^c)) & \text{(distributive law)}\\
     &= \p(A\cap B) + \p(B\cap A^c) & \text{(\(p\) is additive))}
   \end{align*}
-  Using this relation, we have that \(\p(B\cap A^c)=\p(B)-\p(A\cap B)\).
+  Using this relation, we have that \(\p(B\cap A^c)=\p(B)-\p(A\cap B)\). By substituting this into 
+  the first relation, we get \(\p(A\cup B)=\p(A) + \p(B) - \p(A\cap B)\) as desired.
 \end{proof}
 
 \item (1 point) for any sequence of subsets $\{A_n\}_{n=1}^\infty$, we have $\mathbb{P}\{\bigcup_{n=1}^\infty A_n\}\le\sum_{n=1}^\infty\mathbb{P}\{A_n\}$.\footnote{More precisely, we have the following: 
@@ -316,13 +317,30 @@ Let $(\Omega, \mathbb{P})$ be a probability space. Then, we have the following p
       \mathbb{P}\left(\bigcup_{k=1}^n A_k\right)=\sum_{k=1}^n(-1)^{k-1}\left\{\sum_{1\le i_1<i_2<\cdots<i_k\le n} \mathbb{P}\left(\bigcap_{l=1}^k A_{i_l}\right)\right\};  
     \end{align*}
     However, the identity above is not usually used in applications. You do not need to prove this precise identity in HW 1.}
+
+\begin{proof}
+  Let \(\{A_n\}^{\infty}_{n=1}\) be a sequence of subsets. We have that 
+  \[      
+    \mathbb{P}\left(\bigcup_{n=1}^\infty A_n\right)=\sum_{n=1}^\infty(-1)^{n-1}\left\{\sum_{1\le i_1<i_2<\cdots<i_n\le \infty} \mathbb{P}\left(\bigcap_{l=1}^n A_{i_l}\right)\right\}
+  \]
+  Evidently, the first term of the summation (when \(n=1\)) is
+  \[
+   (-1)^0\cdot \left\{\sum_{1\le i_1 \le \infty} \mathbb{P}\left(\bigcap_{l=1}^1 A_{i_l}\right)\right\} = \sum_{i=1}^\infty \p(A_n)
+  \]
+  Next, we will show that the absolute value of the \(k\)th term in the summation is greater than or equal to the \(k+1\)th term.
+  \begin{align*}
+    \sum_{1\leq i_1<\cdots<i_k\leq\infty} \p\left(\bigcap_{l=1}^k A_{i_l}\right) \geq
+    \sum_{1\leq i_1<\cdots<i_{k+1}\leq\infty} \p\left(\bigcap_{l=1}^{k+1} A_{i_l}\right)
+  \end{align*}
+  Since the coefficient of the second term in the summation is \((-1)^{2-1}=-1\), and subsequent terms continue alternating signs and
+  decreasing in absolute value, it must be the case that \(\mathbb{P}\{\bigcup_{n=1}^\infty A_n\}\le\sum_{n=1}^\infty\mathbb{P}\{A_n\}\).
+\end{proof}
+    
 \end{enumerate}
 
 Properties 1 and 2 were proved in class, and you do not need to prove them in HW 1. 
 
-\textbf{Please prove Properties 3-7 above. }
-
-
+\textbf{Please prove Properties 3-7 above.}
 
 \newproblem{Application of the Probability Properties}{ }
 
