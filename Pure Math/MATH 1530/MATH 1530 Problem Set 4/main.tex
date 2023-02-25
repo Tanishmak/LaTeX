@@ -106,6 +106,29 @@
     Let \(a\) and \(b\) belong to a group. If \(|a|\) and \(|b|\) are relatively prime, prove that \(\langle a\rangle \cap \langle b\rangle = \{e\}\).
 \end{problem}
 
+\begin{proof}
+    Let \(G\) be a group containing elements \(a,b\). Let \(m=|a|\) and \(n=|b|\). We can now express \(\langle a\rangle\) and \(\langle b\rangle\) as:
+    \begin{equation*}
+        \begin{aligned}[c]
+            \langle a\rangle = \{e,a^1,\ldots,a^{m-1}\}
+        \end{aligned}
+        \qquad\qquad
+        \begin{aligned}[c]
+            \langle b\rangle = \{e,b^1,\ldots,a^{n-1}\}
+        \end{aligned}
+    \end{equation*}
+    
+    Because the identity element of \(G\) is unique, we have that \(e\in\langle a\rangle\cap\langle b\rangle\).
+    
+    Next, we will show that for all \(a^k\in\langle a\rangle\) such that \(a^k\neq e\), we have that \(a^k\notin\langle b\rangle\).
+    By (Gallian, 4.2 Corollary 1), we know that if \(a^k\in\langle a\rangle\), then \(|a^k|\) divides \(m\). Additionally, since \(a^k\neq e\),
+    we know \(|a^k|>1\). If \(a^k\in\langle b\rangle\), \(|a^k|\) must divide \(n\). But since \(|a|\) and \(|b|\) are relatively prime, we have that \(gcd(m,n)=1\). Because
+    \(|a^k|\neq 1\), we have shown that \(a^k\notin\langle b\rangle\). The same process can be used to show that for all \(b^k\in\langle b\rangle\) such that \(b^k\neq e\),
+    we have that \(b^k\notin\langle a\rangle\).
+
+    Therefore, we have proven that \(\langle a\rangle\cap\langle b\rangle=\{e\}\).
+\end{proof}
+
 %%%%%%%%%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%
 
 
