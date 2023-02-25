@@ -1,0 +1,115 @@
+\documentclass[12pt,reqno]{article}
+
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[all]{xy}
+\usepackage[T1]{fontenc}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{setspace}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{amsthm,bbm}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{extarrows}
+\usepackage{color}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage[colorlinks, linktocpage, citecolor = red, linkcolor = blue]{hyperref}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage{euler}
+\usepackage{parskip}
+
+%%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
+
+\MakeOuterQuote{"}
+\graphicspath{ {./} }
+
+%%%%%%%%%%%%%%%%%%%% COMMANDS %%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\range}{\mathrm{range\,}}
+\newcommand{\nul}{\mathrm{null\,}}
+\newcommand{\spn}{\mathrm{span\,}}
+\newcommand{\card}{\mathrm{cardinality}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\bd}{\mathrm{bd\,}}
+\newcommand{\divline}{\hrule\vspace{12pt}\noindent}
+\newcommand{\sgn}{\mathrm{sgn}}
+
+%%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem{maintheorem}{Theorem}
+\renewcommand*{\themaintheorem}{\Alph{maintheorem}}
+
+\newtheorem{theorem}{Theorem}[section] 
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+
+\newtheorem*{maintheorema}{Theorem \ref{thm:main}}
+
+%%%%%%%%%%%%%%%%%%%% TITLE-PAGE %%%%%%%%%%%%%%%%%%%%
+
+\title{MATH 1530 Problem Set 3}
+\author{Tanish Makadia\\\small{(Collaborated with Esmé, Marcos, Edward, and Kazuya)}}
+\date{February 2023}
+
+%%%%%%%%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 1 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Please complete the mid-semester survey. Write "I have completed the mid-semester survey" and sign your name.
+\end{problem}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 2 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Let \(a\) be an element of a group \(G\). Prove that \(\langle a^m\rangle \cap \langle a^n\rangle\)
+    is cyclic, where \(n,m\) are integers. What is its generator?
+\end{problem}
+
+\begin{proof}
+    Let \(a^k\in \langle a^m\rangle \cap \langle a^n\rangle\). We have that \(a^{k}\in\langle a^m\rangle\implies a^k=a^{ms}\) where \(s\in\Z\). 
+    We also have that \(a^k\in\langle a^n\rangle\implies a^k=a^{nt}\) where \(t\in\Z\). Together, we have
+    \[a^k=a^{ms}=a^{nt}\implies k=ms=nt\]
+    In other words, \(k\) must be a common multiple of both \(m\) and \(n\). Since every common multiple of \(m\) and
+    \(n\) is itself a multiple of \(lcm(m,n)\), we have that \(\langle a^m\rangle \cap \langle a^n\rangle\) is equal to \(\langle a^{lcm(m,n)}\rangle\). 
+\end{proof}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 3 %%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+    Let \(a\) and \(b\) belong to a group. If \(|a|\) and \(|b|\) are relatively prime, prove that \(\langle a\rangle \cap \langle b\rangle = \{e\}\).
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%% PROBLEM 5 %%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
