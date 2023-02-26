@@ -189,5 +189,36 @@ Let \(G\) be a group, and suppose \(G\) has two distinct elements of order \(2\)
 \end{proof}
 
 2. Prove that \(U(2^n)\) is not cyclic for \(n\geq 3\).
+\begin{proof}
+    We will show that \(U(2^n)\) contains two distinct elements of order \(2\).
+
+    First, we will prove that \(2^n-1,\ 2^{n-1}-1\in U(2^n)\).
+    \begin{itemize}
+        \item \underline{\(2^n-1\in U(2^n)\):} Since the linear combination \(2^n-(2^n-1)\) equals \(1\), we have that
+        \(2^n-1\) and \(2^n\) are relatively prime.
+        \item \underline{\(2^{n-1}-1\in U(2^n)\):} Consider the prime factorizations of \(2^n\) and \(2^{n-1}-1\).
+        Of course, \(2^n=2\cdots 2\). Let \(2^{n-1}-1=p_1\cdots p_m\) where \(p_i\) is a prime number. Since \(2^{n-1}\) is even, it must be the case
+        that \(2^{n-1}-1\) is odd. Therefore, \(p_1,\ldots,p_m\) are odd. Because the product of even numbers is always even, all divisors of \(2^n\)
+        besides \(1\) must be even. Additionally, since the product of odd numbers is always odd, all divisors of \(2^{n-1}-1\) must be odd. 
+        Therefore, we have that \(gcd(2^n,\ 2^{n-1}-1)=1\) which means \(2^n\) and \(2^{n-1}-1\) are relatively prime.
+    \end{itemize}
+
+    Now, we will show that \(|2^n-1|=|2^{n-1}-1|=2\).
+    \begin{equation*}
+        \begin{aligned}[c]
+            (2^n-1)^2 &= (2^{2n}-2(2^n)+1)\bmod{2^n}\\
+            &= (2^n(2^n-2)+1)\bmod{2^n}\\
+            &= 1 = e
+        \end{aligned}
+        \qquad\qquad
+        \begin{aligned}[c]
+            (2^{n-1}-1)^2 &= (2^{2n-2}-2(2^{n-1})+1)\bmod{2^n}\\
+            &= (2^n(2^{n-2}-1)+1)\bmod{2^n}\\
+            &= 1 = e
+        \end{aligned}
+    \end{equation*}
+    Therefore, we have that \(|2^n-1|=|2^{n-1}-1|=2\). Since two distinct elements of 
+    order \(2\) exist in \(U(2^n)\), by \((1)\), we have proven that \(U(2^n)\) is not cyclic for \(n\geq 3\).
+\end{proof}
 
 \end{document}
