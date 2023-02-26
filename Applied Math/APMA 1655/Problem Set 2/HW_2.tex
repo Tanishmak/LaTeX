@@ -173,6 +173,27 @@ Let $A$ be any event. \textbf{Please prove that $A\cap B_1, A\cap B_2, A\cap B_3
 \end{itemize}
 After adding the $d$ balls, another ball is drawn at random from the box.  \textbf{Show that the probability that the second chosen ball is white does not depend on $d$.} Hint: Use the law of total probability (LTP).
 
+\begin{proof}
+  Let \(W,B\) denote "white" and "black" respectively. 
+  
+  We have that \(\Omega=\{(W,W),(W,B),(B,W),(B,B)\}\). Let \(A =\{(W, W),(B, W)\}\) represent the event that the second ball picked is white.
+  We will now create a partition of \(\Omega\) using the following elements:
+  \[B_1=\{(W,W)\}\quad\quad B_2=\{(W,B)\}\quad\quad B_3=\{(B,W)\}\quad\quad B_4=\{(B,B)\}\]
+  Since \(B_1,\ldots,B_4\) are mutually disjoint and \(B_1\cup\cdots\cup B_4=\Omega\), we have that
+  \(\{B_i\}_{i=1}^4\) forms a partition of \(\Omega\).
+
+  By the law of total probability,
+  \begin{align*}
+    \p(A) &= \sum_{i=1}^{4} \p(A\,|\,B_i)\cdot \p(B_i)\\
+    &= \sum_{i=1}^{4} \p(A\cap B_i)\\
+    &= \p(W, W) + \p(B, B) + \p(\emptyset) + \p(\emptyset)\\
+    &= \frac{w}{w+b}\cdot\frac{w+d}{w+b+d}+\frac{b}{w+b}\cdot\frac{w}{w+b+d}\\
+    &= \frac{w^2+dw+bw}{(w+b)(w+b+d)}\\
+    &= \frac{w(w+b+d)}{(w+b)(w+b+d)}\\
+    &= \frac{w}{w+b}
+  \end{align*}
+  Therefore, we have proven that \(\p(A)\) does not depend on \(d\).
+\end{proof}
 
 \item (1 point) Suppose the underlying probability space is $(\Omega,\mathbb{P})$. Let $G$ and $H$ be events such that $0<\mathbb{P}(G)<1$ and $0<\mathbb{P}(H)<1$. \textbf{Give a formula for $\mathbb{P}(G|H^c)$ in terms of $\mathbb{P}(G)$, $\mathbb{P}(H)$ and $\mathbb{P}(G\cap H)$ only.}
 
