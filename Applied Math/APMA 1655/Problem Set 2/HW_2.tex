@@ -249,6 +249,26 @@ After adding the $d$ balls, another ball is drawn at random from the box.  \text
         \item $\mathbb{P}(B\,\vert\,A)=\mathbb{P}(B)$.
     \end{enumerate}
 
+\begin{proof}
+  We will show that equations (b) and (c) are equivalent to (a).
+  \begin{itemize}
+    \item (b) \(\Longleftrightarrow\) (a):
+    \begin{align*}
+      \p(A\cap B) &= p(A)\cdot \p(B) & \text{(b)}\\
+      \frac{\p(A\cap B)}{\p(B)}&= \p(A) & \text{(division)}\\
+      \p(A\,|\,B)&=\p(A) & \text{(conditional probability)}
+    \end{align*}
+    \item (c) \(\Longleftrightarrow\) (a):
+    \begin{align*}
+      \p(B\,|\,A) &= \p(B) & \text{(c)}\\
+      \frac{\p(A\,|\,B)\cdot \p(B)}{\p(A)} &= \p(B) & \text{(Bayes' Rule)}\\
+      \p(A\,|\,B)\cdot \p(B) &= \p(B)\cdot \p(A) & \text{(multiplication)}\\
+      \p(A\,|\,B) &= \p(A) & \text{(division)}
+    \end{align*}
+  \end{itemize}
+  Therefore, we have that (a) \(\Longleftrightarrow\) (b) \(\Longleftrightarrow\) (c).
+\end{proof}
+
 \end{enumerate}
 
 
