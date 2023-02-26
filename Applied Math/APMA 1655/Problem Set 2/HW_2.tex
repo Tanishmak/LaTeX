@@ -1,4 +1,4 @@
-% me=0 student solutions (ps file), me=1 - my solutions (sol file),
+  % me=0 student solutions (ps file), me=1 - my solutions (sol file),
 % me=2 - assignment (hw file)
 \def\me{1} \def\num{2} %homework number
 
@@ -197,6 +197,34 @@ After adding the $d$ balls, another ball is drawn at random from the box.  \text
 
 \item (1 point) Suppose the underlying probability space is $(\Omega,\mathbb{P})$. Let $G$ and $H$ be events such that $0<\mathbb{P}(G)<1$ and $0<\mathbb{P}(H)<1$. \textbf{Give a formula for $\mathbb{P}(G|H^c)$ in terms of $\mathbb{P}(G)$, $\mathbb{P}(H)$ and $\mathbb{P}(G\cap H)$ only.}
 
+\begin{proof}
+  \begin{enumerate}
+    \item We will first show that \(\p(G\cup H^c)=\p(G)+\p((H\cup G)^c)\).
+    \begin{align*}
+      \p(G\cup H^c) &= \p((G\cup H^c)\cap \Omega) & \text{(\(A\cap\Omega=A\))}\\
+      &= \p((G\cup H^c)\cap(G\cup G^c)) & \text{(def of complement)}\\
+      &= \p([(G\cup H^c)\cap G]\cup[(G\cup H^c)\cap G^c]) & \text{(distributive law)}\\
+      &= \p(G\cup (H^c\cap G^c)) & \text{(distributive law)}\\
+      &= \p(G) + \p(H^c\cap G^c) & \text{(additivity)}\\
+      &= \p(G) + \p((H\cup G)^c) & \text{(De Morgan's law)}
+    \end{align*}
+    \item Next, we will show that \(\p(G\cap H^c)=\p(G) - \p(G\cap H)\).
+    \begin{align*}
+      \p(G\cap H^c) &= \p(G) + \p(H^c) - \p(G\cup H^c) & \text{(def of \(\p\))}\\
+      &= \p(G) + \p(H^c) - \p(G) - \p((H\cup G)^c) & \text{(substitute (a))}\\
+      &= \p(G) + 1 - \p(H) - \p(G) - 1 + \p(H\cup G) & \text{(def of complement)}\\
+      &= \p(H\cup G) - \p(H) & \text{(subtraction)}\\
+      &= \p(H) + \p(G) - \p(G\cap H) - \p(H) & \text{(def of \(\p\))}\\
+      &= \p(G) - \p(G\cap H) & \text{(subtraction)}
+    \end{align*}
+    \item Finally, we will express \(\p(G\,|\,H^c)\) in terms of \(\p(G)\), \(\p(H)\), and \(\p(G\cap H)\).
+    \begin{align*}
+      \p(G\,|\,H^c) &= \frac{\p(G\cap H^c)}{\p(H^c)} & \text{(conditional probability)}\\
+      &= \frac{\p(G) - \p(G\cap H)}{\p(H^c)} & \text{(substitute (b))}\\
+      &= \frac{\p(G) - \p(G\cap H)}{1 - \p(H)} & \text{(def of complement)}
+    \end{align*}
+  \end{enumerate}
+\end{proof}
 
 \item (1 point) Suppose we have the following
 \begin{align*}
