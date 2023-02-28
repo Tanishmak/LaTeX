@@ -96,9 +96,21 @@ I have completed the mid-semester survey -Tanish Makadia
     Let \(a^k\in \langle a^m\rangle \cap \langle a^n\rangle\). We have that \(a^{k}\in\langle a^m\rangle\implies a^k=a^{ms}\) where \(s\in\Z\). 
     We also have that \(a^k\in\langle a^n\rangle\implies a^k=a^{nt}\) where \(t\in\Z\). Together, we have
     \[a^k=a^{ms}=a^{nt}\implies k=ms=nt\]
-    In other words, \(k\) must be a common multiple of both \(m\) and \(n\). Since every common multiple of \(m\) and
-    \(n\) is itself a multiple of \(lcm(m,n)\), we have that \(\langle a^m\rangle \cap \langle a^n\rangle\) is equal to 
-    \(\{(a^{lcm(m,n)})^c\ |\ c\in\Z\}=\langle a^{lcm(m,n)}\rangle\). 
+    In other words, \(k\) must be a common multiple of both \(m\) and \(n\). Let \(K = \{k\ |\ k=ms=nt\}\) and let \(L = \{b\cdot lcm(m,n)\ |\ b\in\Z\}\). We will now prove that \(K=L\).
+
+    Of course, \(lcm(m,n)=ms=nt\) for some \(s,t\in\Z\). Thus, for all \(b\in\Z\), we have that \(b\cdot lcm(m,n)=msb=ntb\implies b\cdot lcm(m,n)=ms'=nt'\) where \(s',t'\in\Z\).
+    Therefore, \(L\subset K\).
+
+    For contradiction, suppose \(lcm(m,n)\nmid k\). This implies that
+    \begin{align*}
+        k&=b\cdot lcm(m,n) + r &\text{such that \(b\in\Z\) and \(0<r<lcm(m,n)\)}
+    \end{align*}
+    From this relation, we have that \(r = k - b\cdot lcm(m,n)\). We have that \(m\) and \(n\) both divide \(k\) and \(b\cdot lcm(m,n)\).
+    Thus, \(m\) and \(n\) both divide \(r\), which means \(r\) is a common multiple of \(m\) and \(n\). This is a contradiction
+    because we had that \(r<lcm(m,n)\). Therefore, for all common multiples \(k\), we have that \(lcm(m,n)\mid k\implies k=b\cdot lcm(m,n)\).
+    We can conclude that \(K\subset L\), completing the double inclusion.
+    
+    Since \(K=L\), \(\langle a^m\rangle \cap \langle a^n\rangle=\{a^k\ |\ k=ms=nt\}=\{(a^{lcm(m,n)})^b\ |\ b\in\Z\}=\langle a^{lcm(m,n)}\rangle\). 
 \end{proof}
 
 \newpage
