@@ -157,8 +157,8 @@ Suppose we are interested in a sample space $\Omega$. Please review the followin
 \end{align}
 
 \begin{proof}
-  Since \(A_1=\Omega\), we immediately have that \(\Omega\subset \bigcup_{n=1}^\infty A_n\). Additionally,
-  we have that for all \(A_i\in \{A_n\}^{\infty}_{n=1}\), \(A_i\subset\Omega\). Thus, \(\bigcup_{n=1}^\infty A_n\subset\Omega\)
+  We immediately have that \(\Omega=A_1\subset \bigcup_{n=1}^\infty A_n\). 
+  Let \(x\in\bigcup_{n=1}^\infty A_n\). For some \(A_i\in \{A_n\}^{\infty}_{n=1}\), we have that \(x\in A_i\subset\Omega\). Thus, \(x\in\Omega\implies \bigcup_{n=1}^\infty A_n\subset\Omega\)
   completing the double inclusion. Therefore, we have proven that \(\Omega = \bigcup_{n=1}^\infty A_n\) as desired.
 \end{proof}
 
@@ -193,9 +193,9 @@ E_1\cup E_2=\bigcup_{n=1}^\infty A_n,
 where $A_1,A_2,\ldots$ are defined in Eq.~\eqref{eq: E1 E2 question}.
 
 \begin{proof}
-  Since \(A_1=E_1\) and \(A_2=E_2\), we have that \(E_1\cup E_2\subset \bigcup_{n=1}^\infty A_n\).
-  Additionally, for all \(A_i\in \{A_n\}^{\infty}_{n=1}\), we have that \(A_i\subset E_1\cup E_2\).
-  Thus, \(\bigcup_{n=1}^\infty A_n \subset E_1\cup E_2\), completing the double inclusion. Therefore,
+  We have that \(E_1\cup E_2=A_1\cup A_2 \subset \bigcup_{n=1}^\infty A_n\).
+  Let \(x\in\bigcup_{n=1}^\infty A_n\). For some \(A_i\in \{A_n\}^{\infty}_{n=1}\), we have that \(x\in A_i\subset E_1\cup E_2\).
+  Thus, \(x\in E_1\cup E_2\implies \bigcup_{n=1}^\infty A_n \subset E_1\cup E_2\), completing the double inclusion. Therefore,
   we have proven that \(E_1\cup E_2 = \bigcup_{n=1}^\infty A_n\).
 \end{proof}
 
@@ -328,10 +328,21 @@ Let $(\Omega, \mathbb{P})$ be a probability space. Then, we have the following p
   We will first show that \(\{B_n\}_{n=1}^\infty\) is mutually disjoint. Let \(j,k \in\z_{>0}\) such that \(j<k\). By the definition of \(B_n\), we have
   \[B_k = A_k\setminus(B_1\cup\cdots\cup B_j\cup\cdots\cup B_{k-1})\implies B_j\cap B_k=\emptyset\]
   Therefore, \(\{B_n\}_{n=1}^\infty\) is mutually disjoint. Next, we will show that
-  \(\bigcup_{n=1}^\infty A_n = \bigcup_{n=1}^\infty B_n\). For all \(B_k\in\{B_n\}_{n=1}^\infty\), we have that \(B_k\subset A_k\subset \bigcup_{n=1}^\infty A_n\) since
-  \(B_k = A_k\setminus (\cdots)\). This implies that \(\bigcup_{n=1}^\infty B_n\subset \bigcup_{n=1}^\infty A_n\). Additionally, for all \(A_k\in\{A_n\}_{n=1}^\infty\),
-  \[A_k = \left(A_k\setminus\left(\bigcup_{n=1}^{k-1} B_n\right)\right)\cup\left(\bigcup_{n=1}^{k-1} B_n\right) = B_k \cup\left(\bigcup_{n=1}^{k-1} B_n\right) = \bigcup_{n=1}^{k} B_n\subset \bigcup_{n=1}^{\infty} B_n\]
-  This implies that \(\bigcup_{n=1}^\infty A_n\subset \bigcup_{n=1}^\infty B_n\), completing the double inclusion. Finally, we have that 
+  \(\bigcup_{n=1}^\infty A_n = \bigcup_{n=1}^\infty B_n\). 
+  
+  Let \(x\in\bigcup_{n=1}^\infty A_n\). For some \(A_k\in\{A_n\}_{n=1}^\infty\), we have that \(x\in A_k\). We therefore have the following two cases:
+  \begin{itemize}
+    \item \textbf{Case 1 (\(k=1\)):} \(x\in A_1=B_1\implies x\in\bigcup_{n=1}^\infty B_n\)
+    \item \textbf{Case 2 (\(k>1\)):} For contradiction, suppose \(x\notin\bigcup_{n=1}^k B_n\). This implies that 
+    \[x\notin\bigcup_{n=1}^{k-1} B_n\implies x\in\left(\bigcup_{n=1}^{k-1} B_n\right)^c\]
+    Since \(B_k = A_k \cap \left(\bigcup_{n=1}^{k-1} B_n\right)^c\), we have that \(x\in B_k\) which is a contradiction. Therefore, \(x\in\bigcup_{n=1}^k B_n\implies x\in\bigcup_{n=1}^\infty B_n\).
+  \end{itemize}
+  Both cases imply \(x\in\bigcup_{n=1}^\infty B_n\implies \bigcup_{n=1}^\infty A_n\subset \bigcup_{n=1}^\infty B_n\).
+  
+  Now let \(x\in\bigcup_{n=1}^\infty B_n\). For some \(B_k\in\{B_n\}_{n=1}^\infty\), we have that \(x\in B_k\subset A_k\subset \bigcup_{n=1}^\infty A_n\) since
+  \(B_k = A_k\setminus (\cdots)\). Thus, \(x\in\bigcup_{n=1}^\infty A_n\implies\bigcup_{n=1}^\infty B_n\subset \bigcup_{n=1}^\infty A_n\), completing the double inclusion.
+  
+  Finally, we have that 
   \begin{align*}
     \p(\bigcup_{n=1}^\infty A_n) &= \p(\bigcup_{n=1}^\infty B_n) & \text{(above)}\\
     &= \sum_{n=1}^\infty \p(B_n) & \text{(\(\{B_n\}_{n=1}^\infty\) mutually disjoint)}\\
