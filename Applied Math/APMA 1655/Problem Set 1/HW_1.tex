@@ -89,6 +89,7 @@
 \newcommand{\zo}{\{0,1\}}
 \newcommand{\C}{{\cal C}}
 \newcommand{\p}{\mathbb{P}}
+\newcommand{\z}{\mathbb{Z}}
 
 \newcommand{\nin}{\not\in}
 \newcommand{\set}[1]{\{#1\}}
@@ -174,14 +175,14 @@ Suppose we are interested in a sample space $\Omega$. Please review the followin
 \item (0.5 points) The sequence $\{A_n\}_{n=1}^\infty=\{A_1, A_2,\ldots,A_n,\ldots\}$ defined in Eq.~\eqref{eq: E1 E2 question} is mutually disjoint.
 
 \begin{proof}
-  Let \(x,y\in \{A_n\}^{\infty}_{n=1}\) such that \(x\neq y\). The possible combinations of \(x\) and \(y\) 
-  can be expressed with the following cases: (we have that \(\cap\) is commutative, so the order of \(x\) and \(y\) does not matter)
+  Let \(A_j,A_k\in \{A_n\}^{\infty}_{n=1}\) such that \(j\neq k\). The possible combinations of \(A_j\) and \(A_k\) 
+  can be expressed with the following cases: (we have that \(\cap\) is commutative, so the order of \(A_j\) and \(A_k\) does not matter)
   \begin{itemize}
-    \item Case 1 (\(x = E_1\) and \(y = E_2\)): \(x\cap y=E_1\cap E_2=\emptyset\)
-    \item Case 2 (\(x = E_1\) and \(y = \emptyset\)): \(x\cap y=E_1\cap \emptyset=\emptyset\)
-    \item Case 3 (\(x = E_2\) and \(y = \emptyset\)): \(x\cap y=E_2\cap \emptyset=\emptyset\)
+    \item Case 1 (\(A_j = E_1\) and \(A_k = E_2\)): \(A_j\cap A_k=E_1\cap E_2=\emptyset\)
+    \item Case 2 (\(A_j = E_1\) and \(A_k = \emptyset\)): \(A_j\cap A_k=E_1\cap \emptyset=\emptyset\)
+    \item Case 3 (\(A_j = E_2\) and \(A_k = \emptyset\)): \(A_j\cap A_k=E_2\cap \emptyset=\emptyset\)
   \end{itemize}
-  Therefore, since \(x,y\in \{A_n\}^{\infty}_{n=1} : x\neq y \implies x\cap y=\emptyset\), we have proven that \(\{A_n\}^{\infty}_{n=1}\)
+  Therefore, since \(A_j,A_k\in \{A_n\}^{\infty}_{n=1} : j\neq k \implies j\cap k=\emptyset\), we have proven that \(\{A_n\}^{\infty}_{n=1}\)
   is mutually disjoint.
 \end{proof}
 
@@ -319,21 +320,22 @@ Let $(\Omega, \mathbb{P})$ be a probability space. Then, we have the following p
     However, the identity above is not usually used in applications. You do not need to prove this precise identity in HW 1.}
 
 \begin{proof}
-  Let \(\{A_n\}^{\infty}_{n=1}\) be a sequence of subsets. We have that 
-  \[      
-    \mathbb{P}\left(\bigcup_{n=1}^\infty A_n\right)=\sum_{n=1}^\infty(-1)^{n-1}\left\{\sum_{1\le i_1<i_2<\cdots<i_n\le \infty} \mathbb{P}\left(\bigcap_{l=1}^n A_{i_l}\right)\right\}
-  \]
-  Evidently, the first term of the summation (when \(n=1\)) is
-  \[
-   (-1)^0\cdot \left\{\sum_{1\le i_1 \le \infty} \mathbb{P}\left(\bigcap_{l=1}^1 A_{i_l}\right)\right\} = \sum_{i=1}^\infty \p(A_n)
-  \]
-  Next, we will show that the absolute value of the \(k\)th term in the summation is greater than or equal to the \(k+1\)th term.
+  Let \(\{B_n\}_{n=1}^\infty\) be a sequence of events such that
   \begin{align*}
-    \sum_{1\leq i_1<\cdots<i_k\leq\infty} \p\left(\bigcap_{l=1}^k A_{i_l}\right) \geq
-    \sum_{1\leq i_1<\cdots<i_{k+1}\leq\infty} \p\left(\bigcap_{l=1}^{k+1} A_{i_l}\right)
+    B_n &= A_n\setminus\left(\bigcup_{i=1}^{n-1} B_i\right) = A_n\cap\left(\bigcup_{i=1}^{n-1} B_i\right)^c
   \end{align*}
-  Since the coefficient of the second term in the summation is \((-1)^{2-1}=-1\), and subsequent terms continue alternating signs and
-  decreasing in absolute value, it must be the case that \(\mathbb{P}\{\bigcup_{n=1}^\infty A_n\}\le\sum_{n=1}^\infty\mathbb{P}\{A_n\}\).
+  We will first show that \(\{B_n\}_{n=1}^\infty\) is mutually disjoint. Let \(j,k \in\z_{>0}\) such that \(j<k\). By the definition of \(B_n\), we have
+  \[B_k = A_k\setminus(B_1\cup\cdots\cup B_j\cup\cdots\cup B_{k-1})\implies B_j\cap B_k=\emptyset\]
+  Therefore, \(\{B_n\}_{n=1}^\infty\) is mutually disjoint. Next, we will show that
+  \(\bigcup_{n=1}^\infty A_n = \bigcup_{n=1}^\infty B_n\). For all \(B_k\in\{B_n\}_{n=1}^\infty\), we have that \(B_k\subset A_k\subset \bigcup_{n=1}^\infty A_n\) since
+  \(B_k = A_k\setminus (\cdots)\). This implies that \(\bigcup_{n=1}^\infty B_n\subset \bigcup_{n=1}^\infty A_n\). Additionally, for all \(A_k\in\{A_n\}_{n=1}^\infty\),
+  \[A_k = \left(A_k\setminus\left(\bigcup_{n=1}^{k-1} B_n\right)\right)\cup\left(\bigcup_{n=1}^{k-1} B_n\right) = B_k \cup\left(\bigcup_{n=1}^{k-1} B_n\right) = \bigcup_{n=1}^{k} B_n\subset \bigcup_{n=1}^{\infty} B_n\]
+  This implies that \(\bigcup_{n=1}^\infty A_n\subset \bigcup_{n=1}^\infty B_n\), completing the double inclusion. Finally, we have that 
+  \begin{align*}
+    \p(\bigcup_{n=1}^\infty A_n) &= \p(\bigcup_{n=1}^\infty B_n) & \text{(above)}\\
+    &= \sum_{n=1}^\infty \p(B_n) & \text{(\(\{B_n\}_{n=1}^\infty\) mutually disjoint)}\\
+    &\leq \sum_{n=1}^\infty \p(A_n) & \text{since \(\p(B_n)\leq \p(A_n)\)}
+  \end{align*}
 \end{proof}
     
 \end{enumerate}
