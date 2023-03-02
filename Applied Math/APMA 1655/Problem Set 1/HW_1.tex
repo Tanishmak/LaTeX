@@ -322,7 +322,8 @@ Let $(\Omega, \mathbb{P})$ be a probability space. Then, we have the following p
 \begin{proof}
   Let \(\{B_n\}_{n=1}^\infty\) be a sequence of events such that
   \begin{align*}
-    B_n &= A_n\setminus\left(\bigcup_{i=1}^{n-1} B_i\right) = A_n\cap\left(\bigcup_{i=1}^{n-1} B_i\right)^c
+    B_1 &= A_1\\
+    B_{n>1} &= A_n\setminus\left(\bigcup_{i=1}^{n-1} B_i\right) = A_n\cap\left(\bigcup_{i=1}^{n-1} B_i\right)^c
   \end{align*}
   We will first show that \(\{B_n\}_{n=1}^\infty\) is mutually disjoint. Let \(j,k \in\z_{>0}\) such that \(j<k\). By the definition of \(B_n\), we have
   \[B_k = A_k\setminus(B_1\cup\cdots\cup B_j\cup\cdots\cup B_{k-1})\implies B_j\cap B_k=\emptyset\]
