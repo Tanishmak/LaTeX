@@ -1,0 +1,254 @@
+% me=0 student solutions (ps file), me=1 - my solutions (sol file),
+% me=2 - assignment (hw file)
+\def\me{1} \def\num{3} %homework number
+
+\def\due{11 pm, February 24} %due date
+
+\def\course{APMA 1655 Honors Statistical Inference I} 
+
+% **** INSERT YOUR NAME HERE ****
+\def\name{Tanish Makadia}
+
+
+% **** INSERT NAMES OF YOUR COLLABORATORS HERE, OR JUST PUT N/A ****
+\def\collabs{Taj Gillin}
+
+%
+
+\documentclass[11pt]{article}
+
+
+% ==== Packages ====
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{euler}
+\usepackage{amsthm}
+
+
+% \setlength{\oddsidemargin}{.0in} \setlength{\evensidemargin}{.0in}
+% \setlength{\textwidth}{6.5in} \setlength{\topmargin}{-0.4in}
+\setlength{\footskip}{1in} \setlength{\textheight}{8.5in}
+
+\newcommand{\handout}[5]{
+\renewcommand{\thepage}{#5, Page \arabic{page}}
+  \noindent
+  \begin{center}
+    \framebox{ \vbox{ \hbox to 5.78in { {\bf \course} \hfill #2 }
+        \vspace{4mm} \hbox to 5.78in { {\Large \hfill #5 \hfill} }
+        \vspace{2mm} \hbox to 5.78in { {\it #3 \hfill #4} }
+       
+        \vspace{2mm} \hbox to 5.78in { {\it Collaborators: \collabs
+            \hfill} }
+           
+        \vspace{2mm}
+        \begin{itemize}
+       
+       \item You are strongly encouraged to work in groups, but solutions must be written independently. 
+
+        \end{itemize}
+      } }
+  \end{center}
+  
+  \vspace*{4mm}
+}
+
+
+\newcounter{pppp}
+\newcommand{\prob}{\arabic{pppp}} %problem number
+\newcommand{\increase}{\addtocounter{pppp}{1}} %problem number
+
+% Arguments: Title, Number of Points
+\newcommand{\newproblem}[2]{
+    \increase
+    \section*{Problem \prob~(#1) \hfill {#2}}
+}
+
+
+
+\def\squarebox#1{\hbox to #1{\hfill\vbox to #1{\vfill}}}
+\def\qed{\hspace*{\fill}
+  \vbox{\hrule\hbox{\vrule\squarebox{.667em}\vrule}\hrule}}
+\newenvironment{solution}{\begin{trivlist}\item[]{\bf Solution:}}
+  {\qed \end{trivlist}}
+\newenvironment{solsketch}{\begin{trivlist}\item[]{\bf Solution
+      Sketch:}} {\qed \end{trivlist}}
+\newenvironment{code}{\begin{tabbing}
+    12345\=12345\=12345\=12345\=12345\=12345\=12345\=12345\= \kill }
+  {\end{tabbing}}
+
+%\newcommand{\eqref}[1]{Equation~(\ref{eq:#1})}
+
+\newcommand{\hint}[1]{({\bf Hint}: {#1})}
+% Put more macros here, as needed.
+\newcommand{\room}{\medskip\ni}
+\newcommand{\brak}[1]{\langle #1 \rangle}
+\newcommand{\bit}[1]{\{0,1\}^{#1}}
+\newcommand{\zo}{\{0,1\}}
+\newcommand{\C}{{\cal C}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\tp}{\tilde{\p}}
+
+\newcommand{\nin}{\not\in}
+\newcommand{\set}[1]{\{#1\}}
+\renewcommand{\ni}{\noindent}
+\renewcommand{\gets}{\leftarrow}
+\renewcommand{\to}{\rightarrow}
+\newcommand{\assign}{:=}
+
+\newcommand{\AND}{\wedge}
+\newcommand{\OR}{\vee}
+
+\newcommand{\For}{\mbox{\bf for }}
+\newcommand{\To}{\mbox{\bf to }}
+\newcommand{\Do}{\mbox{\bf do }}
+\newcommand{\If}{\mbox{\bf if }}
+\newcommand{\Then}{\mbox{\bf then }}
+\newcommand{\Else}{\mbox{\bf else }}
+\newcommand{\While}{\mbox{\bf while }}
+\newcommand{\Repeat}{\mbox{\bf repeat }}
+\newcommand{\Until}{\mbox{\bf until }}
+\newcommand{\Return}{\mbox{\bf return }}
+\newcommand{\Halt}{\mbox{\bf halt }}
+\newcommand{\Swap}{\mbox{\bf swap }}
+\newcommand{\Ex}[2]{\textrm{exchange } #1 \textrm{ with } #2}
+
+
+
+\begin{document}
+
+\handout{}{\today}{Name: \name{}}{Due: \due}{Homework \num}
+
+
+\section{Review}
+
+To help you better answer the questions in HW 3, we review the example of \href{https://en.wikipedia.org/wiki/Bernoulli_distribution}{Bernoulli distributions} as follows:
+\begin{itemize}
+    \item The experiment of interest is flipping a fair coin;
+    \item the sample space corresponding to this experiment is $\Omega=\{\texttt{heads}, \texttt{tails}\}$;
+    \item the probability $\mathbb{P}$ is defined by $\mathbb{P}(A)=\frac{\# A}{\#\Omega}$, i.e., $\mathbb{P}(\{\texttt{heads}\})=\mathbb{P}(\{\texttt{tails}\})=\frac{1}{2}$;
+    \item the random variable $X$ is defined by
+    \begin{align*}
+        X(\texttt{heads})=1,\ \ \ X(\texttt{tails})=0.
+    \end{align*}
+\end{itemize}
+The CDF of $X$ is 
+\begin{align}\label{eq: CDF of Bernoulli 1/2}
+    F_X(x)=\left\{
+    \begin{aligned}
+        0,\ \ \ & \text{ if }x<0,\\
+        \frac{1}{2},\ \ \ & \text{ if }0\le x<1, \\
+        1,\ \ \ & \text{ if }x\ge1.
+    \end{aligned}
+    \right.
+\end{align}
+\textbf{Proof:}
+    \begin{enumerate}
+        \item When $x<0$, we have $A_x=\left\{\omega\in\Omega \,:\, X(\omega)\le x\right\}=\emptyset$; then, $F_X(x)=\mathbb{P}(A_x)=\mathbb{P}(\emptyset)=0$.
+        \item When $0\le x <1$, we have $A_x=\left\{\omega\in\Omega \,:\, X(\omega)\le x\right\}=\{\texttt{tails}\}$; then, $F_X(x)=\mathbb{P}(A_x)=\mathbb{P}(\{\texttt{tails}\})=\frac{1}{2}$.
+        \item When $x\ge1$, we have $A_x=\left\{\omega\in\Omega \,:\, X(\omega)\le x\right\}=\Omega$; then, $F_X(x)=\mathbb{P}(A_x)=\mathbb{P}(\Omega)=1$.
+    \end{enumerate}
+    The proof is completed. \qed
+
+In addition, the \href{https://en.wikipedia.org/wiki/Random_variable}{Wikipedia page on random variables} is nice material for learning the concept of random variables.
+
+\section{Problem Set}
+
+\begin{enumerate}
+
+\item Let $(\Omega,\mathbb{P})$ be a probability space. Suppose $B$ is an event and $0<\mathbb{P}(B)<1$. \textbf{Please prove the following:}
+\begin{enumerate}
+\item (1 point) If $A$ and $B$ are independent, then $A$ and $B^c$ are also independent. 
+
+\begin{proof}
+    Using (b), we have that \(\p(B^c\,|\,A)=1-\p(B\,|\,A)=1-\p(B)=\p(B^c)\)
+\end{proof}
+
+\item (1 point) $\mathbb{P}(A|B) + \mathbb{P}(A^c| B) = 1$.
+
+\begin{proof}
+    We will first prove that \(\p(A\cap B) = \p(B)-\p(A^c\cap B)\).
+    \begin{align*}
+        \p(A\cap B) &= \p(B\cap A) & \text{(commutativity)}\\
+        &= 1-\p((B\cap A)^c) & \text{(def of complement)}\\
+        &= 1-\p(B^c\cup A^c) & \text{(De Morgan's Law)}\\
+        &= 1 - \p(B^c\cup A^c \cap \Omega) & \text{(\(E\cap\Omega = E\))}\\
+        &= 1 - \p(B^c\cup A^c \cap (B\cup B^c)) & \text{(def of complement)}\\
+        &= 1 - \p(B^c\cup (A^c\cap B)\cup (A^c\cap B^c)) &\text{(distributive law)}\\
+        &= 1 - \p(B^c\cup (A^c\cap B^c)\cup (A^c\cap B)) & \text{(commutativity)}\\
+        &= 1 - \p(B^c\cup (A^c\cap B)) & \text{(def of \(\cup\))}\\
+        &= 1 - \p(B^c) - \p(A^c\cap B) & \text{(additivity)}\\
+        &= \p(B) - \p(A^c\cap B)
+    \end{align*}
+
+    Now, we can use this relation to show that $\mathbb{P}(A|B) + \mathbb{P}(A^c| B) = 1$.
+    \begin{align*}
+        \p(A\,|\,B) &= \frac{\p(A\cap B)}{\p(B)} & \text{(conditional probability)}\\
+        &= \frac{\p(B)-\p(A^c\cap B)}{\p(B)} & \text{(substitute from above)}\\
+        &= \frac{\p(B)}{\p(B)}-\frac{\p(A^c\cap B)}{\p(B)} & \text{(distributive prop.)}\\
+        &= 1 - \p(A^c\,|\,B) & \text{(conditional probability)}
+    \end{align*}
+\end{proof}
+\end{enumerate}
+
+
+\item (2 points) Let $n$ be a positive integer, and $\Omega \overset{\operatorname{def}}{=}\{1,2,\ldots,n\}$. Suppose $\mathbb{P}$ is a function of subsets of $\Omega$ defined as follows
+\begin{align*}
+\mathbb{P}(A)\overset{\operatorname{def}}{=}\frac{\# A}{\#\Omega}, \ \ \text{ for all }A\subset \Omega.
+\end{align*}
+You have proved in HW 1 that $(\Omega,\mathbb{P})$ is a probability space. 
+
+We define a random variable $X$ as follows
+\begin{align*}
+    X(\omega)=\omega,\ \ \ \text{ for all }\omega\in\Omega=\{1,2,\ldots,n\}.
+\end{align*}
+\textbf{Please derive the CDF of the random variable $X$ defined above. Please present your answer using a formula like the one in Eq.~\eqref{eq: CDF of Bernoulli 1/2}.}
+
+\item (2 points) Let $X$ be a random variable defined on the probability space $(\Omega,\mathbb{P})$. Suppose $X$ satisfies the following
+\begin{table}[h]
+\centering
+\begin{tabular}{c|ccccc} \hline
+$x$ & 1 & 2 & 3 & 4 & 5 \\\hline
+$\mathbb{P}(\{\omega\in\Omega: X(\omega)=x\})$ & 1/2 & 1/4 & 1/8 & 1/16 & 1/16 \\\hline
+\end{tabular}
+\end{table}
+
+\textbf{Please derive the CDF of the random variable $X$. Please present your answer using a formula like the one in Eq.~\eqref{eq: CDF of Bernoulli 1/2}.}
+
+
+\item (2 points) Let $X$ be a random variable defined on the probability space $(\Omega,\mathbb{P})$. Suppose $X$ satisfies the following
+\begin{align*}
+    \mathbb{P}(\{\omega\in\Omega: X(\omega)=0\})=1.
+\end{align*}
+\textbf{Please derive the CDF of the random variable $X$. Please present your answer using a formula like the one in Eq.~\eqref{eq: CDF of Bernoulli 1/2}.}
+
+
+\item (2 points) Let $X$ be a random variable defined on the probability space $(\Omega,\mathbb{P})$. Suppose the CDF of $X$ is the following
+\begin{align*}
+    F_X(x)=\left\{
+    \begin{aligned}
+    0,\ \ \ &\text{ if }x<1;\\
+    \log x,\ \ \ &\text{ if }1\le x<e;\\
+    1,\ \ \ &\text{ if }e\le x.
+    \end{aligned}
+    \right.
+\end{align*}
+\textbf{Please compute the values of the following:}
+\begin{enumerate}
+    \item $\mathbb{P}(\{\omega\in\Omega: X(\omega)<2\})$;
+    \item $\mathbb{P}(\{\omega\in\Omega: 0<X(\omega)\le3\})$;
+    \item $\mathbb{P}(\{\omega\in\Omega: 2<X(\omega)<2.5\})$.
+\end{enumerate}
+\textbf{Remark:} For simplicity, many textbooks suppress the $\omega$ and represent  $\mathbb{P}(\{\omega\in\Omega: X(\omega)<2\})$, $\mathbb{P}(\{\omega\in\Omega: 0<X(\omega)\le3\})$, and $\mathbb{P}(\{\omega\in\Omega: 2<X(\omega)<2.5\})$ as $\mathbb{P}(X<2)$, $\mathbb{P}(0<X<3)$, and $\mathbb{P}(2<X<2.5)$, respectively. When you read those textbooks, this remark helps you understand what they mean.
+
+\end{enumerate}
+
+
+\newpage
+
+
+
+\end{document}
