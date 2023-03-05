@@ -164,7 +164,7 @@ In addition, the \href{https://en.wikipedia.org/wiki/Random_variable}{Wikipedia 
 \item (1 point) If $A$ and $B$ are independent, then $A$ and $B^c$ are also independent. 
 
 \begin{proof}
-    Using (b), we have that \(\p(B^c\,|\,A)=1-\p(B\,|\,A)=1-\p(B)=\p(B^c)\)
+    Using (b), we have that \(\p(B^c\,|\,A)=1-\p(B\,|\,A)=1-\p(B)=\p(B^c)\).
 \end{proof}
 
 \item (1 point) $\mathbb{P}(A|B) + \mathbb{P}(A^c| B) = 1$.
@@ -194,7 +194,6 @@ In addition, the \href{https://en.wikipedia.org/wiki/Random_variable}{Wikipedia 
 \end{proof}
 \end{enumerate}
 
-
 \item (2 points) Let $n$ be a positive integer, and $\Omega \overset{\operatorname{def}}{=}\{1,2,\ldots,n\}$. Suppose $\mathbb{P}$ is a function of subsets of $\Omega$ defined as follows
 \begin{align*}
 \mathbb{P}(A)\overset{\operatorname{def}}{=}\frac{\# A}{\#\Omega}, \ \ \text{ for all }A\subset \Omega.
@@ -206,6 +205,20 @@ We define a random variable $X$ as follows
     X(\omega)=\omega,\ \ \ \text{ for all }\omega\in\Omega=\{1,2,\ldots,n\}.
 \end{align*}
 \textbf{Please derive the CDF of the random variable $X$ defined above. Please present your answer using a formula like the one in Eq.~\eqref{eq: CDF of Bernoulli 1/2}.}
+
+\begin{proof} Consider the following cases for the \(CDF\) of the random variable \(X\):
+    \begin{itemize}
+        \item When \(x<1\), we have that \(F_X(x)=\p(X\leq x)=\p(\emptyset)=0\).
+        \item When \(1\leq x<n\), we have that \(F_X(x)=\p(X\leq x)=\p(\{1,\ldots,\lfloor x\rfloor\})=\frac{\lfloor x\rfloor}{n}\).
+        \item When \(x\geq n\), we have that \(F_X(x)=\p(X\leq x)=\p(\Omega)=1\).
+    \end{itemize}
+    Therefore, \(F_X(x)=
+    \begin{cases}
+        0 & \text{if } x<1,\\
+        \frac{\lfloor x\rfloor}{n} & \text{if } 1\leq x<n,\\
+        1 & \text{if } x\geq n.
+    \end{cases}\)
+\end{proof}
 
 \item (2 points) Let $X$ be a random variable defined on the probability space $(\Omega,\mathbb{P})$. Suppose $X$ satisfies the following
 \begin{table}[h]
