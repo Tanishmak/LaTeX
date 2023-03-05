@@ -284,8 +284,33 @@ $\mathbb{P}(\{\omega\in\Omega: X(\omega)=x\})$ & 1/2 & 1/4 & 1/8 & 1/16 & 1/16 \
 \textbf{Please compute the values of the following:}
 \begin{enumerate}
     \item $\mathbb{P}(\{\omega\in\Omega: X(\omega)<2\})$;
+    \begin{proof}
+        \begin{align*}
+            \p(X<2)&=\p(X\leq 2) - \p(X=2) & \text{(additivity)}\\
+            &= \p(X\leq 2) & \text{(\(\p(X=2)=0\))}\\
+            &= F_X(2) & \text{(def of \(CDF\))}\\
+            &= \log(2)
+        \end{align*}
+    \end{proof}
     \item $\mathbb{P}(\{\omega\in\Omega: 0<X(\omega)\le3\})$;
+    \begin{proof}
+        \begin{align*}
+            \p(0<X\leq 3) &= \p(X\leq 3) - \p(X\leq 0) & \text{(additivity)}\\
+            &= F_X(3) - F_X(0) & \text{(def of \(CDF\))}\\
+            &= 1 - 0 & \text{(def of \(F_X(x)\))}\\
+            &= 1 & \text{(subtraction)}
+        \end{align*}
+    \end{proof}
     \item $\mathbb{P}(\{\omega\in\Omega: 2<X(\omega)<2.5\})$.
+    \begin{proof}
+        \begin{align*}
+            \p(2<X<2.5) &= \p(X\leq 2.5) - \p(X=2.5) - \p(X\leq 2) & \text{(additivity)}\\
+            &= \p(X\leq 2.5) - \p(X\leq 2) & \text{(\(\p(X=2.5)=0\))}\\
+            &= F_X(2.5) - F_X(2) & \text{(def of \(CDF\))}\\
+            &= \log(2.5) - \log(2) & \text{(def of \(F_X(x)\))}\\
+            &= \log(1.25) & \text{(quotient rule)}
+        \end{align*}
+    \end{proof}
 \end{enumerate}
 \textbf{Remark:} For simplicity, many textbooks suppress the $\omega$ and represent  $\mathbb{P}(\{\omega\in\Omega: X(\omega)<2\})$, $\mathbb{P}(\{\omega\in\Omega: 0<X(\omega)\le3\})$, and $\mathbb{P}(\{\omega\in\Omega: 2<X(\omega)<2.5\})$ as $\mathbb{P}(X<2)$, $\mathbb{P}(0<X<3)$, and $\mathbb{P}(2<X<2.5)$, respectively. When you read those textbooks, this remark helps you understand what they mean.
 
