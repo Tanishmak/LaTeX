@@ -261,7 +261,7 @@
             \node[above right] at (0,0) {1};
         \end{tikzpicture}
     \end{align*}
-    Evidently, \(|D_4|=8\). ...
+    Evidently, \(|D_4|=8\). Since \(|S_4|=4!=24\neq 8\), by (Gallian, 6.2.7), we have that \(D_4\not\approx S_4\).
 \end{proof}
 
 \newpage
@@ -406,8 +406,13 @@
         \item \underline{\(Aut(H)\)}: Let \(\overline{\alpha}\in Aut(H)\). A similar process can be used to show that the number of distinct automorphisms
         in \(Aut(H)\) is equal to the number of distinct elements that \(1\) can be mapped to. Since
         \[H=\{0,1,2,3\}\qquad\text{ and }\qquad |1|=4\]
-        we have that \(|\alpha(1)|=4\).
+        we have that \(|\overline{\alpha}(1)|=4\). Hence, \(\overline{\alpha}(1)=1\text{ or }3\). Let \(\overline{\alpha}_1,\overline{\alpha}_3\in Aut(H)\)
+        denote the automorphisms that map \(1\) to \(1\) and \(3\) respectively.
+        Therefore, we have that \(Aut(H)=\{\overline{\alpha}_1,\overline{\alpha}_3\}\).
     \end{itemize}
+
+    Evidently, \(G\not\approx H\) since \(|G|\neq|H|\). Additionally, \(|Aut(G)|=|Aut(H)|=2\) and there is only one unique way
+    to form a group of order \(2\), \(Aut(G)\approx Aut(H)\).
 \end{proof}
 
 \end{document}
