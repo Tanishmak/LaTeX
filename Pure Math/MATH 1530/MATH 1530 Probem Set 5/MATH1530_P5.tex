@@ -386,4 +386,28 @@
     Find two groups $G$ and $H$ such that $G \not \approx H$ but $\mathrm{Aut}(G) \approx \mathrm{Aut}(H)$.
 \end{problem}
 
+\begin{proof}
+    Let \(G=(\Z, +)\) and let \(H=\Z_4\). We will now determine \(Aut(G)\) and \(Aut(H)\).
+    \begin{itemize}
+        \item \underline{\(Aut(G)\)}: Let \(k\in G\) and let \(\alpha\in Aut(G)\). We have that
+        \begin{align*}
+            \alpha(k)&=\alpha(1+\ \overset{k\text{ times}}{\cdots}\ +1)\\
+            &=\alpha(1)+\ \overset{k\text{ times}}{\cdots}\ +\alpha(1)\\
+            &=k\alpha(1)
+        \end{align*}
+        Therefore, the number of distinct automorphisms
+        in \(Aut(G)\) is equal to the number of distinct elements that \(1\) can be mapped to.
+        Since \[(\Z,+)=\{1^n\ |\ n\in\Z\}=\{(-1)^n\ |\ n\in\Z\}\]
+        we have that \(G=\langle 1\rangle=\langle -1\rangle\). Since \(1\) is a generator of \(G\), by (Gallian, 6.2.4) it must be the case
+        that \(\langle\alpha(1)\rangle\) is also a generator of \(G\). Thus, \(\alpha(1)=1\text{ or }-1\). Let \(\alpha_1,\alpha_{-1}\in Aut(G)\)
+        denote the automorphisms that map \(1\) to \(1\) and \(-1\) respectively. Therefore, we have that
+        \(Aut(G)=\{\alpha_1,\alpha_{-1}\}\).
+
+        \item \underline{\(Aut(H)\)}: Let \(\overline{\alpha}\in Aut(H)\). A similar process can be used to show that the number of distinct automorphisms
+        in \(Aut(H)\) is equal to the number of distinct elements that \(1\) can be mapped to. Since
+        \[H=\{0,1,2,3\}\qquad\text{ and }\qquad |1|=4\]
+        we have that \(|\alpha(1)|=4\).
+    \end{itemize}
+\end{proof}
+
 \end{document}
