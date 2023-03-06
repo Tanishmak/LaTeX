@@ -89,7 +89,7 @@
     
     Let \(P = \{s\in S_7\ |\ |s|=6\}\). We must find the cardinality of \(P\). Let \(p\in P\). From above, \(p\) must have a disjoint cycle form in which the \(lcm\) of
     the disjoint cycle lengths equals \(6\). Therefore, the disjoint cycle form of \(p\) must fall under one
-    of the following cases (note that the order of the disjoint cycles does not matter since they are commutative):
+    of the following cases: (note that the order of the disjoint cycles does not matter since they are commutative)
     \begin{itemize}
         \item \textbf{Case 1 (lengths: \(2, 2, 3\)):} \(p = (a_1, a_2)(b_1, b_2)(c_1, c_2, c_3)\). In this case, the number of ways to construct \(p\) using
         elements of \(S_7\) is:
@@ -318,6 +318,65 @@
     $$
     prove that $\mathbb{C}^*$ and $M^*$ (the nonzero elements of $M$), viewed as groups with multiplication, are isomorphic. 
 \end{problem}
+
+\begin{proof}
+    We will prove that the following function is an isomorphism from \(\C^*\) to \(M^*\):
+    \begin{align*}
+        \phi:\C^*&\to M^*\\
+        a+bi&\mapsto \begin{bmatrix}
+            a & -b\\
+            b & a
+        \end{bmatrix}
+    \end{align*} 
+    \begin{itemize}
+        \item \textbf{Injective: } Let \(u,v\in\C^*\) such that \(u=a+bi\) and \(v=c+di\) where \(a,b,c,d\in\R\).
+        \(\phi(u)=\phi(v)\implies
+            \begin{bmatrix}
+                a & -b\\
+                b & a
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                c & -d\\
+                d & c
+            \end{bmatrix}
+        \implies a=c\text{ and }b=d\implies u=v\).
+        \item \textbf{Surjective: }
+        \begin{align*}
+            \range(\phi) &= \{\phi(u)\ |\ u\in\C^*\}\\
+            &= \{\phi(a+bi)\ |\ a,b\in\R\}\\
+            &= 
+            \biggl\{
+                \begin{bmatrix}
+                    a & -b\\
+                    b & a
+                \end{bmatrix}
+                \ \bigg|\ a,b\in\R
+            \biggr\}\\
+            &= M^*
+        \end{align*}
+    \item \textbf{Preserves Group Operation: } Let \(u,v\in\C^*\) such that \(u=a+bi\) and \(v=c+di\) where \(a,b,c,d\in\R\).
+    \begin{align*}
+        \phi(u\cdot v) &= \phi((a+bi)\cdot (c+di))\\
+        &= \phi(ac+adi+bci+bdi^2)\\
+        &= \phi((ac-bd)+(ad+bc)i)\\
+        &= \begin{bmatrix}
+            ac-bd & -ad-bc\\
+            ad+bc & ac-bd
+        \end{bmatrix}\\
+        &= \begin{bmatrix}
+            a & -b\\
+            b & a
+        \end{bmatrix}
+        \begin{bmatrix}
+            c & -d\\
+            d & c
+        \end{bmatrix}\\
+        &= \phi(u)\cdot\phi(v)
+    \end{align*}
+    \end{itemize}
+    Therefore, we have proven that \(\C^*\) and \(M^*\) are isomorphic.
+\end{proof}
 
 \newpage
 
