@@ -26,6 +26,7 @@
 \usepackage{color}
 \usepackage{euler}
 \usepackage{parskip}
+\usepackage{tikz}
 
 %%%%%%%%%%%%%%%%%%%% INITIALIZATION %%%%%%%%%%%%%%%%%%%%
 
@@ -113,6 +114,156 @@
     Label the vertices of the square from 1 to 4. Use this to represent the elements of $D_4$ a subgroup of $S_4$ (that is, list the elements of $D_4$ using cycle notation). What is the order of $D_4?$ Is $D_4$ isomorphic to $S_4$?
 \end{problem}
 
+\begin{proof} The elements of \(D_4\) are the following permutations:
+    \begin{align*}
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node at (-1, 0.75) {1.};
+            \node[above right] at (0,0) {4};
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {3};
+            \node at (5,0.75) {\(\xrightarrow[e]{\text{identity}}\)};
+        \end{tikzpicture}
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {3};
+            \node[above right] at (0,0) {4};
+        \end{tikzpicture}
+        \\
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node at (-1, 0.75) {2.};
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {3};
+            \node[above right] at (0,0) {4};
+            \node at (0.75,0.75) {\(\longleftrightarrow\)};
+            \node at (5,0.75) {\(\xrightarrow[(1,2)(4,3)]{\text{horizontal flip}}\)};
+        \end{tikzpicture}
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node[below right] at (0,1.5) {2};
+            \node[below left] at (1.5,1.5) {1};
+            \node[above left] at (1.5,0) {4};
+            \node[above right] at (0,0) {3};
+        \end{tikzpicture}
+        \\
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node at (-1, 0.75) {3.};
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {3};
+            \node[above right] at (0,0) {4};
+            \node at (0.75,0.75) {\(\updownarrow\)};
+            \node at (5,0.75) {\(\xrightarrow[(1,4)(2,3)]{\text{vertical flip}}\)};
+        \end{tikzpicture}
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node[below right] at (0,1.5) {4};
+            \node[below left] at (1.5,1.5) {3};
+            \node[above left] at (1.5,0) {2};
+            \node[above right] at (0,0) {1};
+        \end{tikzpicture}
+        \\
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node at (-1, 0.75) {4.};
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {3};
+            \node[above right] at (0,0) {4};
+            \node at (0.75,0.75) {\(\nearrow\)};
+            \node at (5,0.75) {\(\xrightarrow[(2,4)]{\text{left diagonal flip}}\)};
+        \end{tikzpicture}
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {4};
+            \node[above left] at (1.5,0) {3};
+            \node[above right] at (0,0) {2};
+        \end{tikzpicture}
+        \\
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node at (-1, 0.75) {5.};
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {3};
+            \node[above right] at (0,0) {4};
+            \node at (0.75,0.75) {\(\nwarrow\)};
+            \node at (5,0.75) {\(\xrightarrow[(1,3)]{\text{right diagonal flip}}\)};
+        \end{tikzpicture}
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node[below right] at (0,1.5) {3};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {1};
+            \node[above right] at (0,0) {4};
+        \end{tikzpicture}
+        \\
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node at (-1, 0.75) {6.};
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {3};
+            \node[above right] at (0,0) {4};
+            \node at (0.75,0.75) {\(\circlearrowright\)};
+            \node at (5,0.75) {\(\xrightarrow[(1,2,3,4)]{\text{clockwise rotation}}\)};
+        \end{tikzpicture}
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node[below right] at (0,1.5) {4};
+            \node[below left] at (1.5,1.5) {1};
+            \node[above left] at (1.5,0) {2};
+            \node[above right] at (0,0) {3};
+        \end{tikzpicture}
+        \\
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node at (-1, 0.75) {7.};
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {3};
+            \node[above right] at (0,0) {4};
+            \node at (0.75,0.75) {\(\circlearrowright\)};
+            \node at (0.75,0.75) {\tiny{2}};
+            \node at (5,0.75) {\(\xrightarrow[(1,3)(2,4)]{\text{clockwise rotation (x2)}}\)};
+        \end{tikzpicture}
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node[below right] at (0,1.5) {3};
+            \node[below left] at (1.5,1.5) {4};
+            \node[above left] at (1.5,0) {1};
+            \node[above right] at (0,0) {2};
+        \end{tikzpicture}
+        \\
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node at (-1, 0.75) {8.};
+            \node[below right] at (0,1.5) {1};
+            \node[below left] at (1.5,1.5) {2};
+            \node[above left] at (1.5,0) {3};
+            \node[above right] at (0,0) {4};
+            \node at (0.75,0.75) {\(\circlearrowright\)};
+            \node at (0.75,0.75) {\tiny{3}};
+            \node at (5,0.75) {\(\xrightarrow[(1,4,3,2)]{\text{clockwise rotation (x3)}}\)};
+        \end{tikzpicture}
+        &\begin{tikzpicture}
+            \draw (0,0) -- (0,1.5) -- (1.5,1.5) -- (1.5,0) -- (0,0);
+            \node[below right] at (0,1.5) {2};
+            \node[below left] at (1.5,1.5) {3};
+            \node[above left] at (1.5,0) {4};
+            \node[above right] at (0,0) {1};
+        \end{tikzpicture}
+    \end{align*}
+    Evidently, \(|D_4|=8\). ...
+\end{proof}
+
 \newpage
 
 %%%%%%%%%%%%%%%%%%%% PROBLEM 3 %%%%%%%%%%%%%%%%%%%%
@@ -120,6 +271,35 @@
 \begin{problem}  
     Prove that a permutation with odd order must be an even permutation. Show that the converse is false.
 \end{problem}
+
+\begin{proof}
+    Let \(p\) be a permutation such that \(|p|=n\) where \(n\) is odd. We have that, \(p^n=e\).
+    By (Gallian, 5.4), \(p=\beta_1\cdots\beta_r\) where each \(\beta_i\) is a two-cycle.
+    Combining these two equations, we obtain \((\beta_1\cdots\beta_r)^n=e\). For contradiction,
+    suppose \(r\) is odd. Thus, we have that
+    \begin{align*}
+        e &= (\beta_1\cdots\beta_r)^n\\
+        &= (\beta_1\cdots\beta_r)\ \overset{n\text{ times}}{\cdots}\ (\beta_1\cdots\beta_r)\\
+        &= \beta_1\cdots\beta_{nr}
+    \end{align*}
+    By lemma \ref{lem:oddmult}, \(nr\) is odd. Since \(e\) must equal the product of an even number of two cycles, this is a contradiction.
+    Therefore, \(r\) must be even which implies that \(p\) is an even permutation.
+\end{proof}
+\bigskip
+\begin{lemma}
+    \label{lem:oddmult}
+    The product of two odd integers is odd
+    \begin{proof}
+        Let \(x,y\in\Z\) such that \(x\) and \(y\) are odd. By the division algorithm, we have that
+        \(x=2b_x+1\) and \(y=2b_y+1\) where \(b_x,b_y\in\Z\). Now consider the product of \(x\) and \(y\):
+        \begin{align*}
+            x\cdot y &= (2b_x+1)\cdot (2b_y+1)\\
+            &= 4b_xb_y+2b_x+2b_y+1\\
+            &= 2(2b_xb_y+b_x+b_y)+1
+        \end{align*}
+        Therefore, \(2\nmid x\cdot y\implies x\cdot y\) is odd.
+    \end{proof}
+\end{lemma}
 
 \newpage
 
