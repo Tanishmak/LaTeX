@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.11)  5 MAR 2023 10:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.11)  5 MAR 2023 10:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -427,8 +427,14 @@ File: ueuex.fd 2013/01/14 v3.01 Euler extra symbols
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `"HW 3".out' has not changed.
-(rerunfilecheck)             Checksum: D9AE5D91AD96CCFD1082C0E40055AD99;174.
+
+Package rerunfilecheck Warning: File `"HW 3".out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `"HW 3".out':
+(rerunfilecheck)             Before: 6446349E14B0C3B8BE1E36B89512C780;176
+(rerunfilecheck)             After:  D9AE5D91AD96CCFD1082C0E40055AD99;174.
  ) 
 Here is how much of TeX's memory you used:
  8886 strings out of 476029
