@@ -67,7 +67,7 @@
 
 %%%%%%%%%%%%%%%%%%%% TITLE-PAGE %%%%%%%%%%%%%%%%%%%%
 
-\title{MATH 1530 Problem Set 5}
+\title{MATH 1530 Problem Set 6}
 \author{Tanish Makadia\\\small{(Collaborated with Esmé and Kazuya)}}
 \date{March 2023}
 
@@ -84,6 +84,24 @@
     $a \mapsto a^n$
     is an automorphism of $G$.
 \end{problem}
+
+\begin{proof}
+    Define \(\alpha : G\to G\) such that \(a\mapsto a^n\). Let \(g,h\in G\).
+    \begin{enumerate}
+        \item \textbf{Injective:} Suppose \(g^n=h^n\).
+        \begin{align*}
+            g^n=h^n &\implies e=g^nh^{-n}\\
+            &\implies e=(gh^{-1})^n\\
+            &\implies |gh^{-1}|\mid n
+        \end{align*}
+        Additionally, \(gh^{-1}\in G\). By \emph{Lagrange's Theorem}, we have \(|gh^{-1}|\mid |G|\).
+        Since \(|gh^{-1}|\) divides both \(n\) and \(|G|\), and \(gcd(n, |G|)=1\), we have that \(|gh^{-1}|=1\).
+        Therefore, \(gh^{-1}=e\implies g=eh\implies g=h\).
+
+        \item \textbf{Surjective:} Consider \(g^n\). We have that \(g\mapsto g^n\).
+        \item \textbf{Preserves Group Operation:} \(\alpha(gh)=(gh)^n=g^nh^n=\alpha(g)\cdot \alpha(h)\).
+    \end{enumerate}
+\end{proof}
 
 \newpage
     
