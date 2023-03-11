@@ -156,6 +156,26 @@
     \end{center}
 \end{problem}
 
+\begin{proof}
+    Let \(G\) be the rotation group of the dodecahedron. Assign each of the 12 faces of the dodecahedron a unique number \(1-12\).
+    Since every rotation must take each face to exactly one other face, \(G\) is a group of permutations
+    on the set \(\{1,\ldots,12\}\). 
+    
+    Consider a single face, \(f\in\{1,\ldots,12\}\), of the dodecahedron.
+    By the \emph{orbit-stabilizer theorem}, we have that 
+    \[|G|=|orb_G(f)|\cdot |stab_G(f)|\]
+    \begin{enumerate}
+        \item \(\mathbf{|orb_G(f)|}:\) Picking an axis of rotation through the centers of any two
+        parallel faces allows us to bring \(f\) to any other face \(f'\in\{1,\ldots,12\}\).
+        Therefore, \(orb_G(f)=\{1,\ldots,12\}\) which implies that \(|orb_G(f)|=12\).
+        \item \(\mathbf{|stab_G(f)|}:\) Let \(\overline{f}\in \{1,\ldots,12\}\) be the face parallel to \(f\). 
+        Picking an axis of rotation through the centers of \(f\) and \(\overline{f}\) allows
+        us to rotate the dodecahedron in \(5\) distinct ways while fixing the position of \(f\). 
+        This implies that \(|stab_G(f)|=5\).
+    \end{enumerate}
+    Together, we have \(|G|=12\cdot 5=60\).
+\end{proof}
+
 \newpage
     
 %%%%%%%%%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%
