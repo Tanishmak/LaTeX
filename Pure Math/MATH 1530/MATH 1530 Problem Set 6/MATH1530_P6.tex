@@ -227,4 +227,52 @@
     Let $p$ and $q$ be odd primes and let $m$ and $n$ be positive integers. Prove that $U(p^m) \oplus U(q^n)$ is not cyclic. [hint: read the book to find a useful result we didn't cover in class]
 \end{problem}
 
+\begin{proof}
+    By \emph{(Gallian, pg. 160)}, we have that \(U(p^m)\approx\Z_{p^m-p^{m-1}}\) and \(U(q^n)\approx\Z_{q^n-q^{n-1}}\). 
+    Because \(\Z_{p^m-p^{m-1}}\) and \(\Z_{q^n-q^{n-1}}\) are both cyclic, we have that \(U(p^m)\) and \(U(q^n)\) are cyclic
+    as well. Therefore, by \emph{(Gallian, Theorem 8.2)}, we must show that \(|U(p^m)|\) and \(|U(q^n)|\)
+    are not relatively prime.
+
+    By lemma \ref{lem:phi}, we have that \(|U(p^m)|=p^m-p^{m-1}\) and \(|U(q^n)|=q^n-q^{n-1}\). Since the product of odds is odd,
+    \(p^m\), \(p^{m-1}\), \(q^n\), and \(q^{n-1}\) must all be odd. Since the difference of odds is even, we have that
+    \(2\mid p^m-p^{m-1},q^n-q^{n-1}\implies gcd(p^m-p^{m-1},q^n-q^{n-1})\neq 1\). Therefore, \(|U(p^m)|\) and \(|U(q^n)|\) are not
+    relatively prime, which means \(|U(p^m)|\oplus|U(q^n)|\) is not cyclic.
+\end{proof}
+
+\newpage
+
+\begin{lemma}
+    \label{lem:iso}
+    Let \(p\) be an odd prime. Then \(U(p^n)\approx \Z_{p^n-p^{n-1}}\).
+    \begin{proof}
+        By lemma \ref{lem:phi}, we have that \(|U(p^n)|=p^n-p^{n-1}\). We can arrange the elements of \(U(p^n)\) in ascending order
+        so that \(U(p^n)=\{u_1,\ldots,u_{p^n-p^{n-1}}\}\) where \(j<k\implies u_j<u_k\). Similarly, we can arrange the
+        elements of \(\Z_{p^n-p^{n-1}}\) in ascending order so that \(\Z_{p^n-p^{n-1}}=\{z_1,\ldots,z_{p^n-p^{n-1}}\}\) where
+        \(j<k\implies z_j<z_k\).
+
+        Define a mapping \(\phi: U(p^n)\to \Z_{p^n-p^{n-1}}\) such that \(u_i\mapsto z_i\). We will now show that
+        \(\phi\) is an isomorphism. Let \(z_m,z_n\in\Z_{p^n-p^{n-1}}\).
+        \begin{enumerate}
+            \item \textbf{Injective:} to be proved \(\ldots\)
+            \item \textbf{Surjective:} to be proved \(\ldots\)
+            \item \textbf{Preserves Group Operation:} \(\phi(u_m\cdot u_n)=\phi((u_mu_n))= \ldots\) to be proved
+        \end{enumerate}
+    \end{proof}
+\end{lemma}
+
+\bigskip
+
+\begin{lemma}
+    \label{lem:phi}
+    Let \(p\) be an odd prime. Then \(\phi(p^n)=p^n-p^{n-1}\).
+    \begin{proof}
+        We will show \(|U(p^n)|=p^n-p^{n-1}\). Of course, there are \(p^n\) integers up to \(p^n\). Therefore,
+        \(|U(p^n)|=p^n-m\) where \(m\) is the number of integers in the set \(\{1,\ldots,p^n\}\) 
+        that are not relatively prime with \(p^n\). Evidently, the prime factorization of \(p^n\) only contains
+        the prime \(p\). This implies that \(p\) divides every integer that is not relatively prime with \(p^n\).
+        The number of such integers in the set \(\{1,\ldots,p^n\}\) is \(p^n/p\). Therefore,
+        \[|U(p^n)|=p^n-m=p^n-\frac{p^n}{p}=p^n-p^{n-1}\]
+    \end{proof}
+\end{lemma}
+
 \end{document}
