@@ -184,6 +184,41 @@
     Determine the number of cyclic subgroups of order 15 in $\mathbb{Z}_{90} \oplus \mathbb{Z}_{36}$.
 \end{problem}
 
+\begin{proof}
+    A cyclic subgroup of order \(15\) has \(\phi(15)=8\) distinct elements of order \(15\).
+    We will now determine the number of distinct elements of order \(15\) in \(\Z_{90}\oplus\Z_{36}\).
+    
+    Let \((g_1,g_2)\in\Z_{90}\oplus\Z_{36}\) such that \(|(g_1,g_2)|=15\).
+    By \emph{(Gallian, Theorem 8.1)}, we have that \(lcm(|g_1|,|g_2|)=15\).
+    For each of the resulting cases, we can use the \emph{Euler phi function} since \(\Z_{90}\) and
+    \(\Z_{36}\) are both cyclic.
+    \begin{enumerate}
+        \item \textbf{(\(\mathbf{|g_1|=5,\ |g_2|=3}\)):} 
+            \begin{itemize}
+                \item \(\phi(5)=4\implies 4\) distinct elements of order
+                \(5\) in \(\Z_{90}\).
+                \item \(\phi(3)=2\implies 2\) distinct elements of order \(3\) in \(\Z_{36}\).
+            \end{itemize}
+            Therefore, we have \(4\cdot 2=8\) ways to make \((g_1,g_2)\) from this case.
+        
+        \item \textbf{(\(\mathbf{|g_1|=15,\ |g_2|=1}\)):} 
+            \begin{itemize}
+                \item \(\phi(15)=8\implies 8\) distinct elements of order
+                \(15\) in \(\Z_{90}\).
+                \item \(\phi(1)=1\implies 1\) distinct element of order \(1\) in \(\Z_{36}\).
+            \end{itemize}
+            So there are \(8\cdot 1=8\) ways to make \((g_1,g_2)\) from this case.
+        
+        \item \textbf{(\(\mathbf{|g_1|=15,\ |g_2|=3}\)):} 
+            From above, we have \(8\) distinct elements of order
+            \(15\) in \(\Z_{90}\), and \(2\) distinct elements of order \(3\) in \(\Z_{36}\).
+            Hence, there are \(8\cdot 2=16\) ways to make \((g_1,g_2)\) from this case.
+    \end{enumerate}
+    In total, there are \(8+8+16=32\) distinct elements of order \(15\) in \(\Z_{90}\oplus\Z_{36}\). Since
+    each cyclic subgroup of order \(15\) is disjoint and has \(8\) distinct elements of order \(15\)
+    which can generate it, the number of cyclic subgroups of order \(15\) in \(\Z_{90}\oplus\Z_{36}\) is \(32/8=4\).
+\end{proof}
+
 \newpage
     
 %%%%%%%%%%%%%%%%%%%% PROBLEM 5 %%%%%%%%%%%%%%%%%%%%
