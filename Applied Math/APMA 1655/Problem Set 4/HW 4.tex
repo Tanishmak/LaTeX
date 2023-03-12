@@ -28,6 +28,7 @@
 \usepackage{euler}
 \usepackage{amsthm}
 \usepackage{graphicx}
+\usepackage{bbm}
 
 % \setlength{\oddsidemargin}{.0in} \setlength{\evensidemargin}{.0in}
 % \setlength{\textwidth}{6.5in} \setlength{\topmargin}{-0.4in}
@@ -89,7 +90,7 @@
 \newcommand{\bit}[1]{\{0,1\}^{#1}}
 \newcommand{\zo}{\{0,1\}}
 \newcommand{\C}{{\cal C}}
-\newcommand{\1}{\mathbb{1}}
+\newcommand{\1}{\mathbbm{1}}
 
 \newcommand{\nin}{\not\in}
 \newcommand{\set}[1]{\{#1\}}
@@ -175,6 +176,12 @@ Suppose you have done the following
 
 \textbf{Please represent the CDF $F_X$ in the form in Eq.~\eqref{eq: def of discrete CDF}. Specifically, please show what the $K$, $\{p_k\}_{k=0}^K$, and $\{x_k\}_{k=0}^K$ in Eq.~\eqref{eq: def of discrete CDF} should be.}
 
+\begin{align*}
+        F_X(x)&=\frac{1}{n}\1_{[1,+\infty)}(x)+\frac{1}{n}\1_{[2,+\infty)}(x)+\cdots + \frac{1}{n}\1_{[n,+\infty)}(x)\\
+        &= \sum_{k=0}^{n-1}\frac{1}{n}\cdot \1_{[k+1,+\infty)}(x)
+\end{align*}
+Therefore, 
+\[K=n-1;\ \ \{p_k\}^K_{k=0}=\{\frac{1}{n}\}^{n-1}_{k=0};\ \ \{x_k\}_{k=0}^{n-1}=\{k+1\}^{n-1}_{k=0}\]
 
 \item (2 points) Let $Y$ and $Z$ be random variables defined on the probability space $(\Omega,\mathbb{P})$; the distribution of the random variable $X$ defined as follows
 \begin{align}\label{eq: example whose dist is neither conti nor disc}
