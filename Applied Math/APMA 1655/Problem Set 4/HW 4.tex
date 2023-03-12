@@ -91,6 +91,7 @@
 \newcommand{\zo}{\{0,1\}}
 \newcommand{\C}{{\cal C}}
 \newcommand{\1}{\mathbbm{1}}
+\newcommand{\p}{\mathbb{P}}
 
 \newcommand{\nin}{\not\in}
 \newcommand{\set}[1]{\{#1\}}
@@ -208,8 +209,24 @@ where $F_X$ denotes the CDF of $X$, and $F_Z$ denotes the CDF of $Z$ (i.e., the 
 
 \textbf{Please prove the formula in Eq.~\eqref{eq: a fair mixture of 1 and N(0,1)}.}
 
-\[\]
-
+\begin{proof}
+    By the law of total probability, 
+    \[F_X(x)=\p(X\leq x)=\p(X\leq x\mid Y=1)\cdot \p(Y=1)+\p(X\leq x\mid Y=0)\cdot \p(Y=0)\]
+    We will now compute each half of the sum.
+    \begin{align*}
+        \p(X\leq x\mid Y=1)\cdot \p(Y=1) &= \p(Y+(1-Y)Z\leq x\mid Y=1)\cdot \p(Y=1)\\
+        &= \p(1+(1-1)Z\leq x)\cdot \p(Y=1)\\
+        &= \p(1\leq x)\cdot \p(Y=1)\\
+        &= \frac{1}{2}\1_{[1,+\infty)}(x)
+    \end{align*}
+    \begin{align*}
+        \p(X\leq x\mid Y=0)\cdot \p(Y=0) &= \p(Y+(1-Y)Z\leq x\mid Y=0)\cdot \p(Y=0)\\
+        &= \p(0+(1-0)Z\leq x)\cdot \p(Y=0)\\
+        &= \p(Z\leq x)\cdot \p(Y=0)\\
+        &= \frac{1}{2}F_Z(x)
+    \end{align*}
+    Therefore, \(F_X(x)=\frac{1}{2}\1_{[1,+\infty)}(x)+\frac{1}{2}F_Z(x)\).
+\end{proof}
 
 \item (2 points) Let $Y$, $Z$, and $W$ be random variables defined on the probability space $(\Omega,\mathbb{P})$. Suppose
     \begin{itemize}
