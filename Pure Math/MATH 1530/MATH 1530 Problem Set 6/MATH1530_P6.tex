@@ -128,20 +128,24 @@
     \[|HK|=\frac{|H||K|}{|H\cap K|} \text{ where } HK=\{hk\ |\ h\in H,\ k\in K\}\]
     
     \begin{proof}
-        We can separate \(HK\) into a union of left cosets of \(K\) in \(G\):
-        \[HK=\bigcup_{h\in H} hK\]
-        By the properties of cosets, we have that \(hK=h'K\) or \(hK\cap h'K=\emptyset\) for all
-        \(h,h'\in H\). We must now determine how many of these cosets are distinct.
+        Consider the group \(H\oplus K\) and the set \(HK\).
         
-        Suppose \(hK=h'K\) for some \(h,h'\in H\). Since \(hK=h'K \Leftrightarrow h^{-1}h'\in K\), we have that
-        \(h^{-1}h'=k\) for some \(k\in K\). This implies that \(k\in H\implies k\in H\cap K\).
-        Additionally, \(h'=hk\). Thus, there are \(|H\cap K|\) ways to create the same coset for each \(h'\in H\)
-        (by \emph{Cayley's Theorem}, we know that each \(k\in H\cap K\) has exactly one corresponding \(h\in H\) such that
-        \(hk=h'\)). Therefore, the number of distinct cosets \(hK\) where \(h\in H\) is \(|H|/|H\cap K|\).
-
-        Since \(|hK|=|h'K|\) for all \(h,h'\in H\), the number of elements in each coset is \(|hK|=|K|\). Therefore,
-        the cardinality of \(HK\) equals the number of distinct cosets times the number of distinct elements in each coset, giving us
-        \[|HK|=\frac{|H||K|}{|H\cap K|}\]
+        We define a group action \(H\oplus K\cdot HK\to HK\) such that \((h',k')\cdot hk\mapsto h'(hk)k'^{-1}\).
+        This action is well-defined since
+        \begin{enumerate}
+            \item \((e,e)\cdot hk=e(hk)e^{-1}=e(hk)e=hk\).
+            \item \((h'',k'')\cdot ((h',k')\cdot hk)=(h'',k'')\cdot h'(hk)k'^{-1}= h''h'(hk)k'^{-1}k''^{-1}=(h''h',k''k')\cdot hk=((h'',k'')(h',k'))\cdot hk\).
+        \end{enumerate}
+        Consider \(e\in HK\). By the \emph{orbit-stabilizer theorem},
+        \[|H\oplus K|=|H||K|=|orb_{H\oplus K}(e)|\cdot |stab_{H\oplus K}(e)|\]
+        \begin{enumerate}
+            \item \textbf{Orbit:} \((h,k)\cdot e=hek^{-1}=hk^{-1}\) for all \((h,k)\in H\oplus K\).
+            Therefore, \(|orb_{H\oplus K}(e)|=|\{hk^{-1}\ |\ h\in H,\ k\in K\}|=|HK|\).
+            \item \textbf{Stabilizer:} \((h,k)\cdot e=e\implies hk^{-1}=e\implies h=k\). Therefore,
+            \(|stab_{H\oplus K}(e)|=|\{(h,k)\in H\oplus K\ |\ h=k\}|=|H\cap K|\).
+        \end{enumerate}
+        Finally, we have that \(|H||K|=|HK|\cdot|H\cap K|\),
+        \[\implies|HK|=\frac{|H||K|}{|H\cap K|}\]
     \end{proof}
 \end{lemma}
 
@@ -239,7 +243,7 @@
     relatively prime, which means \(|U(p^m)|\oplus|U(q^n)|\) is not cyclic.
 \end{proof}
 
-\newpage
+\bigskip
 
 \begin{lemma}
     \label{lem:iso}
@@ -253,8 +257,8 @@
         Define a mapping \(\phi: U(p^n)\to \Z_{p^n-p^{n-1}}\) such that \(u_i\mapsto z_i\). We will now show that
         \(\phi\) is an isomorphism. Let \(z_m,z_n\in\Z_{p^n-p^{n-1}}\).
         \begin{enumerate}
-            \item \textbf{Injective:} to be proved \(\ldots\)
-            \item \textbf{Surjective:} to be proved \(\ldots\)
+            \item \textbf{Injective:} \(z_j=z_k\implies \phi(u_j)=\phi(u_k)\implies u_j=u_k\).
+            \item \textbf{Surjective:} For any \(z_i\in\Z_{p^n-p^{n-1}}\), we have that \(u_i\mapsto z_i\).
             \item \textbf{Preserves Group Operation:} \(\phi(u_m\cdot u_n)=\phi((u_mu_n))= \ldots\) to be proved
         \end{enumerate}
     \end{proof}
